@@ -22,7 +22,9 @@ module.exports = {
             'blue-v-alt': '#5D39FF', // blue violet alt 
             'violet': '#8353FC', // violet
             'violet-alt': '#9065FD', // violet alt 
-            // Light Color
+            'violet-l': '#EDE9FF', // violet light
+            'violet-l-alt': '#F2F0FC', // violet light alt
+            // Light Color 
             'lt-t-prim': '#4D4C73', // text light primary
             'lt-t-prim-alt': '#605F81', // text light alt
             'lt-t-sec': '#A3AED0', // text light secondary
@@ -31,7 +33,10 @@ module.exports = {
             'lt-inp-alt': '#F5F8FE', // input placeholder alt
             'lt-inp-b': '#E8EEF9', // input placeholder backgrouund
             'lt-inp- b-alt': '#E9EFFA', // input placeholder background alt
+            'lt-dash': '#F4F6FA', // dashboard border
             // Dark Color
+            'dk-t-prim': '# ', // text dark primary
+            'dk-t-prim-alt': '#F4EEFF', // text dark primary alt   
          }
       }
 
