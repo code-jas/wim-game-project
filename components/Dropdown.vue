@@ -1,41 +1,62 @@
 <template>
-  <div>
-    
-    <button id="dropdownRadioBgHoverButton" data-dropdown-toggle="dropdownRadioBgHover" class="text-lt-t-prim bg-white hover:bg-blue-800 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-[15px] shadow-sm text-sm px-4 py-2.5 text-center inline-flex items-center" type="button">John Angelo <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
-
-    <!-- Dropdown menu -->
-    <div id="dropdownRadioBgHover" class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600">
-        <ul class="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownRadioBgHoverButton">
-          <li>
-            <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                <input id="default-radio-4" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                <label for="default-radio-4" class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Default radio</label>
-            </div>
-          </li>
-          <li>
-            <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                <input checked id="default-radio-5" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                <label for="default-radio-5" class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Checked state</label>
-            </div>
-          </li>
-          <li>
-            <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                <input id="default-radio-6" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                <label for="default-radio-6" class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Default radio</label>
-            </div>
-          </li>
-        </ul>
+  <div class="relative">
+    <button
+      id="dropdownInformationButton"
+      class="w-[476px] h-20 text-lt-t-prim text-2xl bg-white hover:bg-blue-800 font-medium rounded-lg shadow px-12 py-2.5 text-center inline-flex justify-between items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      @click="toggleDropdown"
+      type="button"
+    >
+      John Angelo
+      <i class="uil uil-angle-up text-5xl transition-transform duration-500" :class="{'rotate-90': isOpen}" />
+    </button>
+    <div v-if="isOpen"
+      id="dropdownInformation"
+      class="w-[476px] max-h-96 bottom-full overflow-y-auto  text-lt-t-prim text-2xl z-10  mb-5 absolute bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
+    >
+      
+      <ul class="py-2 dark:text-gray-200" aria-labelledby="dropdownInformationButton">
+        <li>
+          <a href="#" class="block px-8 py-3 rounded-lg mx-5 my-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+            Dashboard
+          </a>
+        </li>
+        <li>
+          <a href="#" class="block px-8 py-3 rounded-lg mx-5 my-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+            Settings
+          </a>
+        </li>
+        <li>
+          <a href="#" class="block px-8 py-3 rounded-lg mx-5 my-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+            Earnings
+          </a>
+        </li>
+        <li>
+          <a href="#" class="block px-8 py-3 rounded-lg mx-5 my-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+            Earnings
+          </a>
+        </li>
+      </ul>
+      
     </div>
-
+    <button type="button" class="w-[280px] h-[70px]  bg-blue-v font-medium font-franklin text-dk-t-prim-alt text-5xl rounded-[15px]  px-5 py-2.5 mr-2 mb-2   hover:bg-blue-v-alt focus:ring-4 focus:ring-blue-300   hover:scale-105 active:transform active:translate-y-2 transition duration-300">Start</button>
   </div>
 </template>
 
 <script>
-export default {
+import { ref } from 'vue';
 
+export default {
+  setup() {
+    const isOpen = ref(false);
+
+    function toggleDropdown() {
+      isOpen.value = !isOpen.value;
+    }
+
+    return {
+      isOpen,
+      toggleDropdown,
+    }
+  }
 }
 </script>
-
-<style>
-
-</style>
