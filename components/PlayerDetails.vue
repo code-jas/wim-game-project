@@ -4,7 +4,7 @@
       <h1 class="text-3xl font-extrabold mt-1">John Angelo</h1>
       <div class="flex items-center justify-evenly mt-10 gap-10 text-center">
          <div class="flex flex-col">
-            <h1 class="text-4 xl font-extrabold mb-3">4000</h1>
+            <h1 class="text-4xl font-extrabold mb-3">4000</h1>
             <h3 >Score</h3>
          </div>
          <div class="flex flex-col">

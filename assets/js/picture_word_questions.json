@@ -1,0 +1,368 @@
+{
+   "basic": [
+      {
+         "picture": "Person holding a pencil",
+         "choices": [
+            "Eraser",
+            "Banana",
+            "Shoe"
+         ],
+         "answer": "Eraser"
+      },
+      {
+         "picture": "Car parked on the house",
+         "choices": [
+            "Garage",
+            "Tree",
+            "Chair"
+         ],
+         "answer": "Garage"
+      },
+      {
+         "picture": "Person Singing",
+         "choices": [
+            "Microphone",
+            "Book",
+            "Hat"
+         ],
+         "answer": "Microphone"
+      },
+      {
+         "picture": "A plate of spaghetti",
+         "choices": [
+            "Fork",
+            "Pencil",
+            "Glasses"
+         ],
+         "answer": "Fork"
+      },
+      {
+         "picture": "Person playing basketball",
+         "choices": [
+            "Ball",
+            "Plate",
+            "Table"
+         ],
+         "answer": "Ball"
+      },
+      {
+         "picture": "Person swimming",
+         "choices": [
+            "Towel",
+            "Guitar",
+            "Apple"
+         ],
+         "answer": "Towel"
+      },
+      {
+         "picture": "Laptop on a desk",
+         "choices": [
+            "Keyboard",
+            "Hammer",
+            "Hat"
+         ],
+         "answer": "Keyboard"
+      },
+      {
+         "picture": "A Person holding an umbrella",
+         "choices": [
+            "Raincoat",
+            "Tree",
+            "Pillow"
+         ],
+         "answer": "Raincoat"
+      },
+      {
+         "picture": "Skiing",
+         "choices": [
+            "Skis",
+            "Bike",
+            "Spoon"
+         ],
+         "answer": "Skis"
+      },
+      {
+         "picture": "Vase of flowers",
+         "choices": [
+            "Vase",
+            "Watermelon",
+            "Fish"
+         ],
+         "answer": "Vase"
+      },
+      {
+         "picture": "Person watering a plant",
+         "choices": [
+            "Hose",
+            "Book",
+            "Pool"
+         ],
+         "answer": "Hose"
+      },
+      {
+         "picture": "Cutting a watermelon",
+         "choices": [
+            "Knife",
+            "Leaf",
+            "Sunglasses"
+         ],
+         "answer": "Knife"
+      },
+      {
+         "picture": "A person walking their dog",
+         "choices": [
+            "Collar",
+            "Kite",
+            "Circus"
+         ],
+         "answer": "Collar"
+      },
+      {
+         "picture": "A person painting a picture",
+         "choices": [
+            "Brush",
+            "Vase",
+            "Cat"
+         ],
+         "answer": "Brush"
+      },
+      {
+         "picture": "Drinking Coffee",
+         "choices": [
+            "Cup",
+            "Mouse",
+            "Newspaper"
+         ],
+         "answer": "Cup"
+      }
+   ],
+   "intermediate": [
+      {
+         "picture": "A person holding a baseball bat",
+         "choices": [
+            "Baseball",
+            "Football",
+            "Volleyball",
+            "Tennis"
+         ],
+         "answer": "Baseball"
+      },
+      {
+         "picture": "A person playing chess",
+         "choices": [
+            "Chess",
+            "Domino",
+            "Cards",
+            "Scrabble"
+         ],
+         "answer": "Chess"
+      },
+      {
+         "picture": "A person using a microscope",
+         "choices": [
+            "Microscope",
+            "Magnifying Glass",
+            "Camera",
+            "Binoculars"
+         ],
+         "answer": "Microscope"
+      },
+      {
+         "picture": "A person holding a compass",
+         "choices": [
+            "Map",
+            "Ruler",
+            "Protractor",
+            "Calculator"
+         ],
+         "answer": "Compass"
+      },
+      {
+         "picture": "A person rock climbing",
+         "choices": [
+            "Mountain Climbing",
+            "Biking",
+            "Skateboarding",
+            "Surfing"
+         ],
+         "answer": "Mountain Climbing"
+      },
+      {
+         "picture": "Person baking a cake",
+         "choices": [
+            "Oven",
+            "Blender",
+            "Microwave",
+            "Toaster"
+         ],
+         "answer": "Oven"
+      }
+   ],
+   "hard": [
+      {
+         "picture": "Person holding a stethoscope",
+         "choices": [
+            "Thermometer",
+            "Scalpel",
+            "Paintbrush",
+            "Calculator",
+            "Blood pressure cuff"
+         ],
+         "answer": "Blood pressure cuff"
+      },
+      {
+         "picture": "Person holding a welding torch",
+         "choices": [
+            "Screwdriver",
+            "Hammer",
+            "Calculator",
+            "Welding mask",
+            "Spray paint can"
+         ],
+         "answer": "Welding mask"
+      },
+      {
+         "picture": "Person holding a telescope",
+         "choices": [
+            "Binoculars",
+            "Magnifying glass",
+            "Compass",
+            "Protractor",
+            "Microscope"
+         ],
+         "answer": "Binoculars"
+      },
+      {
+         "picture": "Person holding a chainsaw",
+         "choices": [
+            "Lawnmower",
+            "Hedge trimmer",
+            "Screwdriver",
+            "Safety goggles",
+            "Chainsaw file"
+         ],
+         "answer": "Chainsaw file"
+      },
+      {
+         "picture": "Person holding a saxophone",
+         "choices": [
+            "Trumpet",
+            "Clarinet",
+            "Flute",
+            "Accordion",
+            "Harmonica"
+         ],
+         "answer": "Clarinet"
+      },
+      {
+         "picture": "Person holding a tennis racket",
+         "choices": [
+            "Ping pong paddle",
+            "Baseball bat",
+            "Golf club",
+            "Hockey stick",
+            "Badminton racket"
+         ],
+         "answer": "Badminton racket"
+      },
+      {
+         "picture": "Person holding a welding mask",
+         "choices": [
+            "Safety goggles",
+            "Sunglasses",
+            "Ski goggles",
+            "Swim goggles",
+            "Diving mask"
+         ],
+         "answer": "Safety goggles"
+      },
+      {
+         "picture": "Person holding a microscope slide",
+         "choices": [
+            "Test tube",
+            "Beaker",
+            "Bunsen burner",
+            "Pipette",
+            "Microscope"
+         ],
+         "answer": "Microscope"
+      },
+      {
+         "picture": "Person holding a soldering iron",
+         "choices": [
+            "Paintbrush",
+            "Screwdriver",
+            "Calculator",
+            "Clamp",
+            "Soldering flux"
+         ],
+         "answer": "Soldering flux"
+      },
+      {
+         "picture": "Person holding a megaphone",
+         "choices": [
+            "Microphone",
+            "Speaker",
+            "Walkie talkie",
+            "Radio",
+            "Intercom"
+         ],
+         "answer": "Microphone"
+      },
+      {
+         "picture": "Person holding a welding electrode",
+         "choices": [
+            "Screwdriver",
+            "Hammer",
+            "Calculator",
+            "Welding mask",
+            "Welding rod holder"
+         ],
+         "answer": "Welding rod holder"
+      },
+      {
+         "picture": "Person holding a curling iron",
+         "choices": [
+            "Hairbrush",
+            "Flat iron",
+            "Blow dryer",
+            "Hair spray",
+            "Curling wand"
+         ],
+         "answer": "Curling wand"
+      },
+      {
+         "picture": "Person holding a tambourine",
+         "choices": [
+            "Triangle",
+            "Maracas",
+            "Bongos",
+            "Congas",
+            "Cowbell"
+         ],
+         "answer": "Maracas"
+      },
+      {
+         "picture": "Person holding a hockey stick",
+         "choices": [
+            "Baseball bat",
+            "Cricket bat",
+            "Golf club",
+            "Lacrosse stick",
+            "Field hockey stick"
+         ],
+         "answer": "Field hockey stick"
+      },
+      {
+         "picture": "Person holding a diving mask",
+         "choices": [
+            "Ski goggles",
+            "Swim goggles",
+            "Safety goggles",
+            "Welding mask",
+            "Snorkel"
+         ],
+         "answer": "Snorkel"
+      }
+   ]
+}

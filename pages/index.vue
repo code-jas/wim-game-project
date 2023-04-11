@@ -20,6 +20,6 @@ export default {
       this.showPageLoader = false
       this.$router.push('/main')
     }, 3000)
-  }
+  },
 }
 </script>
