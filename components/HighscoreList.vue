@@ -50,7 +50,12 @@ export default {
     }
   },
   created() { 
-   console.log("Players: ",this.players)
+   // console.log("Players: ",this.players)
+  },
+  watch: {
+    '$localStorage.highscores': function () {
+      this.$forceUpdate()
+    }
   }
 }
 </script>

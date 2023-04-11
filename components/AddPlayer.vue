@@ -16,38 +16,32 @@
 import { nanoid } from 'nanoid';
 export default {
    data() {
-    return {
-      players: JSON.parse(localStorage.getItem('players') || '[]')
-    };
-  },
-  created() {
-    window.addEventListener('storage', this.updatePlayersFromStorage);
-  },
-  destroyed() {
-    window.removeEventListener('storage', this.updatePlayersFromStorage);
-  },
-  watch: { 
-      players() {
-      // Refresh the page when the players property changes
-      location.reload();
-    }
-  },
+      return {
+         players: JSON.parse(localStorage.getItem('players') || '[]')
+      };
+   },
+   watch:{ 
+      players() { 
+         location.reload();
+      }
+   },
    methods: { 
       addPlayer() {
          const playerName = document.querySelector('input[type="text"]').value;
          if (playerName.trim() !== '') {
             const player = {
-               id: nanoid(),
+               id: nanoid(),  
                playerName: playerName,
                highScore: 0,
                totalScore: 0,
                totalGameTime: 0,
                totalGamesPlayed: 0,
                accuracy: 0,
+               selected: true,
             };
             this.players.push(player);
             this.savePlayersToStorage();
-            this.$router.push({name: 'dashboard'})
+            this.$router.push('/main');
          }
       },
       savePlayersToStorage() {
