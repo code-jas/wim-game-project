@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Modal/>
+        <Difficulty />
         <!-- <AddPlayer /> -->
     </div>
 </template>

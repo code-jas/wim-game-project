@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="py-20 max-w-screen-2xl mx-auto flex flex-col  items-center">
         <!-- Toggle for testing -->
         <button class="bg-blue-v rounded-xl p-2 text-violet-l font-bold text-2xl hover:bg-blue-v-alt" @click="modalToggle">Help Icon</button> 
         <!-- Modal -->
