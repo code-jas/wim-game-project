@@ -31,7 +31,7 @@
    "questionnaire": {
       "basic": [
          {
-            "picture": "Person holding a pencil",
+            "hint": "Person holding a pencil",
             "choices": [
                "Eraser",
                "Banana",
@@ -40,7 +40,7 @@
             "answer": "Eraser"
          },
          {
-            "picture": "Car parked on the house",
+            "hint": "Car parked on the house",
             "choices": [
                "Garage",
                "Tree",
@@ -49,7 +49,7 @@
             "answer": "Garage"
          },
          {
-            "picture": "Person Singing",
+            "hint": "Person Singing",
             "choices": [
                "Microphone",
                "Book",
@@ -58,7 +58,7 @@
             "answer": "Microphone"
          },
          {
-            "picture": "A plate of spaghetti",
+            "hint": "A plate of spaghetti",
             "choices": [
                "Fork",
                "Pencil",
@@ -67,7 +67,7 @@
             "answer": "Fork"
          },
          {
-            "picture": "Person playing basketball",
+            "hint": "Person playing basketball",
             "choices": [
                "Ball",
                "Plate",
@@ -76,7 +76,7 @@
             "answer": "Ball"
          },
          {
-            "picture": "Person swimming",
+            "hint": "Person swimming",
             "choices": [
                "Towel",
                "Guitar",
@@ -85,7 +85,7 @@
             "answer": "Towel"
          },
          {
-            "picture": "Laptop on a desk",
+            "hint": "Laptop on a desk",
             "choices": [
                "Keyboard",
                "Hammer",
@@ -94,7 +94,7 @@
             "answer": "Keyboard"
          },
          {
-            "picture": "A Person holding an umbrella",
+            "hint": "A Person holding an umbrella",
             "choices": [
                "Raincoat",
                "Tree",
@@ -103,7 +103,7 @@
             "answer": "Raincoat"
          },
          {
-            "picture": "Skiing",
+            "hint": "Skiing",
             "choices": [
                "Skis",
                "Bike",
@@ -112,7 +112,7 @@
             "answer": "Skis"
          },
          {
-            "picture": "Vase of flowers",
+            "hint": "Vase of flowers",
             "choices": [
                "Vase",
                "Watermelon",
@@ -121,7 +121,7 @@
             "answer": "Vase"
          },
          {
-            "picture": "Person watering a plant",
+            "hint": "Person watering a plant",
             "choices": [
                "Hose",
                "Book",
@@ -130,7 +130,7 @@
             "answer": "Hose"
          },
          {
-            "picture": "Cutting a watermelon",
+            "hint": "Cutting a watermelon",
             "choices": [
                "Knife",
                "Leaf",
@@ -139,7 +139,7 @@
             "answer": "Knife"
          },
          {
-            "picture": "A person walking their dog",
+            "hint": "A person walking their dog",
             "choices": [
                "Collar",
                "Kite",
@@ -148,7 +148,7 @@
             "answer": "Collar"
          },
          {
-            "picture": "A person painting a picture",
+            "hint": "A person painting a hint",
             "choices": [
                "Brush",
                "Vase",
@@ -157,7 +157,7 @@
             "answer": "Brush"
          },
          {
-            "picture": "Drinking Coffee",
+            "hint": "Drinking Coffee",
             "choices": [
                "Cup",
                "Mouse",
@@ -168,7 +168,7 @@
       ],
       "intermediate": [
          {
-            "picture": "A person holding a baseball bat",
+            "hint": "A person holding a baseball bat",
             "choices": [
                "Baseball",
                "Football",
@@ -178,7 +178,7 @@
             "answer": "Baseball"
          },
          {
-            "picture": "A person playing chess",
+            "hint": "A person playing chess",
             "choices": [
                "Chess",
                "Domino",
@@ -188,7 +188,7 @@
             "answer": "Chess"
          },
          {
-            "picture": "A person using a microscope",
+            "hint": "A person using a microscope",
             "choices": [
                "Microscope",
                "Magnifying Glass",
@@ -198,7 +198,7 @@
             "answer": "Microscope"
          },
          {
-            "picture": "A person holding a compass",
+            "hint": "A person holding a compass",
             "choices": [
                "Map",
                "Ruler",
@@ -208,7 +208,7 @@
             "answer": "Compass"
          },
          {
-            "picture": "A person rock climbing",
+            "hint": "A person rock climbing",
             "choices": [
                "Mountain Climbing",
                "Biking",
@@ -218,7 +218,7 @@
             "answer": "Mountain Climbing"
          },
          {
-            "picture": "Person baking a cake",
+            "hint": "Person baking a cake",
             "choices": [
                "Oven",
                "Blender",
@@ -230,7 +230,7 @@
       ],
       "hard": [
          {
-            "picture": "Person holding a stethoscope",
+            "hint": "Person holding a stethoscope",
             "choices": [
                "Thermometer",
                "Scalpel",
@@ -241,7 +241,7 @@
             "answer": "Blood pressure cuff"
          },
          {
-            "picture": "Person holding a welding torch",
+            "hint": "Person holding a welding torch",
             "choices": [
                "Screwdriver",
                "Hammer",
@@ -252,7 +252,7 @@
             "answer": "Welding mask"
          },
          {
-            "picture": "Person holding a telescope",
+            "hint": "Person holding a telescope",
             "choices": [
                "Binoculars",
                "Magnifying glass",
@@ -263,7 +263,7 @@
             "answer": "Binoculars"
          },
          {
-            "picture": "Person holding a chainsaw",
+            "hint": "Person holding a chainsaw",
             "choices": [
                "Lawnmower",
                "Hedge trimmer",
@@ -274,7 +274,7 @@
             "answer": "Chainsaw file"
          },
          {
-            "picture": "Person holding a saxophone",
+            "hint": "Person holding a saxophone",
             "choices": [
                "Trumpet",
                "Clarinet",
@@ -285,7 +285,7 @@
             "answer": "Clarinet"
          },
          {
-            "picture": "Person holding a tennis racket",
+            "hint": "Person holding a tennis racket",
             "choices": [
                "Ping pong paddle",
                "Baseball bat",
@@ -296,7 +296,7 @@
             "answer": "Badminton racket"
          },
          {
-            "picture": "Person holding a welding mask",
+            "hint": "Person holding a welding mask",
             "choices": [
                "Safety goggles",
                "Sunglasses",
@@ -307,7 +307,7 @@
             "answer": "Safety goggles"
          },
          {
-            "picture": "Person holding a microscope slide",
+            "hint": "Person holding a microscope slide",
             "choices": [
                "Test tube",
                "Beaker",
@@ -318,7 +318,7 @@
             "answer": "Microscope"
          },
          {
-            "picture": "Person holding a soldering iron",
+            "hint": "Person holding a soldering iron",
             "choices": [
                "Paintbrush",
                "Screwdriver",
@@ -329,7 +329,7 @@
             "answer": "Soldering flux"
          },
          {
-            "picture": "Person holding a megaphone",
+            "hint": "Person holding a megaphone",
             "choices": [
                "Microphone",
                "Speaker",
@@ -340,7 +340,7 @@
             "answer": "Microphone"
          },
          {
-            "picture": "Person holding a welding electrode",
+            "hint": "Person holding a welding electrode",
             "choices": [
                "Screwdriver",
                "Hammer",
@@ -351,7 +351,7 @@
             "answer": "Welding rod holder"
          },
          {
-            "picture": "Person holding a curling iron",
+            "hint": "Person holding a curling iron",
             "choices": [
                "Hairbrush",
                "Flat iron",
@@ -362,7 +362,7 @@
             "answer": "Curling wand"
          },
          {
-            "picture": "Person holding a tambourine",
+            "hint": "Person holding a tambourine",
             "choices": [
                "Triangle",
                "Maracas",
@@ -373,7 +373,7 @@
             "answer": "Maracas"
          },
          {
-            "picture": "Person holding a hockey stick",
+            "hint": "Person holding a hockey stick",
             "choices": [
                "Baseball bat",
                "Cricket bat",
@@ -384,7 +384,7 @@
             "answer": "Field hockey stick"
          },
          {
-            "picture": "Person holding a diving mask",
+            "hint": "Person holding a diving mask",
             "choices": [
                "Ski goggles",
                "Swim goggles",

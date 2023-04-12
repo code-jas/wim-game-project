@@ -8,7 +8,7 @@
             <h3 >Score</h3>
          </div>
          <div class="flex flex-col">
-            <h1 class="text-4xl font-extrabold mb-3">{{ selectedPlayer.highScore }}</h1>
+            <h1 class="text-4xl font-extrabold mb-3">{{ selectedPlayer.highScore  }}</h1>
             <h3 >Highscore</h3>
          </div>
          <div class="flex flex-col">
