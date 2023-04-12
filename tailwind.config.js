@@ -12,7 +12,7 @@ module.exports = {
       extend: {
          colors: {
             // constants Color
-            'red ': '#FF7974', // red
+            'red': '#FF7974', // red
             'red-alt': '#FF8782', // red alt
             'blue': '#6274FB', // blue
             'blue-alt': '#7282FC', // blue alt
@@ -37,6 +37,25 @@ module.exports = {
             // Dark Color
             'dk-t-prim': '# ', // text dark primary
             'dk-t-prim-alt': '#F4EEFF', // text dark primary alt   
+         },
+         backgroundImage: {
+            'blob-diff': "url('@/assets/img/blob-portrait.svg')",
+         },
+         backgroundSize: {
+            'auto': 'auto',
+            'cover': 'cover',
+            'contain': 'contain',
+            '200%': '200%',
+            '150%': '150%',
+            '120%': '120%',
+            '100%': '100%',
+         },
+         scale: {
+            '175': '1.75',
+            '200': '2',
+            '210': '2.10',
+            '225': '2.25',
+            '250': '2.5',
          }
       }
 

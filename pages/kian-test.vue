@@ -1,12 +1,22 @@
 <template>
     <div>
-        <Level />
+<<<<<<< Updated upstream
+        <level-number />
+=======
+        <Game />
+>>>>>>> Stashed changes
         <!-- <AddPlayer /> -->
     </div>
 </template>
 
 <script>
+import LevelNumber from '@/components/gameboard/LevelNumber.vue';
 
+export default {
+    components: {
+        LevelNumber,
+    },
+};
 </script>
 
 <style>

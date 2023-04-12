@@ -1,6 +1,5 @@
 <template>
    <div class="bg-lt-dash w-screen h-screen">
-
       <div class="py-20 max-w-screen-2xl mx-auto flex flex-col  items-center bg-lt-dash" >
          <dashboard-navbar @add-player="showModal = true" />
          
@@ -8,7 +7,7 @@
             <highscore-list :players="players" />
             <div class="w-[476px]">
                <player-details class="mb-32" :players="players" />
-               <dropdown :players="players" :start-game="startGame"/>
+               <player-dropdown  :players="players" :start-game="startGame"/>
             </div>
          </div>
       </div>
@@ -18,14 +17,15 @@
 
 <script> 
 import DashboardNavbar from './DashboardNavbar.vue'
-import Dropdown from './Dropdown.vue'
+import PlayerDropdown from './PlayerDropdown.vue'
 import HighscoreList from './HighscoreList.vue'
 import AddPlayerModal from './AddPlayerModal.vue'
+import PlayerDetails from './PlayerDetails.vue'
 import { nanoid } from 'nanoid' 
 
 export default {
   
-  components: { DashboardNavbar, HighscoreList, Dropdown, AddPlayerModal },
+  components: { DashboardNavbar, HighscoreList, PlayerDropdown, AddPlayerModal , PlayerDetails },
   data() {
     return {
       showModal: false,
