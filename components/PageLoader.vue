@@ -13,7 +13,7 @@ export default {
 
 <style >
    .bg-pageloader {     
-      background-image: url('@/assets/img/pageloader/bg-desktop.png');
+      background-image: url('@/assets/img/pageloader/pl-desktop.png');
       background-size: cover;
    }
 </style>

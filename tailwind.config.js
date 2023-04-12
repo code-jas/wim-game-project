@@ -12,7 +12,7 @@ module.exports = {
       extend: {
          colors: {
             // constants Color
-            'red ': '#FF7974', // red
+            'red': '#FF7974', // red
             'red-alt': '#FF8782', // red alt
             'blue': '#6274FB', // blue
             'blue-alt': '#7282FC', // blue alt
