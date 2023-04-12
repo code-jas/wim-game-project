@@ -1,7 +1,8 @@
-{
+"questionnaire": {
    "basic": [
       {
-         "picture": "Person holding a pencil",
+         "picture":"@/assets/quiz-picture/basic/1) persong holding a pencil.jpg",
+         "hint": "Person holding a pencil",
          "choices": [
             "Eraser",
             "Banana",
@@ -10,7 +11,8 @@
          "answer": "Eraser"
       },
       {
-         "picture": "Car parked on the house",
+         "picture": "@/assets/quiz-picture/basic/2) car parked on the house.jpg",
+         "hint": "Car parked on the house",
          "choices": [
             "Garage",
             "Tree",
@@ -19,7 +21,8 @@
          "answer": "Garage"
       },
       {
-         "picture": "Person Singing",
+         "picture": "@/assets/quiz-picture/basic/3) Person Singing.jpg",
+         "hint": "Person Singing",
          "choices": [
             "Microphone",
             "Book",
@@ -28,7 +31,8 @@
          "answer": "Microphone"
       },
       {
-         "picture": "A plate of spaghetti",
+         "picture": "@/assets/quiz-picture/basic/4) A plate of spaghetti.jpg",
+         "hint": "A plate of spaghetti",
          "choices": [
             "Fork",
             "Pencil",
@@ -37,7 +41,8 @@
          "answer": "Fork"
       },
       {
-         "picture": "Person playing basketball",
+         "picture":"@/assets/quiz-picture/basic/5) Person playing basketball.jpg",
+         "hint": "Person playing basketball",
          "choices": [
             "Ball",
             "Plate",
@@ -46,7 +51,8 @@
          "answer": "Ball"
       },
       {
-         "picture": "Person swimming",
+         "picture": "@/assets/quiz-picture/basic/6) Person swimming.jpg",
+         "hint": "Person swimming",
          "choices": [
             "Towel",
             "Guitar",
@@ -55,7 +61,8 @@
          "answer": "Towel"
       },
       {
-         "picture": "Laptop on a desk",
+         "picture": "@/assets/quiz-picture/basic/7) Laptop on a desk.jpg",
+         "hint": "Laptop on a desk",
          "choices": [
             "Keyboard",
             "Hammer",
@@ -64,7 +71,8 @@
          "answer": "Keyboard"
       },
       {
-         "picture": "A Person holding an umbrella",
+         "picture": "@/assets/quiz-picture/basic/8) A person holding an umbrella.jpg",
+         "hint": "A Person holding an umbrella",
          "choices": [
             "Raincoat",
             "Tree",
@@ -73,7 +81,8 @@
          "answer": "Raincoat"
       },
       {
-         "picture": "Skiing",
+         "picture": "@/assets/quiz-picture/basic/9) Skiing.jpg",
+         "hint": "Skiing",
          "choices": [
             "Skis",
             "Bike",
@@ -82,7 +91,8 @@
          "answer": "Skis"
       },
       {
-         "picture": "Vase of flowers",
+         "picture": "@/assets/quiz-picture/basic/10) Vase of flowers.jpg",
+         "hint": "Vase of flowers",
          "choices": [
             "Vase",
             "Watermelon",
@@ -91,7 +101,8 @@
          "answer": "Vase"
       },
       {
-         "picture": "Person watering a plant",
+         "picture": "@/assets/quiz-picture/basic/11) Person watering on a plant.jpg",
+         "hint": "Person watering a plant",
          "choices": [
             "Hose",
             "Book",
@@ -100,7 +111,8 @@
          "answer": "Hose"
       },
       {
-         "picture": "Cutting a watermelon",
+         "picture": "@/assets/quiz-picture/basic/12) Cutting a watermelon.jpg",
+         "hint": "Cutting a watermelon",
          "choices": [
             "Knife",
             "Leaf",
@@ -109,7 +121,8 @@
          "answer": "Knife"
       },
       {
-         "picture": "A person walking their dog",
+         "picture": "@/assets/quiz-picture/basic/13) A person walking their dog.jpg",
+         "hint": "A person walking their dog",
          "choices": [
             "Collar",
             "Kite",
@@ -118,7 +131,8 @@
          "answer": "Collar"
       },
       {
-         "picture": "A person painting a picture",
+         "picture": "@/assets/quiz-picture/basic/14) A person painting a picture.jpg",
+         "hint": "A person painting a picture",
          "choices": [
             "Brush",
             "Vase",
@@ -127,7 +141,8 @@
          "answer": "Brush"
       },
       {
-         "picture": "Drinking Coffee",
+         "picture": "@/assets/quiz-picture/basic/15) Drinking Coffee.jpg",
+         "hint": "Drinking Coffee",
          "choices": [
             "Cup",
             "Mouse",
@@ -138,7 +153,8 @@
    ],
    "intermediate": [
       {
-         "picture": "A person holding a baseball bat",
+         "picture": "@/assets/quiz-picture/medium/1) A person holding a baseball bat.jpeg",
+         "hint": "A person holding a baseball bat",
          "choices": [
             "Baseball",
             "Football",
@@ -148,7 +164,8 @@
          "answer": "Baseball"
       },
       {
-         "picture": "A person playing chess",
+         "person": "@/assets/quiz-picture/medium/2) A person playing chess.jpg",
+         "hint": "A person playing chess",
          "choices": [
             "Chess",
             "Domino",
@@ -158,7 +175,8 @@
          "answer": "Chess"
       },
       {
-         "picture": "A person using a microscope",
+         "picture": "@/assets/quiz-picture/medium/3) A person using a microscope.jpg",
+         "hint": "A person using a microscope",
          "choices": [
             "Microscope",
             "Magnifying Glass",
@@ -168,7 +186,8 @@
          "answer": "Microscope"
       },
       {
-         "picture": "A person holding a compass",
+         "picture": "@/assets/quiz-picture/medium/4) A person holding a comapass.jpg",
+         "hint": "A person holding a compass",
          "choices": [
             "Map",
             "Ruler",
@@ -178,7 +197,8 @@
          "answer": "Compass"
       },
       {
-         "picture": "A person rock climbing",
+         "picture": "@/assets/quiz-picture/medium/5) A person rock climbing",
+         "hint": "A person rock climbing",
          "choices": [
             "Mountain Climbing",
             "Biking",
@@ -188,7 +208,8 @@
          "answer": "Mountain Climbing"
       },
       {
-         "picture": "Person baking a cake",
+         "picture": "@/assets/quiz-picture/medium/6) A person baking a cake.jpg",
+         "hint": "Person baking a cake",
          "choices": [
             "Oven",
             "Blender",
@@ -196,11 +217,111 @@
             "Toaster"
          ],
          "answer": "Oven"
+      },
+      {
+         "picture": "@/assets/quiz-picture/medium/7) A person painting a room.jpg",
+         "hint": "A person painting a room",
+         "choices": [
+            "Roller",
+            "Nail",
+            "Ladder",
+            "Hammer"
+         ],
+         "answer": "Roller"
+      },
+      {
+         "picture": "@/assets/quiz-picture/medium/8) A person camping in the woods.jpg",
+         "hint": "A person camping in the woods ",
+         "choices": [
+            "Camping",
+            "Fishing",
+            "Hunting",
+            "Jogging"
+         ],
+         "answer": "Camping"
+      },
+      {
+         "picture": "@/assets/quiz-picture/medium/9) A person doing a jigsaw puzzle.jpg",
+         "hint": "A person doing a jigsaw puzzle",
+         "choices": [
+            "Jigsaw Puzzle",
+            "Sudoku",
+            "Rubik's Cube",
+            "Word Search"
+         ],
+         "answer": "Jigsaw Puzzle"
+      },
+      {
+         "picture": "@/assets/quiz-picture/medium/10) A person using a drill.webp",
+         "hint": "A person using a dril",
+         "choices": [
+            "Drill",
+            "Screwdriver",
+            "Hammer",
+            "Pliers"
+         ],
+         "answer": "Drill"
+      },
+      {
+         "picture": "@/assets/quiz-picture/medium/11) A person holding a welding torch.jpg",
+         "hint": "A person holding a welding torch",
+         "choices": [
+            "Welding Mask",
+            "Metal",
+            "Electric",
+            "Shades"
+         ],
+         "answer": "Welding Mask"
+      },
+      {
+         "picture": "@/assets/quiz-picture/medium/12) A person doing yoga.jpg",
+         "hint": "A person doing yoga",
+         "choices": [
+            "Meditation",
+            "Tai Chi",
+            "Pilates",
+            "Zumba"
+         ],
+         "answer": "Meditation"
+      },
+      {
+         "picture": "@/assets/quiz-picture/medium/13) A person cleaning.jpg",
+         "hint": "A person cleaning",
+         "choices": [
+            "Vacuum",
+            "Typewriter",
+            "Mixer",
+            "Iron"
+         ],
+         "answer": "Vacuum"
+      },
+      {
+         "picture": "@/assets/quiz-picture/medium/14) A person using a soldering iron.jpg",
+         "hint": "A person using a soldering iron",
+         "choices": [
+            "Soldering Iron",
+            "Glue Gun",
+            "Heat Gun",
+            "Electric Drill"
+         ],
+         "answer": "Soldering Iron"
+      },
+      {
+         "picture": "@/assets/quiz-picture/medium/15) A person holding a frying pan.jpg",
+         "hint": "A person holding a frying pan",
+         "choices": [
+            "Frying Pan",
+            "Dutch Oven",
+            "Wok",
+            "Griddle"
+         ],
+         "answer": "Frying Pan"
       }
    ],
    "hard": [
       {
-         "picture": "Person holding a stethoscope",
+         "picture": "@/assets/quiz-picture/hard/1) Person holding a stethoscope.jpg",
+         "hint": "Person holding a stethoscope",
          "choices": [
             "Thermometer",
             "Scalpel",
@@ -211,18 +332,20 @@
          "answer": "Blood pressure cuff"
       },
       {
-         "picture": "Person holding a welding torch",
+         "picture": "@/assets/quiz-picture/hard/2) Person holding a pottery wheel.jpg",
+         "hint": "Person holding a pottery wheel",
          "choices": [
-            "Screwdriver",
-            "Hammer",
-            "Calculator",
-            "Welding mask",
-            "Spray paint can"
+            "Chisel",
+            "Paintbrush",
+            "Easel",
+            "Kiln",
+            "Clay"
          ],
-         "answer": "Welding mask"
+         "answer": "Clay"
       },
       {
-         "picture": "Person holding a telescope",
+         "picture": "@/assets/quiz-picture/hard/3) Person holding a telescope.jpg",
+         "hint": "Person holding a telescope",
          "choices": [
             "Binoculars",
             "Magnifying glass",
@@ -233,7 +356,8 @@
          "answer": "Binoculars"
       },
       {
-         "picture": "Person holding a chainsaw",
+         "picture": "@/assets/quiz-picture/hard/4) Person holding a chainsaw.jpg",
+         "hint": "Person holding a chainsaw",
          "choices": [
             "Lawnmower",
             "Hedge trimmer",
@@ -244,7 +368,8 @@
          "answer": "Chainsaw file"
       },
       {
-         "picture": "Person holding a saxophone",
+         "picture": "@/assets/quiz-picture/hard/5) Person holding a saxophone.jpg",
+         "hint": "Person holding a saxophone",
          "choices": [
             "Trumpet",
             "Clarinet",
@@ -255,7 +380,8 @@
          "answer": "Clarinet"
       },
       {
-         "picture": "Person holding a tennis racket",
+         "picture": "@/assets/quiz-picture/hard/6) Person holding a tennis racket.jpg",
+         "hint": "Person holding a tennis racket",
          "choices": [
             "Ping pong paddle",
             "Baseball bat",
@@ -266,7 +392,8 @@
          "answer": "Badminton racket"
       },
       {
-         "picture": "Person holding a welding mask",
+         "picture": "@/assets/quiz-picture/hard/7) Person holding a welding mask.jpg",
+         "hint": "Person holding a welding mask",
          "choices": [
             "Safety goggles",
             "Sunglasses",
@@ -277,7 +404,8 @@
          "answer": "Safety goggles"
       },
       {
-         "picture": "Person holding a microscope slide",
+         "picture": "@/assets/quiz-picture/hard/8) Person holding a microscope slide.jpg",
+         "hint": "Person holding a microscope slide",
          "choices": [
             "Test tube",
             "Beaker",
@@ -288,18 +416,20 @@
          "answer": "Microscope"
       },
       {
-         "picture": "Person holding a soldering iron",
+         "picture": "@/assets/quiz-picture/hard/9) Person holding a surfboard.jpg",
+         "hint": "Person holding a surfboard",
          "choices": [
-            "Paintbrush",
-            "Screwdriver",
-            "Calculator",
-            "Clamp",
-            "Soldering flux"
+            "Skateboard",
+            "Snowboard",
+            "Wakeboard",
+            "Kayak",
+            "Paddleboard"
          ],
-         "answer": "Soldering flux"
+         "answer": "Paddleboard"
       },
       {
-         "picture": "Person holding a megaphone",
+         "picture": "@/assets/quiz-picture/hard/10) Person holding a megaphone.jpg",
+         "hint": "Person holding a megaphone",
          "choices": [
             "Microphone",
             "Speaker",
@@ -310,7 +440,8 @@
          "answer": "Microphone"
       },
       {
-         "picture": "Person holding a welding electrode",
+         "picture": "@/assets/quiz-picture/hard/11) Person holding a welding electrode.jpg",
+         "hint": "Person holding a welding electrode",
          "choices": [
             "Screwdriver",
             "Hammer",
@@ -321,7 +452,8 @@
          "answer": "Welding rod holder"
       },
       {
-         "picture": "Person holding a curling iron",
+         "picture": "@/assets/quiz-picture/hard/12) Person holding a curling iron.jpg",
+         "hint": "Person holding a curling iron",
          "choices": [
             "Hairbrush",
             "Flat iron",
@@ -332,7 +464,8 @@
          "answer": "Curling wand"
       },
       {
-         "picture": "Person holding a tambourine",
+         "picture": "@/assets/quiz-picture/hard/13) Person holding a tambourine.jpg",
+         "hint": "Person holding a tambourine",
          "choices": [
             "Triangle",
             "Maracas",
@@ -343,7 +476,8 @@
          "answer": "Maracas"
       },
       {
-         "picture": "Person holding a hockey stick",
+         "picture": "@/assets/quiz-picture/hard/14) Person holding a hockey stick.jpg",
+         "hint": "Person holding a hockey stick",
          "choices": [
             "Baseball bat",
             "Cricket bat",
@@ -354,7 +488,8 @@
          "answer": "Field hockey stick"
       },
       {
-         "picture": "Person holding a diving mask",
+         "picture": "@/assets/quiz-picture/hard/15) Person holding a diving mask.jpg",
+         "hint": "Person holding a diving mask",
          "choices": [
             "Ski goggles",
             "Swim goggles",
