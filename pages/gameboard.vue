@@ -31,10 +31,10 @@ export default {
    },
    data() {
       return { 
-         showDifficultyLevel: false,
+         showDifficultyLevel: true,
          showLevelNumber: false,
-         showGameplay: true,
-         showGameResult: true,
+         showGameplay: false,
+         showGameResult: false,
          players: JSON.parse(localStorage.getItem('players') || '[]')
       };
    },

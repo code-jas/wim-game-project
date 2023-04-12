@@ -1,6 +1,10 @@
 <template>
     <div>
+<<<<<<< Updated upstream
         <level-number />
+=======
+        <Game />
+>>>>>>> Stashed changes
         <!-- <AddPlayer /> -->
     </div>
 </template>
