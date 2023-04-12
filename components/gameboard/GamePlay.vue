@@ -1,6 +1,6 @@
 <template>
-<div class="bg-lt-dash w-screen h-screen">
-    <div class="py-20 max-w-screen-2xl mx-auto">
+<div class="bg-lt-dash">
+    <div class="mx-auto">
         <div class="text-center font-bold text-4xl text-[#605F81] mb-16">
             <h1>Select the word that matches the image</h1>
         </div>
