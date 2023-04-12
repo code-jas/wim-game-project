@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Difficulty />
+        <Level />
         <!-- <AddPlayer /> -->
     </div>
 </template>
