@@ -8,10 +8,10 @@
             <button class="w-[275px] h-[370px] bg-[#e6dcff] font-semibold text-3xl hover:bg-white hover:text-blue-v hover:border hover:border-blue-v rounded-[15px] m-[32px] flex items-center justify-center">
                 Easy
             </button>
-            <button class="w-[275px] h-[370px] bg-[#e6dcff] font-semibold text-3xl hover:bg-white hover:text-blue-v hover:border-blue-v rounded-[15px] m-[32px] flex items-center justify-center">
+            <button class="w-[275px] h-[370px] bg-[#e6dcff] font-semibold text-3xl hover:bg-white hover:text-blue-v hover:border hover:border-blue-v rounded-[15px] m-[32px] flex items-center justify-center">
                 Medium
             </button>
-            <button class="w-[275px] h-[370px] bg-[#e6dcff] font-semibold text-3xl hover:bg-white hover:text-blue-v hover:border-blue-v rounded-[15px] m-[32px] flex items-center justify-center ">
+            <button class="w-[275px] h-[370px] bg-[#e6dcff] font-semibold text-3xl hover:bg-white hover:text-blue-v hover:border hover:border-blue-v rounded-[15px] m-[32px] flex items-center justify-center ">
                 Hard
             </button>
         </div>
