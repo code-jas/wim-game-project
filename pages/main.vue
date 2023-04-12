@@ -7,7 +7,7 @@
  
  <script>
  import AddPlayer from '~/components/AddPlayer.vue'
- import Dashboard from '~/components/Dashboard.vue'
+ import Dashboard from '~/components/dashboard/Dashboard.vue'
  import { nanoid } from 'nanoid'
  
  export default {

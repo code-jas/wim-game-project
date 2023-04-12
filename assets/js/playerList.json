@@ -31,6 +31,7 @@
    "questionnaire": {
       "basic": [
          {
+            "picture": "@/assets/img/pageloader/bg-desktop.png",
             "hint": "Person holding a pencil",
             "choices": [
                "Eraser",
