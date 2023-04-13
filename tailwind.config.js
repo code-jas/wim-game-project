@@ -32,11 +32,18 @@ module.exports = {
             'lt-inp': '#F4F7FE', // input placeholder
             'lt-inp-alt': '#F5F8FE', // input placeholder alt
             'lt-inp-b': '#E8EEF9', // input placeholder backgrouund
-            'lt-inp- b-alt': '#E9EFFA', // input placeholder background alt
+            'lt-inp-b-alt': '#E9EFFA', // input placeholder background alt
             'lt-dash': '#F4F6FA', // dashboard border
             // Dark Color
-            'dk-t-prim': '# ', // text dark primary
-            'dk-t-prim-alt': '#F4EEFF', // text dark primary alt   
+            'dk-t-prim': '#EEE9F8', // text light primary
+            'dk-t-prim-alt': '#F4EEFF', // text light alt
+            'dk-t-sec': '#A3AED0', // text light secondary
+            'dk-t-sec-alt': '#ADB7D5', // text light secondary alt
+            'dk-inp': '#332E59', // input placeholder
+            'dk-inp-alt': '#3B3464', // input placeholder alt
+            'dk-inp-b': '#282043', // input placeholder backgrouund
+            'dk-inp-b-alt': '#2B264F', // input placeholder background alt
+            'dk-dash': '#F4F6FA', // dashboard border
          },
          backgroundImage: {
             'blob-diff': "url('@/assets/img/blob-portrait.svg')",
