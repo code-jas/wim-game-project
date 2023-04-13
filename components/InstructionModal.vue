@@ -3,8 +3,8 @@
         <!-- Toggle for testing -->
         <!-- <button class="bg-blue-v rounded-xl p-2 text-violet-l font-bold text-2xl hover:bg-blue-v-alt" @click="modalToggle">Help Icon</button>  -->
         <!-- Modal -->
-        <div class="h-screen w-full fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center">
-            <div class="bg-lt-inp max-w-xl px-6 py-4 rounded-lg shadow-xl">
+        <div class="h-screen w-full fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center" @click="closeModal">
+            <div class="bg-lt-inp max-w-xl px-6 py-4 rounded-lg shadow-xl" @click.stop>
                 <!-- Modal Header -->
                 <div class="flex mb-6"> 
                     <div class="basis-3/4">
@@ -18,11 +18,11 @@
                 </div>
                 <!-- Content -->
                 <div>
-                    <div class="bg-violet-l max-w-2xl px-14 py-3 rounded-lg border border-blue-v my-3.5">
+                    <div class="bg-[#e6dcff] max-w-2xl px-14 py-3 rounded-lg  border border-blue-v my-3.5">
                         <h1 class="text-center text-3xl font-bold mb-1">Image/Word Match</h1>
                         <p class="text-justify text-base">It is a type of visual puzzle that presents an image and provides a set of options for a corresponding word that best matches or describes the image.</p>
                     </div>
-                    <div class="bg-violet-l max-w-2xl px-14 py-3 rounded-lg border border-blue-v my-3.5">
+                    <div class="bg-[#e6dcff] max-w-2xl px-14 py-3 rounded-lg border border-blue-v my-3.5">
                         <h1 class="text-center text-3xl font-bold mb-1">How to Play?</h1>
                         <p class="text-justify text-base">
                             <ol>
@@ -33,17 +33,17 @@
                             </ol>
                         </p>
                     </div>
-                    <div class="bg-violet-l max-w-2xl px-14 py-3 rounded-lg border border-blue-v my-3.5">
+                    <div class="bg-[#e6dcff] max-w-2xl px-14 py-3 rounded-lg border border-blue-v my-3.5">
                         <h1 class="text-center text-3xl font-bold mb-1">Difficulty</h1>
                         <p class="text-justify text-base">
                             <ul>
-                                <li>Easy - provides an image and three (3) different options</li>
-                                <li>Medium - provides an image and four (4) different options</li>
-                                <li>Hard - provides an image and five (5) different options</li>
+                                <li><b>Easy</b> - provides an image and three (3) different options</li>
+                                <li><b>Medium</b> - provides an image and four (4) different options</li>
+                                <li><b>Hard</b> - provides an image and five (5) different options</li>
                             </ul>
                         </p>
                     </div>
-                    <div class="bg-violet-l max-w-2xl px-16 py-3 rounded-lg border border-blue-v my-3.5">
+                    <div class="bg-[#e6dcff] max-w-2xl px-16 py-3 rounded-lg border border-blue-v my-3.5">
                         <h1 class="text-center text-3xl font-bold mb-1">Mechanics</h1>
                         <p class="text-justify text-base">*calculations of score</p>
                     </div>
