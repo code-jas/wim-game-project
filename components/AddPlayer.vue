@@ -1,32 +1,35 @@
 <template>
-   <div class="relative p-20 ">
-      <div class="flex items-center justify-center gap-x-4 absolute right-20 top-20 ">
-         <div
-        class="w-[65px] h-[65px] flex items-center justify-center overflow-hidden rounded-full hover:bg-violet-l-alt hover:scale-105 transition duration-200"
-        :class="isDarkModeEnabled ? 'bg-violet-l-alt' : 'bg-violet-l-alt '"
+   <div class="relative p-20 " :class="isDarkModeEnabled ? 'bg-dk-inp-b' : 'bg-white'">
+      <div class="flex items-center justify-center gap-x-4 absolute right-20 top-20 "
+      :class="isDarkModeEnabled ? 'bg-dk-inp-b' : 'bg-white'"
+      >
+      <div
+        class="w-[65px] h-[65px] flex items-center justify-center overflow-hidden rounded-full  hover:scale-105 transition duration-200"
+        :class="isDarkModeEnabled ? 'bg-dk-inp-alt hover:bg-dk-inp-alt' : 'bg-violet-l-alt hover:bg-violet-l-alt'"
         @click="toggleDarkMode"
          >
             <i
                :class="[
                   'uil',
                   'text-5xl',
-                  'bg-violet-l-alt',
                   'hover:scale-105',
                   'transition',
                   'duration-200',
                   isDarkModeEnabled
-                  ? 'uil-sun text-red'
-                  : 'uil-moon text-blue'
+                  ? 'uil-sun text-dk-t-prim bg-dk-inp-alt'
+                  : 'uil-moon text-blue bg-violet-l-alt'
                ]"
             ></i>
          </div>
-      <div class="w-[65px] h-[65px] flex items-center justify-center  overflow-hidden bg-violet-l-alt rounded-full  hover:bg-violet-l-alt hover:scale-105 transition duration-200">
-            <i class="uil uil-question-circle text-blue text-5xl bg-violet-l-alt "></i>
+      <div class="w-[65px] h-[65px] flex items-center justify-center  overflow-hidden  rounded-full  hover:scale-105 transition duration-200"  :class="isDarkModeEnabled ? 'bg-dk-inp-alt hover:bg-dk-inp-alt' : 'bg-violet-l-alt hover:bg-violet-l-alt'">
+            <i class="uil uil-question-circle text-5xl hover:scale-105 transition duration-200 "
+            :class="isDarkModeEnabled ? ' text-dk-t-prim bg-dk-inp-alt'
+                  : ' text-blue bg-violet-l-alt'"></i>
          </div>
       </div>
       
      
-      <h1 class=" absolute top-20 left-1/2 transform -translate-x-1/2  text-6xl font-franklin text-blue-v ">Image/Word <br> Match Game</h1>
+      <h1 class=" absolute top-20 left-1/2 transform -translate-x-1/2  text-6xl font-franklin text-blue-v "  :class="isDarkModeEnabled ? 'text-dk-t-prim' : 'text-blue-v '">Image/Word <br> Match Game</h1>
       <div class="flex items-center  justify-center min-h-screen flex-col">
          <input type="text" class="w-[740px] h-[88px]  bg-lt-inp border-none text-lt-t-prim text-3xl rounded-[15px]  drop-shadow-md placeholder:text-lt-t-sec-alt  focus:outline-none  focus:ring-2 focus:ring-blue-v focus:border-blue-v focus:bg-white block p-7 mb-20" placeholder="Player Name...">
        

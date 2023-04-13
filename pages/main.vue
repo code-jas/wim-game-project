@@ -26,7 +26,7 @@
    },
    computed: {
     activeComponent() {
-       return this.players.length === 0 ?'AddPlayer': 'Dashboard';
+       return this.players.length === 0 ? 'AddPlayer' : 'Dashboard';
     }
   },  
   methods: {
