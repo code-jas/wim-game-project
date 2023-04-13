@@ -1,9 +1,14 @@
 <template>
-    <div class="bg-lt-dash w-screen h-screen">
-      <div class="py-20 max-w-screen-2xl mx-auto">
-        <button @click="backToDifficultyLevel">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="back-arrow"><g data-name="Layer 2"><g data-name="arrow-back"><rect width="24" height="24" opacity="0" transform="rotate(90 12 12)"></rect><path d="M19 11H7.14l3.63-4.36a1 1 0 1 0-1.54-1.28l-5 6a1.19 1.19 0 0 0-.09.15c0 .05 0 .08-.07.13A1 1 0 0 0 4 12a1 1 0 0 0 .07.36c0 .05 0 .08.07.13a1.19 1.19 0 0 0 .09.15l5 6A1 1 0 0 0 10 19a1 1 0 0 0 .64-.23 1 1 0 0 0 .13-1.41L7.14 13H19a1 1 0 0 0 0-2z"></path></g></g></svg> Back
-        </button>
+    <div class="bg-violet-l-alt h-screen flex items-center justify-center">
+      <div class="flex items-center justify-center flex-col py-20 max-w-screen-2xl mx-auto">
+        <div class="flex justify-between w-[1500px]">
+          <button @click="backToDifficultyLevel">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="back-arrow"><g data-name="Layer 2"><g data-name="arrow-back"><rect width="24" height="24" opacity="0" transform="rotate(90 12 12)"></rect><path d="M19 11H7.14l3.63-4.36a1 1 0 1 0-1.54-1.28l-5 6a1.19 1.19 0 0 0-.09.15c0 .05 0 .08-.07.13A1 1 0 0 0 4 12a1 1 0 0 0 .07.36c0 .05 0 .08.07.13a1.19 1.19 0 0 0 .09.15l5 6A1 1 0 0 0 10 19a1 1 0 0 0 .64-.23 1 1 0 0 0 .13-1.41L7.14 13H19a1 1 0 0 0 0-2z"></path></g></g></svg> Back
+          </button>
+          <button  type="button" class="w-[45px] h-[45px] flex items-center justify-center bg-violet-l-alt rounded-full   hover:scale-110 transition duration-300">
+            <i class="uil uil-question-circle text-blue text-4xl bg-violet-l-alt  rounded-full"></i>
+         </button>
+        </div>
         <div class="text-center font-black text-6xl text-[#605F81] mb-16">
           <h1>CHOOSE LEVEL</h1>
         </div>
@@ -14,7 +19,7 @@
             :disabled="!isLevelDone(i)"
             :class="[
               'w-[200px] h-[200px] border rounded-[15px] font-franklin text-8xl m-[18px]',
-              isLevelDone(i) ? 'bg-[#e6dcff] text-blue-v-alt hover:bg-blue-v-alt hover:text-white hover:border-lt-t-prim-alt hover:border-[3px]' : 'bg-gray-400 cursor-not-allowed text-gray-700',
+              isLevelDone(i) ? 'bg-[#e6dcff] text-blue-v-alt hover:bg-blue-v-alt hover:text-white hover:border-lt-t-prim-alt hover:border-[3px]' : 'bg-[#e6dcff] cursor-not-allowed text-blue-v-alt',
               i === selectedLevel ? 'border-lt-t-prim-alt border-[3px] hover:border-lt-t-prim-alt-alt' : 'border-blue-v hover:border-lt-t-prim-alt hover:border-[3px]',
             ]"
             @click="selectLevel(i)"
@@ -57,7 +62,7 @@
        this.$emit('onLevelSelected', this.selectedLevel);
      },
      backToDifficultyLevel() {
-       this.$emit('onBackToDiff icultyLevel');
+       this.$emit('onBackToDifficultyLevel');
      },
     },
   }
