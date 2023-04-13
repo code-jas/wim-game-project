@@ -55,6 +55,7 @@ export default {
             totalGamesPlayed: 0,
             accuracy: 0,
             selected: false,
+            started: false,
         };
         this.players.push(player);
         this.savePlayersToStorage();
@@ -62,7 +63,16 @@ export default {
       }
     },    
     startGame() {
-      this.$router.push('/gameboard')
+
+      const selectedPlayer = this.players.filter(player => player.selected === true);
+      // console.log("Dashboard: SelectedPlayerId: ", selectedPlayer[0].id);
+
+      this.$router.push({
+        name: 'gameboard',
+        params: {
+          playerId: selectedPlayer[0].id
+        }
+      });
 
     },
     savePlayersToStorage() {

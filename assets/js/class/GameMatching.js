@@ -1,4 +1,4 @@
-class GameBoard {
+export default class GameMatching {
    constructor(words, images, difficulty, currentLevel = 1) {
       this.words = words;
       this.images = images;

@@ -38,6 +38,7 @@ export default {
                totalGamesPlayed: 0,
                accuracy: 0,
                selected: true,
+               started: false,
             };
             this.players.push(player);
             this.savePlayersToStorage();

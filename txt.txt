@@ -1,0 +1,157 @@
+<template>
+    ...
+        <button
+          v-for="(difficulty, index) in difficulties"
+          :key="index"
+          :class="['relative w-[275px] h-[370px] bg-[#e6dcff] font-semibold  text-lt-t-prim text-3xl  uppercase transition duration-500 ease-in-out rounded-[15px] m-[32px] overflow-hidden flex items-center justify-center shadow-lg', { 'hover:bg-white hover:text-blue-v hover:border hover:border-blue-v hover:shadow-xl hover:scale-105': selectedDifficulty !== index, 'bg-white text-blue-v border border-blue-v shadow-xl scale-105': selectedDifficulty === index }]"
+          @click="selectDifficulty(difficulty)"
+        >
+          <div :class="['absolute w-full h-full bg-blob-diff bg-no-repeat bg-center transition duration-300 ease-in-out',{'scale-225 hover:scale-110': selectedDifficulty!==index, 'scale-110': selectedDifficulty === index  }]"></div>
+          <h1>{{ difficulty }}</h1>
+        </button>
+      </div>
+      <div class="flex justify-center">
+        <button class="bg-blue-v w-[476px] h-[70px] text-lt-inp font-franklin text-4xl rounded-[15px]">Next</button>
+      </div>
+...
+</template>
+
+
+<script>
+export default {
+  props: {
+    wimQuest: Object
+  },
+  data() {
+    return {
+      difficulties: ['easy', 'medium', 'hard'],
+      selectedDifficulty: null,
+    };
+  },
+  created() {
+    console.log(this.wimQuest.questionnaire.easy);
+  },
+  methods: {
+    selectDifficulty(index) {
+      this.selectedDifficulty = index;
+      console.log(this.selectedDifficulty)
+    },
+  },
+};
+</script>
+
+
+{
+   "questionnaire": {
+      "easy": [
+         {
+            "picture": "@/assets/quiz-picture/basic/1) persong holding a pencil.jpg",
+            "hint": "Person holding a pencil",
+            "choices": [
+               "Eraser",
+               "Banana",
+               "Shoe"
+            ],
+            "answer": "Eraser"
+         },
+         
+      ],
+      "medium": [
+         {
+            "picture": "@/assets/quiz-picture/medium/1) A person holding a baseball bat.jpeg",
+            "hint": "A person holding a baseball bat",
+            "choices": [
+               "Baseball",
+               "Football",
+               "Volleyball",
+               "Tennis"
+            ],
+            "answer": "Baseball"
+         },
+         ...
+      ],
+      "hard": [
+         {
+            "picture": "@/assets/quiz-picture/hard/1) Person holding a stethoscope.jpg",
+            "hint": "Person holding a stethoscope",
+            "choices": [
+               "Thermometer",
+               "Scalpel",
+               "Paintbrush",
+               "Calculator",
+               "Blood pressure cuff"
+            ],
+            "answer": "Blood pressure cuff"
+         },
+        ....
+      ]
+   }
+}
+
+
+
+
+export default {
+   name: 'gameboard',
+   components: {
+      Difficulty,
+      LevelNumber,
+      Gameboard,
+      GameResult,
+   },
+   data() {
+      return { 
+         // Local Storage Data
+         players: JSON.parse(localStorage.getItem('players') || '[]'),
+
+         // Questionnaire Data
+         wim_quest: wim_quest,
+
+         // Components
+         showDifficultyLevel: true,
+         showLevelNumber: false,
+         showGameplay: false,
+         showGameResult: false,
+
+         // Class
+         player: null,
+         
+
+      };
+   },
+   created() {
+      // Get player from local storage
+      const playerId = this.$route.params.playerId;
+      if (!playerId) {
+         this.$router.push('/main');
+         return;
+      }
+      const players = JSON.parse(localStorage.getItem('players') || '[]');
+      const selectedPlayer = players.find(p => p.id === playerId);
+      // console.log("gameboard page - selectedPlayer : ",selectedPlayer);
+
+      // Destructure selectedPlayer
+      const {id, playerName, highScore, totalScore, totalGameTime, totalGamesPlayed, accuracy, selected, started} = selectedPlayer;
+       // Pass selectedPlayer to Player constructor
+      this.player = new Player(id, playerName, highScore, totalScore, totalGameTime, totalGamesPlayed, accuracy, selected, started);
+      console.log("gameboard page - this.player : ",this.player);
+      console.log('gameboard page - questionnaire : ',this.wim_quest)
+
+      if (!this.player.started) {
+         this.shuffleQuestions();
+      }
+   },
+   computed: {
+    ...
+  },
+  methods: { 
+      ...
+      // Shuffle questions
+      shuffleQuestions() {
+         for (let difficulty in this.wim_quest) {
+            this.wim_quest[difficulty] = this.wim_quest[difficulty].sort(() => Math.random() - 0.5);
+         }
+      }
+
+  }
+}

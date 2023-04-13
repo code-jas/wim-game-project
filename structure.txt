@@ -37,3 +37,23 @@ Difficulty-Based Bonus Points
 
 difficultyBonusPoints = baseBonusPoints * difficultyMultiplier
 
+
+
+"questionnaire": {
+      "easy": [
+         {
+            "picture": "@/assets/quiz-picture/basic/1) persong holding a pencil.jpg",
+            "hint": "Person holding a pencil",
+            "choices": [
+               "Eraser",
+               "Banana",
+               "Shoe"
+            ],
+            "answer": "Eraser"
+         },
+         ....
+      "medium": [
+         ....
+      ],
+       "hard": [
+
