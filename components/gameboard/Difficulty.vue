@@ -37,7 +37,6 @@ export default {
     };
   },
   created() {
-    console.log(this.wimQuest.questionnaire.easy);
   },
   methods: {
     selectDifficulty(index) {
@@ -47,6 +46,7 @@ export default {
     nextClicked() {
       this.$emit('onDifficultySelected',this.difficulties[this.selectedDifficulty]);
     },
+    
   },
 };
 </script>

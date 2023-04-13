@@ -5,7 +5,7 @@
          <Difficulty @onDifficultySelected="onDifficultySelected" :wimQuest="wim_quest" />
       </div>
       <div v-if="showLevelNumber">
-         <LevelNumber @onLevelSelected="onLevelSelected"/>
+         <LevelNumber @onLevelSelected="onLevelSelected" @onBackToDifficultyLevel="onBackToDifficultyLevel"/>
       </div>
       <div v-if="showGameplay">
          <Gameboard/>
@@ -51,6 +51,10 @@ export default {
 
          // Class
          player: null,
+
+         // Store Data
+         selectedDifficulty: null,
+         selectedLevel: null,
          
 
       };
@@ -73,15 +77,10 @@ export default {
        // Pass selectedPlayer to Player constructor
       this.player = new Player(id, playerName, highScore, totalScore, totalGameTime, totalGamesPlayed, accuracy, selected, started, questionnaire);
      
-
-     
       // Shuffle questions if player has not started
       if (!this.player.started) {
-         
          this.shuffleQuestions(); 
-         // //! Test Console
-         // console.log('gameboard page - shuffled questionnaire : ',this.wim_quest.questionnaire)
-         
+         this.player.setQuestions(this.questions)
          // Mark the player as started
          this.player.started = true;
          this.savePlayerToLocalStorage()
@@ -89,41 +88,54 @@ export default {
          // If player has started, use the saved questions
          this.questions = this.player.questionnaire;
       }
+      console.log('Questions for player:', this.questions);
+
+   },
+   mounted() {
    },
    computed: {
     activeComponent() {
-       return this.players.length === 0 ?'AddPlayer': 'Dashboard';
+       return this.players.length === 0 ? 'AddPlayer' : 'Dashboard';
     }
    },
    methods: { 
    // COMPONENTS PROGRESS
       // Difficulty Level
-      onDifficultySelected(selectDifficulty) {
-         console.log('gameboard page - selectDifficulty : ',selectDifficulty)
+      onDifficultySelected(difficulty) {
+         this.selectedDifficulty = difficulty
          this.showDifficultyLevel = false
          this.showLevelNumber = true
       },
       // Level Number
-      onLevelSelected() {
+      onLevelSelected(level) {
+         this.selectedLevel = level;
          this.showLevelNumber = false
          this.showGameplay = true
+         console.log('selected difficulty : ',this.selectedDifficulty)
+         console.log('selected level : ',this.selectedLevel)
+      },
+      // Back to Difficulty Level
+      onBackToDifficultyLevel() {
+         this.showDifficultyLevel = true
+         this.showLevelNumber = false
       },
       // Game Result
       onGameplayFinished() {
          this.showGameplay = false
          this.showGameResult = true
       },
+      
+      
       // Shuffle questions
       shuffleQuestions() {
-         // new object with shuffled questions
          const shuffledQuestions = {};
          for (let difficulty in this.wim_quest.questionnaire) {
-            //console.log("difficulty",difficulty)
-            //console.log("this.wim_quest.questionnaire[difficulty]",this.wim_quest.questionnaire[difficulty])
-            shuffledQuestions[difficulty] = this.wim_quest.questionnaire[difficulty].sort(() => Math.random() - 0.5);
+            const questions = this.wim_quest.questionnaire[difficulty];
+            const shuffled = questions.sort(() => Math.random() - 0.5);
+            shuffledQuestions[difficulty] = shuffled.slice(0, 5);
          }
-         // Assign the shuffled questions to the data property 'questions'
          this.questions = shuffledQuestions;
+         console.log("question:" , shuffledQuestions)
       },
       // Save player to local storage
       savePlayerToLocalStorage() {

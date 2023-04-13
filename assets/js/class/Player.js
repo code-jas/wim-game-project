@@ -1,5 +1,5 @@
 export default class Player {
-   constructor(id, playerName, highScore, totalScore, totalGameTime, totalGamesPlayed, accuracy, selected, started, questions) {
+   constructor(id, playerName, highScore, totalScore, totalGameTime, totalGamesPlayed, accuracy, selected, started, questionnaire) {
       this.id = id;
       this.playerName = playerName;
       this.highScore = highScore;
@@ -9,7 +9,7 @@ export default class Player {
       this.accuracy = accuracy;
       this.selected = selected;
       this.started = started;
-      this.questions = questions || {}; // Initialize to an empty object if not provided
+      this.questionnaire = questionnaire || {}; // Initialize to an empty object if not provided
    }
 
    // toJSON() {
@@ -70,80 +70,75 @@ export default class Player {
       this.id = value;
    }
 
-   get playerName() {
+   getPlayerName() {
       return this.playerName;
    }
 
-   set playerName(value) {
+   setPlayerName(value) {
       this.playerName = value;
    }
 
-   get highScore() {
+   getHighScore() {
       return this.highScore;
    }
 
-   set highScore(value) {
+   setHighScore(value) {
       this.highScore = value;
    }
 
-   get totalScore() {
+   getTotalScore() {
       return this.totalScore;
    }
 
-   set totalScore(value) {
+   setTotalScore(value) {
       this.totalScore = value;
    }
 
-   get totalGameTime() {
+   getTotalGameTime() {
       return this.totalGameTime;
    }
 
-   set totalGameTime(value) {
+   setTotalGameTime(value) {
       this.totalGameTime = value;
    }
 
-   get totalGamesPlayed() {
+   getTotalGamesPlayed() {
       return this.totalGamesPlayed;
    }
 
-   set totalGamesPlayed(value) {
+   setTotalGamesPlayed(value) {
       this.totalGamesPlayed = value;
    }
 
-   get accuracy() {
+   getAccuracy() {
       return this.accuracy;
    }
 
-   set accuracy(value) {
+   setAccuracy(value) {
       this.accuracy = value;
    }
 
-   get selected() {
+   getSelected() {
       return this.selected;
    }
 
-   set selected(value) {
+   setSelected(value) {
       this.selected = value;
    }
 
-   get started() {
+   getStarted() {
       return this.started;
    }
 
-   set started(value) {
+   setStarted(value) {
       this.started = value;
    }
 
-   get questions() {
+   getQuestions() {
       return this.questions;
    }
 
-   set questions(value) {
+   setQuestions(value) {
       this.questions = value;
    }
-
-
-
-
-
 }

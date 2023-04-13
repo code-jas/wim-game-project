@@ -29,7 +29,7 @@ export default {
   },
   computed: {
     selectedPlayer() {
-      console.log("Console log",this.players.find(p => p.selected));
+      // console.log("Console log",this.players.find(p => p.selected));
       return this.players.find(p => p.selected);
     }
   }

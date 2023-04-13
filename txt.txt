@@ -90,68 +90,19 @@ export default {
 
 
 
-
-export default {
-   name: 'gameboard',
-   components: {
-      Difficulty,
-      LevelNumber,
-      Gameboard,
-      GameResult,
-   },
-   data() {
-      return { 
-         // Local Storage Data
-         players: JSON.parse(localStorage.getItem('players') || '[]'),
-
-         // Questionnaire Data
-         wim_quest: wim_quest,
-
-         // Components
-         showDifficultyLevel: true,
-         showLevelNumber: false,
-         showGameplay: false,
-         showGameResult: false,
-
-         // Class
-         player: null,
-         
-
-      };
-   },
-   created() {
-      // Get player from local storage
-      const playerId = this.$route.params.playerId;
-      if (!playerId) {
-         this.$router.push('/main');
-         return;
-      }
-      const players = JSON.parse(localStorage.getItem('players') || '[]');
-      const selectedPlayer = players.find(p => p.id === playerId);
-      // console.log("gameboard page - selectedPlayer : ",selectedPlayer);
-
-      // Destructure selectedPlayer
-      const {id, playerName, highScore, totalScore, totalGameTime, totalGamesPlayed, accuracy, selected, started} = selectedPlayer;
-       // Pass selectedPlayer to Player constructor
-      this.player = new Player(id, playerName, highScore, totalScore, totalGameTime, totalGamesPlayed, accuracy, selected, started);
-      console.log("gameboard page - this.player : ",this.player);
-      console.log('gameboard page - questionnaire : ',this.wim_quest)
-
-      if (!this.player.started) {
-         this.shuffleQuestions();
-      }
-   },
-   computed: {
-    ...
-  },
-  methods: { 
+created() {
       ...
-      // Shuffle questions
-      shuffleQuestions() {
-         for (let difficulty in this.wim_quest) {
-            this.wim_quest[difficulty] = this.wim_quest[difficulty].sort(() => Math.random() - 0.5);
-         }
+      // Shuffle questions if player has not started
+      if (!this.player.started) {
+         this.shuffleQuestions(); 
+         this.player.setQuestions(this.questions)
+         // Mark the player as started
+         this.player.started = true;
+         this.savePlayerToLocalStorage()
+      }else {
+         // If player has started, use the saved questions
+         this.questions = this.player.questionnaire;
       }
+      console.log('gameboard page - question for player  : ', this.questions)
 
-  }
-}
+   },
