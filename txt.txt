@@ -90,19 +90,14 @@ export default {
 
 
 
-created() {
+<template>
+   <div class="relative p-20 ">
+      <div class="flex items-center justify-center gap-x-4 absolute right-20 top-20 ">
+         <div class="w-[65px] h-[65px] flex items-center justify-center  bg-violet-l-alt rounded-full  hover:bg-violet-l-alt hover:scale-105 transition duration-200">
+            <i class="uil uil-moon text-blue text-5xl bg-violet-l-alt  hover:scale-105 transition duration-200"></i>
+         </div>
       ...
-      // Shuffle questions if player has not started
-      if (!this.player.started) {
-         this.shuffleQuestions(); 
-         this.player.setQuestions(this.questions)
-         // Mark the player as started
-         this.player.started = true;
-         this.savePlayerToLocalStorage()
-      }else {
-         // If player has started, use the saved questions
-         this.questions = this.player.questionnaire;
-      }
-      console.log('gameboard page - question for player  : ', this.questions)
-
-   },
+      </div>
+      ...
+   </div>
+</template>
