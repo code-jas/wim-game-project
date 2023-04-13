@@ -20,7 +20,7 @@
             :class="[
               'w-[200px] h-[200px] border rounded-[15px] font-franklin text-8xl m-[18px]',
               isLevelDone(i) ? 'bg-[#e6dcff] text-blue-v-alt hover:bg-blue-v-alt hover:text-white hover:border-lt-t-prim-alt hover:border-[3px]' : 'bg-[#e6dcff] cursor-not-allowed text-blue-v-alt',
-              i === selectedLevel ? 'border-lt-t-prim-alt border-[3px] hover:border-lt-t-prim-alt-alt' : 'border-blue-v hover:border-lt-t-prim-alt hover:border-[3px]',
+              i === selectedLevel ? 'border-lt-t-prim-alt bg-blue-v-alt text-white border-[3px] hover:border-lt-t-prim-alt-alt' : 'border-blue-v hover:border-lt-t-prim-alt hover:border-[3px]',
             ]"
             @click="selectLevel(i)"
           >
