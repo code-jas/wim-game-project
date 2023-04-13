@@ -1,9 +1,9 @@
 <template>
     <div class="py-20 max-w-screen-2xl mx-auto flex flex-col  items-center">
         <!-- Toggle for testing -->
-        <button class="bg-blue-v rounded-xl p-2 text-violet-l font-bold text-2xl hover:bg-blue-v-alt" @click="modalToggle">Help Icon</button> 
+        <!-- <button class="bg-blue-v rounded-xl p-2 text-violet-l font-bold text-2xl hover:bg-blue-v-alt" @click="modalToggle">Help Icon</button>  -->
         <!-- Modal -->
-        <div v-if="showModal" class="h-screen w-full fixed left-0 top-0 bg-black bg-opacity-50 flex justify-center items-center">
+        <div class="h-screen w-full fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center">
             <div class="bg-lt-inp max-w-xl px-6 py-4 rounded-lg shadow-xl">
                 <!-- Modal Header -->
                 <div class="flex mb-6"> 
@@ -11,7 +11,7 @@
                         <h1 class="italic font-bold text-5xl text-blue-v basis-3/4">About the game</h1>
                     </div>
                     <div class="basis-1/4 grid justify-items-end">
-                        <button @click="modalToggle">
+                        <button @click="closeModal">
                             <i class="uil uil-times text-3xl hover:text-4xl text-lt-t-prim"></i>
                         </button>
                     </div>
@@ -50,7 +50,7 @@
                 </div>
                 <!-- Modal Footer --> 
                 <div class="flex justify-center">
-                    <button class="bg-blue-v rounded-xl p-2 text-violet-l font-bold text-2xl hover:bg-blue-v-alt" @click="modalToggle">Close</button>
+                    <button class="bg-blue-v rounded-xl p-2 text-violet-l font-bold text-2xl hover:bg-blue-v-alt" @click="closeModal">Close</button>
                 </div>
             </div>
         </div>
@@ -59,14 +59,9 @@
 
 <script>
 export default{
-    data(){
-        return{
-            showModal: false,
-        }
-    },
     methods:{
-        modalToggle(){
-            this.showModal = !this.showModal
+        closeModal(){
+            this.$emit('closeModal')
         }
     }
 }

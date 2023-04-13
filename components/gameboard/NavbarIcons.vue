@@ -6,7 +6,7 @@
     <button class="text-4xl text-[#6174FB]">
         <i class="uil uil-moon"></i>
     </button>
-    <button class="text-4xl text-[#6174FB]">
+    <button @click="$emit('showModal')" class="text-4xl text-[#6174FB]">
         <i class="uil uil-question-circle"></i>
     </button>
 </div>

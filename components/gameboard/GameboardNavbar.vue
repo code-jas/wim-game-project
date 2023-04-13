@@ -9,7 +9,7 @@
         <QuestionInformation />
     </div>
     <div class="flex justify-end w-[390px]"> <!-- 390px - default width size of QuestionInformation-->
-        <NavbarIcons />
+        <NavbarIcons @showModal="$emit('showModal')"/>
     </div>
 </div>
 </template>
