@@ -43,7 +43,7 @@
       </div>
       <!-- INSTRUCTION MODAL -->
       <div v-if="showInstructionModal">
-         <InstructionModal @closeModal="toggleInstruction"/>
+         <InstructionModal @closeModal="toggleInstruction" :isDarkModeEnabled="true"/> <!-- :isDarkModeEnabled="true"- for testing purpose-->
       </div>
    </div>
 </template>
