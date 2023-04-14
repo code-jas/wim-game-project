@@ -1,7 +1,10 @@
 <template>
-   <div class="bg-lt-dash w-screen h-screen">
+   <div class="bg-lt-dash w-screen h-screen" :class="{ 'dark': isDarkModeEnabled }">
       <div class="py-20 max-w-screen-2xl mx-auto flex flex-col  items-center bg-lt-dash" >
-         <dashboard-navbar @add-player="showModal = true" @showModal="showInstructionModal = true"/>
+         <dashboard-navbar 
+         @add-player="showModal = true" @showModal="showInstructionModal = true" 
+         :is-dark-mode-enabled="isDarkModeEnabled" 
+         @toggle-dark-mode="toggleDarkMode"  />
          
          <div class="flex justify-between p-3 gap-x w-full px-32">
             <highscore-list :players="players" />
@@ -28,12 +31,24 @@ import InstructionModal from '../InstructionModal.vue'
 export default {
   
   components: { DashboardNavbar, HighscoreList, PlayerDropdown, AddPlayerModal, PlayerDetails, InstructionModal },
+  //   props: {
+  //   isDarkModeEnabled: {
+  //     type: Boolean,
+  //     required: true
+  //   }
+  // },
   data() {
     return {
+      isDarkModeEnabled: false,
       showModal: false,
       showInstructionModal: false,
       players: JSON.parse(localStorage.getItem('players') || '[]')
     };
+  },
+  watch: {
+    // isDarkModeEnabled(newVal, oldVal) {
+    //   console.log(`Dashboardd changed from ${oldVal} to ${newVal}`)
+    // }
   },
   created() {
     window.addEventListener('storage', this.updatePlayersFromStorage);
@@ -42,10 +57,11 @@ export default {
     window.removeEventListener('storage', this.updatePlayersFromStorage);
   },
   mounted() {
-  //  console.log(this.players)
   },
   methods: {
-    
+    toggleDarkMode(isEnabled) {
+      this.isDarkModeEnabled = isEnabled;
+    },
     addPlayer() {
       const playerName = document.querySelector('input[type="text"]').value;
       if (playerName.trim() !== '') {

@@ -8,6 +8,7 @@ module.exports = {
       "./plugins/**/*.{js,ts}",
       "./nuxt.config.{js,ts}",
    ],
+   darkMode: 'class',
    theme: {
       extend: {
          colors: {
@@ -66,5 +67,10 @@ module.exports = {
          }
       }
 
-   }
+   },
+   plugins: [
+      require('@tailwindcss/forms'),
+      require('@tailwindcss/typography'),
+      // ...
+   ],
 }
