@@ -1,11 +1,13 @@
 <template>
-   <div class="relative p-20 " :class="isDarkModeEnabled ? 'bg-dk-inp-b' : 'bg-white'">
-      <div class="flex items-center justify-center gap-x-4 absolute right-20 top-20 "
-      :class="isDarkModeEnabled ? 'bg-dk-inp-b' : 'bg-white'"
+<!-- :class="{'': isDark } -->
+    
+   <div class="relative p-20 bg-white " :class="{'dark:bg-dk-inp-b': isDark }">
+      <div class="flex items-center justify-center gap-x-4 absolute right-20 top-20 bg-white "
+       :class="{'dark:bg-dk-inp-b': isDark }"
       >
       <div
-        class="w-[65px] h-[65px] flex items-center justify-center overflow-hidden rounded-full  hover:scale-105 transition duration-200"
-        :class="isDarkModeEnabled ? 'bg-dk-inp-alt hover:bg-dk-inp-alt' : 'bg-violet-l-alt hover:bg-violet-l-alt'"
+        class="w-[65px] h-[65px] flex items-center justify-center overflow-hidden rounded-full  hover:scale-105 transition duration-200 bg-violet-l-alt hover:bg-violet-l-alt"
+        :class="{'dark:bg-dk-inp-alt dark:hover:bg-dk-inp-alt': isDark }"
         @click="toggleDarkMode"
          >
             <i
@@ -15,24 +17,25 @@
                   'hover:scale-105',
                   'transition',
                   'duration-200',
-                  isDarkModeEnabled
-                  ? 'uil-sun text-dk-t-prim bg-dk-inp-alt'
+                  isDark
+                  ? 'uil-sun dark:text-dk-t-prim dark:bg-dk-inp-alt'
                   : 'uil-moon text-blue bg-violet-l-alt'
                ]"
             ></i>
          </div>
         <div 
-            class="w-[65px] h-[65px] flex items-center justify-center  overflow-hidden  rounded-full  hover:scale-105 transition duration-200"  :class="isDarkModeEnabled ? 'bg-dk-inp-alt hover:bg-dk-inp-alt' : 'bg-violet-l-alt hover:bg-violet-l-alt'"
+            class="w-[65px] h-[65px] flex items-center justify-center  overflow-hidden  rounded-full  hover:scale-105 transition duration-200 bg-violet-l-alt hover:bg-violet-l-alt"  
+            :class="{'dark:bg-dk-inp-alt dark:hover:bg-dk-inp-alt': isDark }"
             @click="toggleInstruction"
             >
-            <i class="uil uil-question-circle text-5xl hover:scale-105 transition duration-200 "
-            :class="isDarkModeEnabled ? ' text-dk-t-prim bg-dk-inp-alt'
-                  : ' text-blue bg-violet-l-alt'"></i>
+            <i class="uil uil-question-circle text-5xl hover:scale-105 transition duration-200 text-blue bg-violet-l-alt"
+            :class="{'dark:text-dk-t-prim dark:bg-dk-inp-alt': isDark }"></i>
          </div>
       </div>
       
      
-      <h1 class=" absolute top-20 left-1/2 transform -translate-x-1/2  text-6xl font-franklin text-blue-v "  :class="isDarkModeEnabled ? 'text-dk-t-prim' : 'text-blue-v '">Image/Word <br> Match Game</h1>
+      <h1 class="absolute top-20 left-1/2 transform -translate-x-1/2  text-6xl font-franklin text-blue-v " 
+      :class="{'dark:text-dk-t-prim': isDark }">Image/Word <br> Match Game</h1>
       <div class="flex items-center  justify-center min-h-screen flex-col">
          <input type="text" 
          class="w-[740px] h-[88px] border-none text-3xl rounded-[15px]  drop-shadow-md focus:outline-none focus:ring-2 block p-7 mb-20" 
@@ -57,10 +60,11 @@ export default {
     // components: { UilMoon },
     components: { InstructionModal },
     props: {
-        isDarkModeEnabled: {
-            type: Boolean,
-            required: true
-        }
+        isDark: false
+        // isDarkModeEnabled: {
+        //     type: Boolean,
+        //     required: true
+        // }
     },
     data() {
         return {
@@ -70,8 +74,8 @@ export default {
     },
     computed: { 
         inputPlayerNameClass() {
-            return this.isDarkModeEnabled ?
-                'bg-dk-inp hover:bg-dk-inp-alt  text-dk-t-prim placeholder:text-lt-t-prim-alt focus:ring-dk-t-sec' :
+            return this.isDark ?
+                'dark:bg-dk-inp dark:hover:bg-dk-inp-alt  dark:text-dk-t-prim dark:placeholder:text-lt-t-prim-alt dark:focus:ring-dk-t-sec' :
                 'bg-lt-inp text-lt-t-prim placeholder:text-lt-t-sec-alt  focus:ring-blue-v focus:border-blue-v focus:bg-white'
         },
     },
@@ -85,8 +89,8 @@ export default {
             this.showInstructionModal = !this.showInstructionModal
         },
         toggleDarkMode() {
-            this.isDarkModeEnabledLocal = !this.isDarkModeEnabledLocal;
-            this.$emit("toggle-dark-mode", this.isDarkModeEnabledLocal);
+            this.isDark = !this.isDark
+            document.body.classList.toggle('dark', this.isDark)
         },
         addPlayer() {
             const playerName = document.querySelector("input[type=\"text\"]").value;
