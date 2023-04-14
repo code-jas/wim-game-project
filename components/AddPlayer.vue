@@ -34,7 +34,10 @@
      
       <h1 class=" absolute top-20 left-1/2 transform -translate-x-1/2  text-6xl font-franklin text-blue-v "  :class="isDarkModeEnabled ? 'text-dk-t-prim' : 'text-blue-v '">Image/Word <br> Match Game</h1>
       <div class="flex items-center  justify-center min-h-screen flex-col">
-         <input type="text" class="w-[740px] h-[88px]  bg-lt-inp border-none text-lt-t-prim text-3xl rounded-[15px]  drop-shadow-md placeholder:text-lt-t-sec-alt  focus:outline-none  focus:ring-2 focus:ring-blue-v focus:border-blue-v focus:bg-white block p-7 mb-20" placeholder="Player Name...">
+         <input type="text" 
+         class="w-[740px] h-[88px] border-none text-3xl rounded-[15px]  drop-shadow-md focus:outline-none focus:ring-2 block p-7 mb-20" 
+         :class="inputPlayerNameClass"
+         placeholder="Player Name...">
        
          <button type="button" @click="addPlayer()" class="w-[280px] h-[70px]  bg-blue-v font-medium font-franklin text-dk-t-prim-alt text-5xl rounded-[15px]  px-5 py-2.5 mr-2 mb-2   hover:bg-blue-v-alt focus:ring-4 focus:ring-blue-300   hover:scale-105 active:transform active:translate-y-2 transition duration-300">Start</button>
       </div>
@@ -52,6 +55,7 @@ import '@iconscout/unicons/css/line.css';
 import InstructionModal from './InstructionModal.vue';
 export default {
     // components: { UilMoon },
+    components: { InstructionModal },
     props: {
         isDarkModeEnabled: {
             type: Boolean,
@@ -64,12 +68,22 @@ export default {
             showInstructionModal: false,
         };
     },
+    computed: { 
+        inputPlayerNameClass() {
+            return this.isDarkModeEnabled ?
+                'bg-dk-inp hover:bg-dk-inp-alt  text-dk-t-prim placeholder:text-lt-t-prim-alt focus:ring-dk-t-sec' :
+                'bg-lt-inp text-lt-t-prim placeholder:text-lt-t-sec-alt  focus:ring-blue-v focus:border-blue-v focus:bg-white'
+        },
+    },
     watch: {
         players() {
             location.reload();
         }
     },
     methods: {
+        toggleInstruction(){
+            this.showInstructionModal = !this.showInstructionModal
+        },
         toggleDarkMode() {
             this.isDarkModeEnabledLocal = !this.isDarkModeEnabledLocal;
             this.$emit("toggle-dark-mode", this.isDarkModeEnabledLocal);
@@ -96,11 +110,8 @@ export default {
         savePlayersToStorage() {
             localStorage.setItem("players", JSON.stringify(this.players));
         },
-        toggleInstruction(){
-            this.showInstructionModal = !this.showInstructionModal
-        }
+       
     },
-    components: { InstructionModal }
 }
 </script>
 
