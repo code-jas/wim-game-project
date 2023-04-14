@@ -1,6 +1,6 @@
 <template>
    <div class="bg-lt-dash w-screen h-screen">
-      <div class="py-20 max-w-screen-2xl mx-auto flex flex-col  items-center bg-lt-dash" >
+      <div class="py-20 max-w-screen-2xl mx-auto flex flex-col  items-center bg-dk-inp-alt" >
          <dashboard-navbar @add-player="showModal = true" @showModal="showInstructionModal = true"/>
          
          <div class="flex justify-between p-3 gap-x w-full px-32">
