@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-violet-l-alt h-screen flex items-center justify-center">
+    <div class="bg-dk-inp-b h-screen flex items-center justify-center">
       <div class="flex items-center justify-center flex-col py-20 max-w-screen-2xl mx-auto">
         <div class="flex justify-between w-[1500px]">
           <button @click="backToDifficultyLevel">
@@ -9,7 +9,7 @@
             <i class="uil uil-question-circle text-blue text-4xl bg-violet-l-alt  rounded-full"></i>
           </button>
         </div>
-        <div class="text-center font-black text-6xl text-[#605F81] mb-16">
+        <div class="text-center font-black text-6xl text-white mb-16">
           <h1>CHOOSE LEVEL</h1>
         </div>
         <div class="flex flex-wrap justify-center px-[400px]">
@@ -19,7 +19,7 @@
             :disabled="!isLevelDone(i)"
             :class="[
               'w-[200px] h-[200px] border rounded-[15px] font-franklin text-8xl m-[18px]',
-              isLevelDone(i) ? 'bg-[#e6dcff] text-blue-v-alt hover:bg-blue-v-alt hover:text-white hover:border-lt-t-prim-alt hover:border-[3px]' : 'bg-[#e6dcff] cursor-not-allowed text-blue-v-alt',
+              isLevelDone(i) ? 'bg-dk-inp-b  text-white hover:bg-blue-v hover:text-white hover:border-lt-t-prim-alt hover:border-[3px]' : 'bg-dk-inp-b cursor-not-allowed text-blue-v-alt',
               i === selectedLevel ? 'border-lt-t-prim-alt bg-blue-v-alt text-white border-[3px] hover:border-lt-t-prim-alt-alt' : 'border-blue-v hover:border-lt-t-prim-alt hover:border-[3px]',
             ]"
             @click="selectLevel(i)"

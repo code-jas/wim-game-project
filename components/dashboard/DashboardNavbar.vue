@@ -28,7 +28,8 @@
             <i class="uil uil-plus text-2xl mr-2"></i> Add Player
          </button>
       </div>
-  </div>
+   </div>
+  
 </template>
 
 <script> 
