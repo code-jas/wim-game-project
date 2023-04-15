@@ -1,6 +1,5 @@
 <template>
    <div>
-
       <div v-if="showDifficultyLevel">
          <Difficulty @onDifficultySelected="onDifficultySelected" :wimQuest="wim_quest" />
       </div>
@@ -15,17 +14,13 @@
       </div>
    </div>
 </template>
-
 <script>
 import Difficulty from '~/components/gameboard/Difficulty.vue'
 import LevelNumber from '~/components/gameboard/LevelNumber.vue'
 import Gameboard from '~/components/gameboard/Gameboard.vue'
 import GameResult from '~/components/gameboard/GameResult.vue'
-
 import wim_quest from '~/assets/data/picture_word_questions.json'
-
 import Player from '~/assets/js/class/Player.js';
-
 export default {
    name: 'gameboard',
    components: {
@@ -38,11 +33,9 @@ export default {
       return { 
          // Local Storage Data
          players: JSON.parse(localStorage.getItem('players') || '[]'),
-
          // Questionnaire Data
          wim_quest: wim_quest,
          questions: null,
-
          // Components
          showDifficultyLevel: true,
          showLevelNumber: false,
@@ -71,7 +64,6 @@ export default {
       const players = JSON.parse(localStorage.getItem('players') || '[]');
       const selectedPlayer = players.find(p => p.id === playerId);
       // console.log("gameboard page - selectedPlayer : ",selectedPlayer);
-
       // Destructure selectedPlayer
       const {id, playerName, highScore, totalScore, totalGameTime, totalGamesPlayed, accuracy, selected, started, questionnaire} = selectedPlayer;
        // Pass selectedPlayer to Player constructor
@@ -147,11 +139,8 @@ export default {
          }
          localStorage.setItem('players', JSON.stringify(this.players));
       },
-
    }
 }
 </script>
-
 <style>
-
 </style>

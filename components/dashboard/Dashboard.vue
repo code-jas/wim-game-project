@@ -1,8 +1,7 @@
 <template>
    <div class="bg-lt-dash w-screen h-screen">
       <div class="py-20 max-w-screen-2xl mx-auto flex flex-col  items-center bg-lt-dash" >
-      <div class="py-20 max-w-screen-2xl mx-auto flex flex-col  items-center bg-dk-inp-b" >
-         <dashboard-navbar @add-player="showModal = true" @showModal="showInstructionModal = true"/>
+         <dashboard-navbar @add-player="showModal = true" @showModal="showInstructionModal = true" :is-dark="isDark"/>
          
          <div class="flex justify-between p-3 gap-x w-full px-32">
             <highscore-list :players="players" /> 
