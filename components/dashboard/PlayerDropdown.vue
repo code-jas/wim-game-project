@@ -2,7 +2,7 @@
   <div class="relative">
     <button
       id="dropdownInformationButton"
-      class="w-[476px] h-20 text-lt-t-prim text-2xl bg-white hover:bg-blue-800 font-medium rounded-lg shadow px-12 py-2.5 mb-10 text-center inline-flex justify-between items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      class="w-[476px] h-20 text-lt-t-prim text-2xl bg-white hover:bg-blue-800 font-medium rounded-lg shadow px-12 py-2.5 mb-10 text-center inline-flex justify-between items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 dark:bg-dk-inp-b-alt dark:text-violet-l"
       @click="toggleDropdown"
       type="button"
     >
@@ -11,11 +11,11 @@
     </button>
     <div v-if="isOpen"
       id="dropdownInformation"
-      class="w-[476px] max-h-96 bottom-full overflow-y-auto  text-lt-t-prim text-2xl z-10  mb-5 absolute bg-white divide-y divide-gray-100 rounded-lg shadow bg-dk-inp-b-alt"
+      class="w-[476px] max-h-96 bottom-full overflow-y-auto  text-lt-t-prim text-2xl z-10  mb-5 absolute bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-dk-inp-b-alt dark:text-violet-l"
     >
       <ul class="py-2 dark:text-gray-100" aria-labelledby="dropdownInformationButton">
         <li v-for="(player, index) in players" :key="index">
-          <a href="#" class="block px-8 py-3 rounded-lg mx-5 my-2 bg-white  dark:hover:bg-dk-inp-b-alt" @click="selectPlayer(player)">
+          <a href="#" class="block px-8 py-3 rounded-lg mx-5 my-2 bg-white  dark:hover:bg-dk-inp-b dark:bg-dk-inp-b-alt" @click="selectPlayer(player)">
             {{ player.playerName }}
           </a>
         </li>
@@ -29,6 +29,11 @@
 import { ref } from 'vue';
 
 export default {
+  data(){
+    return{
+      isDark: false
+    }
+  },
   props: {
     players: {
       type: Array,
@@ -82,6 +87,12 @@ export default {
       toggleDropdown,
       selectPlayer
     }
+  },
+  methods: {
+    toggleDarkMode() {
+      this.isDark = !this.isDark
+      document.body.classList.toggle('dark', this.isDark)
+    },
   }
 }
 </script>

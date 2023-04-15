@@ -1,9 +1,9 @@
 <template>
-   <div class="w-[695px] h-[684px] bg-white  rounded-[15px] drop-shadow-lg p-8">
-      <h1 class="text-2xl text-lt-t-prim font-semibold mb-12 ">Highscores</h1>
+   <div class="w-[695px] h-[684px] bg-white  rounded-[15px] drop-shadow-lg p-8 dark:bg-dk-inp-b-alt">
+      <h1 class="text-2xl text-lt-t-prim font-semibold mb-12 dark:text-violet-l">Highscores</h1>
       <div class="relative h-5/6 overflow-x-auto  rounded-[15px]">
          <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-lt-t-prim-alt uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <thead class="text-xs text-lt-t-prim-alt uppercase text-opacity-75 dark:text-violet-l dark:text-opacity-50">
                <tr>
                   <th scope="col" class="px-6 py-3">
                      Rank
@@ -21,7 +21,7 @@
                </tr>
             </thead>
             <tbody>
-               <tr v-for="(player, index) in players" :key="player.id" class="bg-white border-b font-semibold text-lt-t-prim  dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50  dark:hover:bg-gray-600">
+               <tr v-for="(player, index) in players" :key="player.id" class="font-semibold text-lt-t-prim dark:text-violet-l">
                   <td scope="row" class="px-6 py-3 ">
                      {{ index + 1 }}
                   </td>
@@ -42,6 +42,11 @@
 </template>
 <script>
 export default {
+   data(){
+      return{
+         isDark: false
+      }
+   },
   props: {
     players: {
       type: Array,
@@ -55,6 +60,12 @@ export default {
     '$localStorage.highscores': function () {
       this.$forceUpdate()
     }
+  },
+  methods: {
+   toggleDarkMode() {
+      this.isDark = !this.isDark
+      document.body.classList.toggle('dark', this.isDark)
+   },
   }
 }
 </script>

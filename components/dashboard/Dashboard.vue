@@ -1,6 +1,6 @@
 <template>
   <div class="bg-lt-dash w-screen h-screen">
-     <div class="py-20 max-w-screen-2xl mx-auto flex flex-col  items-center bg-dk-inp-b" >
+     <div class="py-20 max-w-screen-2xl mx-auto flex flex-col  items-center bg-lt-dash dark:bg-dk-inp-b" >
         <dashboard-navbar @add-player="showModal = true" @showModal="showInstructionModal = true"/>
         
         <div class="flex justify-between p-3 gap-x w-full px-32">
@@ -28,6 +28,7 @@ export default {
  components: { DashboardNavbar, HighscoreList, PlayerDropdown, AddPlayerModal, PlayerDetails, InstructionModal },
  data() {
    return {
+     isDark: false,
      showModal: false,
      showInstructionModal: false,
      players: JSON.parse(localStorage.getItem('players') || '[]')
@@ -75,7 +76,11 @@ export default {
    },
    savePlayersToStorage() {
        localStorage.setItem('players', JSON.stringify(this.players));
-   }
+   },
+   toggleDarkMode() {
+            this.isDark = !this.isDark
+            document.body.classList.toggle('dark', this.isDark)
+        },
  }
 }
 </script>

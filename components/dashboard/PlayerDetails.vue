@@ -1,5 +1,5 @@
 <template>
-<div class="w-full h-[274px] bg-white rounded-[15px] drop-shadow-lg py-8 px-7 poppins text-lt-t-prim ">
+<div class="w-full h-[274px] bg-white rounded-[15px] drop-shadow-lg py-8 px-7 poppins text-lt-t-prim dark:bg-dk-inp-b-alt dark:text-violet-l">
       <h3>Player Name</h3>
       <h1 class="text-3xl font-extrabold mt-1">{{ selectedPlayer.playerName }}</h1>
       <div class="flex items-center justify-evenly mt-10 gap-10 text-center">
@@ -21,6 +21,11 @@
 
 <script>
 export default {
+  data(){
+    return{
+      isDark: false
+    }
+  },
   props: {
     players: {
       type: Array,
@@ -32,6 +37,12 @@ export default {
       // console.log("Console log",this.players.find(p => p.selected));
       return this.players.find(p => p.selected);
     }
+  },
+  methods: {
+    toggleDarkMode() {
+      this.isDark = !this.isDark
+      document.body.classList.toggle('dark', this.isDark)
+    },
   }
 }
 </script>
