@@ -67,7 +67,7 @@ export default {
         // }
     },
     data() {
-        return {
+        return {    
             players: JSON.parse(localStorage.getItem("players") || "[]"),
             showInstructionModal: false,
         };

@@ -1,10 +1,10 @@
 <template>
    <div class="bg-lt-dash w-screen h-screen">
       <div class="py-20 max-w-screen-2xl mx-auto flex flex-col  items-center bg-lt-dash" >
-         <dashboard-navbar @add-player="showModal = true" @showModal="showInstructionModal = true"/>
+         <dashboard-navbar @add-player="showModal = true" @showModal="showInstructionModal = true" :is-dark="isDark"/>
          
          <div class="flex justify-between p-3 gap-x w-full px-32">
-            <highscore-list :players="players" />
+            <highscore-list :players="players" /> 
             <div class="w-[476px]">
                <player-details class="mb-32" :players="players" />
                <player-dropdown  :players="players" :start-game="startGame"/>
@@ -34,30 +34,35 @@ export default {
   //     required: true
   //   }
   // },
+  
   data() {
     return {
-      isDarkModeEnabled: false,
+      isDark: false,
       showModal: false,
       showInstructionModal: false,
       players: JSON.parse(localStorage.getItem('players') || '[]')
     };
   },
   watch: {
-    // isDarkModeEnabled(newVal, oldVal) {
-    //   console.log(`Dashboardd changed from ${oldVal} to ${newVal}`)
-    // }
+    isDark(newVal, oldVal) {
+      console.log(`Dashboardd changed from ${oldVal} to ${newVal}`)
+    }
   },
   created() {
     window.addEventListener('storage', this.updatePlayersFromStorage);
   },
+  mounted() {
+    this.$on('toggleDarkMode', this.toggleDarkMode);
+    console.log("dashboard mounted: ", this.isDark);
+
+  },
   destroyed() {
     window.removeEventListener('storage', this.updatePlayersFromStorage);
-  },
-  mounted() {
+    this.$off('toggleDarkMode', this.toggleDarkMode);
   },
   methods: {
     toggleDarkMode(isEnabled) {
-      this.isDarkModeEnabled = isEnabled;
+      this.isDark = isEnabled;
     },
     addPlayer() {
       const playerName = document.querySelector('input[type="text"]').value;

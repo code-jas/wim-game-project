@@ -3,8 +3,8 @@
       <h1 class="font-franklin text-5xl text-lt-t-prim">Dashboard</h1>
       <div class="flex items-center justify-between gap-x-7">
          <div
-        class="w-[65px] h-[65px] flex items-center justify-center overflow-hidden rounded-full  hover:scale-105 transition duration-200"
-        :class="isDarkModeEnabled ? 'bg-dk-inp-alt hover:bg-dk-inp-alt' : 'bg-violet-l-alt hover:bg-violet-l-alt'"
+        class="w-[65px] h-[65px] flex items-center justify-center overflow-hidden rounded-full  hover:scale-105 transition duration-200 bg-violet-l-alt hover:bg-violet-l-alt"
+        :class="{'dark:bg-dk-inp-alt dark:hover:bg-dk-inp-alt': isDark }"
         @click="toggleDarkMode"
          >
             <i
@@ -14,8 +14,8 @@
                   'hover:scale-105',
                   'transition',
                   'duration-200',
-                  isDarkModeEnabled
-                  ? 'uil-sun text-dk-t-prim bg-dk-inp-alt'
+                  isDark
+                  ? 'uil-sun dark:text-dk-t-prim dark:bg-dk-inp-alt'
                   : 'uil-moon text-blue bg-violet-l-alt'
                ]"
             ></i>
@@ -33,22 +33,17 @@
 
 <script> 
 export default {
-   props: {
-      isDarkModeEnabled: {
-         type: Boolean,
-         required: true
-      }
-    },
     data() { 
       return { 
-         isDarkModeEnabled: false
+         isDark: false
       }
     },
     methods: {
       toggleDarkMode() {
-         this.isDarkModeEnabledLocal = !this.isDarkModeEnabledLocal;
-         this.$emit("toggle-dark-mode", this.isDarkModeEnabledLocal);
-      },
+            this.isDark = !this.isDark
+            this.$emit('toggle-dark-mode', this.isDark)
+            document.body.classList.toggle('dark', this.isDark)
+        },
    }
 }
 </script>
