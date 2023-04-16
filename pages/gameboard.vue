@@ -7,7 +7,11 @@
          <LevelNumber @onLevelSelected="onLevelSelected" @onBackToDifficultyLevel="onBackToDifficultyLevel"/>
       </div>
       <div v-if="showGameplay">
-         <Gameboard/>
+         <Gameboard
+         :player="player"
+         :current-difficulty="this.selectedDifficulty"
+         :current-level="this.selectedLevel"
+         />
       </div>
       <div v-if="showGameResult">
          <GameResult/>
@@ -20,7 +24,7 @@ import LevelNumber from '~/components/gameboard/LevelNumber.vue'
 import Gameboard from '~/components/gameboard/Gameboard.vue'
 import GameResult from '~/components/gameboard/GameResult.vue'
 import wim_quest from '~/assets/data/picture_word_questions.json'
-import Player from '~/assets/js/class/Player.js';
+import Player from '~/assets/js/class/Player.js'
 export default {
    name: 'gameboard',
    components: {
@@ -41,20 +45,17 @@ export default {
          showLevelNumber: false,
          showGameplay: false,
          showGameResult: false,
-
          // Class
          player: null,
-
+         gamePlay: null,
          // Store Data
          selectedDifficulty: null,
          selectedLevel: null,
-         
-
       };
    },
    created() {
-        //! Test Console
-        console.log('gameboard page - original questionnaire : ',this.wim_quest.questionnaire)
+      // //! Test Console
+      // console.log('gameboard page - original questionnaire : ',this.wim_quest.questionnaire)
       // Get player from local storage
       const playerId = this.$route.params.playerId;
       if (!playerId) {
@@ -65,9 +66,9 @@ export default {
       const selectedPlayer = players.find(p => p.id === playerId);
       // console.log("gameboard page - selectedPlayer : ",selectedPlayer);
       // Destructure selectedPlayer
-      const {id, playerName, highScore, totalScore, totalGameTime, totalGamesPlayed, accuracy, selected, started, questionnaire} = selectedPlayer;
+      const {id, playerName, highScore, totalScore, totalGameTime, totalGamesPlayed, accuracy, selected, started, questionnaire, levelDonePerDifficulty} = selectedPlayer;
        // Pass selectedPlayer to Player constructor
-      this.player = new Player(id, playerName, highScore, totalScore, totalGameTime, totalGamesPlayed, accuracy, selected, started, questionnaire);
+      this.player = new Player(id, playerName, highScore, totalScore, totalGameTime, totalGamesPlayed, accuracy, selected, started, questionnaire, levelDonePerDifficulty);
      
       // Shuffle questions if player has not started
       if (!this.player.started) {
@@ -75,6 +76,7 @@ export default {
          this.player.setQuestions(this.questions)
          // Mark the player as started
          this.player.started = true;
+         this.player.initLevelDonePerDifficulty()
          this.savePlayerToLocalStorage()
       }else {
          // If player has started, use the saved questions
@@ -86,9 +88,7 @@ export default {
    mounted() {
    },
    computed: {
-    activeComponent() {
-       return this.players.length === 0 ? 'AddPlayer' : 'Dashboard';
-    }
+
    },
    methods: { 
    // COMPONENTS PROGRESS
@@ -103,8 +103,10 @@ export default {
          this.selectedLevel = level;
          this.showLevelNumber = false
          this.showGameplay = true
-         console.log('selected difficulty : ',this.selectedDifficulty)
-         console.log('selected level : ',this.selectedLevel)
+         // console.log('selected difficulty : ',this.selectedDifficulty)
+         // console.log('selected level : ',this.selectedLevel)
+         // console.log('selected Player: ' , this.player)
+        
       },
       // Back to Difficulty Level
       onBackToDifficultyLevel() {

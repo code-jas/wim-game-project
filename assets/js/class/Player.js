@@ -1,5 +1,6 @@
+
 export default class Player {
-   constructor(id, playerName, highScore, totalScore, totalGameTime, totalGamesPlayed, accuracy, selected, started, questionnaire) {
+   constructor(id, playerName, highScore, totalScore, totalGameTime, totalGamesPlayed, accuracy, selected, started, questionnaire, levelDonePerDifficulty) {
       this.id = id;
       this.playerName = playerName;
       this.highScore = highScore;
@@ -10,6 +11,7 @@ export default class Player {
       this.selected = selected;
       this.started = started;
       this.questionnaire = questionnaire || {}; // Initialize to an empty object if not provided
+      this.levelDonePerDifficulty = levelDonePerDifficulty || {};
    }
 
    // toJSON() {
@@ -22,6 +24,13 @@ export default class Player {
    //       accuracy: this.accuracy,
    //    };
    // }
+   initLevelDonePerDifficulty() {
+      this.levelDonePerDifficulty = {
+         easy: Array(5).fill(false),
+         medium: Array(5).fill(false),
+         hard: Array(5).fill(false)
+      }
+   }
 
    addGameResult(score, gameTime) {
       this.totalGamesPlayed++;
@@ -135,10 +144,10 @@ export default class Player {
    }
 
    getQuestions() {
-      return this.questions;
+      return this.questionnaire;
    }
 
    setQuestions(value) {
-      this.questions = value;
+      this.questionnaire = value;
    }
 }
