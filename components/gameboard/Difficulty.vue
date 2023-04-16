@@ -37,7 +37,7 @@
         <button
           v-for="(difficulty, index) in difficulties"
           :key="index"
-          :class="['relative w-[275px] h-[370px] bg-[#e6dcff] font-semibold  text-lt-t-prim text-3xl  uppercase transition duration-500 ease-in-out rounded-[15px] m-[32px] overflow-hidden flex items-center justify-center shadow-lg dark:bg-dk-inp-b-alt dark:text-[#7282FB]', { 'hover:bg-white hover:text-blue-v hover:border hover:border-blue-v hover:shadow-xl hover:scale-105 dark:hover:bg-blue-v dark:hover:text-violet-l dark:hover:border-violet-l': selectedDifficulty !== index, 'bg-white text-blue-v border border-blue-v shadow-xl scale-105': selectedDifficulty === index }]"
+          :class="['relative w-[275px] h-[370px] bg-[#e6dcff] font-semibold  text-lt-t-prim text-3xl  uppercase transition duration-500 ease-in-out rounded-[15px] m-[32px] overflow-hidden flex items-center justify-center shadow-lg dark:bg-dk-inp-b-alt dark:text-[#7282FB]', { 'hover:bg-white hover:text-blue-v hover:border hover:border-blue-v hover:shadow-xl hover:scale-105 dark:hover:bg-blue-v dark:hover:text-violet-l dark:hover:border-violet-l': selectedDifficulty !== index, 'bg-white text-blue-v border border-blue-v shadow-xl scale-105 dark:bg-blue-v dark:text-violet-l dark:border dark:border-violet-l dark:shadow-xl dark:scale-105': selectedDifficulty === index }]"
           @click="selectDifficulty(index)"
         >
           <div :class="['absolute w-full h-full bg-blob-diff bg-no-repeat bg-center transition duration-300 ease-in-out',{'scale-225 hover:scale-110': selectedDifficulty!==index, 'scale-110': selectedDifficulty === index  }]"></div>
