@@ -90,6 +90,7 @@ export default class GamePlay {
 
          this.setCurrentScore(finalScore);
          this.scorePerDifficulty.push(finalScore);
+
          // console.log('finalScore: ', this.getCurrentScore())
          // console.log('array score: ', this.getScorePerDifficulty())
 

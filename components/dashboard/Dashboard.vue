@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-lt-dash w-screen dark:bg-dk-inp-b">
+  <div class="bg-lt-dash w-screen h-screen min-h-full  dark:bg-dk-inp-b">
      <div class="py-20 max-w-[1535px] mx-auto flex flex-col  items-center bg-lt-dash dark:bg-dk-inp-b sm:max-w-[635px] md:max-w-[767px] lg:max-w-[1023px] xl:max-w-[1279px]" >
         <dashboard-navbar @add-player="showModal = true" @showModal="showInstructionModal = true"/>
         

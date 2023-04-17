@@ -55,7 +55,7 @@ export default {
   components: { GamePlay,GameResult },
   created() { 
    this.curLevel = this.currentLevel;
-   console.log('this.currentleve fl: ', this.curLevel)
+  //  console.log('this.currentleve fl: ', this.curLevel)
     this.gamePlay = new GamePlayClass(
       this.player,
       0,
@@ -76,7 +76,7 @@ export default {
   },
   watcher: { 
       currentLevel() {
-         console.log('s')
+        //  console.log('s')
          // this.gamePlay.currentLevel = this.currentLevel;
          // this.updateQuestion();
       }
