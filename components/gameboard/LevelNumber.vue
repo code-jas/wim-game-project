@@ -70,7 +70,7 @@
       return {
         isDark: false,
         showInstructionModal: false,
-        doneLevels: [1, 3], // an array of levels that are done
+        doneLevels: [1,2, 3, 4,5], // an array of levels that are done
         selectedLevel: null, // keep track of the selected level
       }
     },

@@ -1,17 +1,31 @@
 <template>
-   <div class="py-20">
-      <GameboardNavbar @showModal="showInstructionModal = true" :score="scoreNavbar" :timeLeft="timeLeft" :level="currentLevel"/>
-      <GamePlay  :gamePlay="gamePlay" :selectedChoice="selectedChoice" :question="question" :checkAnswer="checkAnswer"  @selectChoice="selectChoice"/>
-      <div v-if="showInstructionModal">
-         <InstructionModal @closeModal="showInstructionModal = false"/>
-      </div>
-   </div>
+  <div>
+    <div v-if="showGamePlay" class="py-20">
+       <GameboardNavbar @showModal="showInstructionModal = true" :level="curLevel" :score="scoreNavbar" :timeLeft="timeLeft" />
+       <GamePlay  :gamePlay="gamePlay" :selectedChoice="selectedChoice" :question="question" :checkAnswer="checkAnswer"  @selectChoice="selectChoice"/>
+       <div v-if="showInstructionModal">
+          <InstructionModal @closeModal="showInstructionModal = false"/>
+       </div>
+    </div>
+    <div v-if="showGameResult" class="py-20">
+      <GameResult
+        :player="checkAnswer.player"
+        :difficulty="currentDifficulty"
+        :score="checkAnswer.scorePerDifficulty"
+        :correctAnswers="checkAnswer.correctAnswers"
+       
+        :aveTime="checkAnswer.timePerQuestion"
+        
+      />
+    </div>
+  </div>
 </template>
 
 <script>
 import GamePlay from './GamePlay.vue';
 import InstructionModal from '../InstructionModal.vue';
 import GamePlayClass from '~/assets/js/class/Gameplay.js'
+import GameResult from './GameResult.vue';
 
 export default {
   props: {
@@ -32,10 +46,16 @@ export default {
       timeLeft: 0,
       scoreNavbar: 0,
       checkAnswer: {},
+      timerInterval: null,
+      curLevel: 0, // add reactive data property for currentLevel
+      showGamePlay: true,
+      showGameResult: false,
     };
   },
-  components: { GamePlay },
+  components: { GamePlay,GameResult },
   created() { 
+   this.curLevel = this.currentLevel;
+   console.log('this.currentleve fl: ', this.curLevel)
     this.gamePlay = new GamePlayClass(
       this.player,
       0,
@@ -52,7 +72,14 @@ export default {
     );
    //  this.gamePlay.showData();
     this.updateQuestion();
-    console.log('checkAnswer', this.checkAnswer)
+      console.log('checkAnswer', this.checkAnswer)
+  },
+  watcher: { 
+      currentLevel() {
+         console.log('s')
+         // this.gamePlay.currentLevel = this.currentLevel;
+         // this.updateQuestion();
+      }
   },
   methods: {
     updateQuestion() {
@@ -62,18 +89,36 @@ export default {
       this.question.choices = choices;
       this.selectedChoice = null;
       this.gamePlay.startTheCurrentQuestion();
-      setInterval(() => {
+      this.timerInterval = setInterval(() => {
         this.setTimeLeft(this.gamePlay.timeLeft);
       }, 1000);
     },
     setTimeLeft(timeLeft) {
       this.timeLeft = timeLeft;
     },
+
     selectChoice(index) {
       this.selectedChoice = index;
       this.checkAnswer = this.gamePlay.checkAnswer(index);
-      const { isCorrect, score, } = this.checkAnswer;
-      
+      const { player, correctAnswers,scorePerDifficulty, timePerQuestion, currentScore, isCorrect, currentLevel } = this.checkAnswer;
+      console.log('this.currentlevel: ', this.curLevel)
+      if(isCorrect) { 
+         this.scoreNavbar = currentScore;
+         if (this.gamePlay.hasNextQuestion()) {
+
+            clearInterval(this.timerInterval);
+            setTimeout(() => {
+            this.curLevel++;
+
+             this.updateQuestion();
+            }, 2000); // 2 seconds delay
+         } else {
+            //game over || result
+            console.log('end')
+            this.showGamePlay = false;
+            this.showGameResult = true;
+         }
+      }
     },
   },
 };

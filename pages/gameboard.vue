@@ -80,6 +80,8 @@ export default {
          this.savePlayerToLocalStorage()
       }else {
          // If player has started, use the saved questions
+         this.shuffleQuestions(); 
+
          this.questions = this.player.questionnaire;
       }
       console.log('Questions for player:', this.questions);
@@ -125,8 +127,14 @@ export default {
          const shuffledQuestions = {};
          for (let difficulty in this.wim_quest.questionnaire) {
             const questions = this.wim_quest.questionnaire[difficulty];
-            const shuffled = questions.sort(() => Math.random() - 0.5);
-            shuffledQuestions[difficulty] = shuffled.slice(0, 5);
+            // const shuffled = questions.sort(() => Math.random() - 0.5);
+            // console.log("shuffled:" , shuffled)
+            // shuffle the questions array
+            for (let i = questions.length - 1; i > 0; i--) {
+               const j = Math.floor(Math.random() * (i + 1));
+               [questions[i], questions[j]] = [questions[j], questions[i]];
+            }
+            shuffledQuestions[difficulty] = questions.slice(0, 5);
          }
          this.questions = shuffledQuestions;
          console.log("question:" , shuffledQuestions)

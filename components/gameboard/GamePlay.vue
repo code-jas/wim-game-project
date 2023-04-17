@@ -5,7 +5,7 @@
     </div>
     <div class="flex justify-center mb-9">
       <div class="flex justify-center items-center h-[310px] w-[530px] border-4 border-blue-v-alt rounded-[15px]">
-        <img :src="require(`~/assets/img/quiz-picture/${question.picture}`)" alt="Question image" />
+        <img :src="require(`~/assets/img/quiz-picture/${question.picture}`)" alt="Question image" class="object-cover w-full h-full overflow-hidden" />
       </div>
     </div>
     <div class="text-center font-bold text-4xl text-[#605F81] mb-16">
@@ -19,7 +19,7 @@
           'w-[280px] h-[80px] rounded-[15px] m-[12px] hover:border-none hover:bg-blue-v-alt hover:text-violet-l-alt',
           {
             'border border-blue-v text-blue-v-alt': selectedChoice !== index,
-            'border-none bg-blue-v-alt text-violet-l-alt': selectedChoice === index && checkAnswer === null,
+            'border-none bg-blue-v-alt text-violet-l-alt': selectedChoice === index && checkAnswer.isCorrect === null,
             'bg-green text-white': checkAnswer.isCorrect === true && selectedChoice === index,
             'bg-red text-white' : checkAnswer.isCorrect === false && selectedChoice === index,
           },

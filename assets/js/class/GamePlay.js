@@ -47,7 +47,7 @@ export default class GamePlay {
          15,
          (timeLeft) => {
             // Update the time left
-            console.log('timeLeft: ', timeLeft)
+            // console.log('timeLeft: ', timeLeft)
             this.setTimeLeft(timeLeft);
          },
          () => {
@@ -76,7 +76,8 @@ export default class GamePlay {
          const timeBonusPoints = baseBonusPoints * (1 - timeRatio);
 
          isCorrect = true; // correct level
-         this.player.levelDonePerDifficulty[this.currentDifficulty][selectedChoice] = true;
+         this.player.levelDonePerDifficulty[this.currentDifficulty][this.currentLevel] = true;
+
          console.log('levelDonePerDifficulty: ', this.player.levelDonePerDifficulty[this.currentDifficulty])
          this.timePerQuestion.push(timeTaken);
          console.log('timePerQuestion: ', this.timePerQuestion)
@@ -94,6 +95,7 @@ export default class GamePlay {
 
 
          this.correctAnswers.push(true); // correct level
+         this.currentLevel += 1; // Increment the current level
 
          // display ui correct
 
@@ -110,10 +112,16 @@ export default class GamePlay {
          correctAnswers: this.correctAnswers,
          scorePerDifficulty: this.scorePerDifficulty,
          timePerQuestion: this.timePerQuestion,
-         currentScore: this.currentScore,
-         isCorrect: isCorrect
+         currentScore: this.getCurrentScore(),
+         isCorrect: isCorrect,
+         currentLevel: this.currentLevel
       };
    }
+   hasNextQuestion() {
+      const currentQuestions = this.player.questionnaire[this.currentDifficulty];
+      return currentQuestions.length > this.currentLevel;
+   }
+
 
    getDifficultyMultiplier() {
       let difficultyMultiplier = 0;
