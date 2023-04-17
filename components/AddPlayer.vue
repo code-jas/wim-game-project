@@ -38,7 +38,8 @@
       :class="{'dark:text-dk-t-prim': isDark }">Image/Word <br> Match Game</h1>
       <div class="flex items-center  justify-center min-h-screen flex-col">
          <input type="text" 
-         class="w-[740px] h-[88px] border-none text-3xl rounded-[15px]  drop-shadow-md focus:outline-none focus:ring-2 block p-7 mb-20" 
+         class="w-[740px] h-[88px] border-none text-3xl rounded-[15px]  drop-shadow-md focus:outline-none focus:ring-2 
+         block p-7 mb-20" 
          :class="inputPlayerNameClass"
          placeholder="Player Name...">
        
