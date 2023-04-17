@@ -1,7 +1,7 @@
 <template>
    <div class="py-20">
-      <GameboardNavbar @showModal="showInstructionModal = true"/>
-      <GamePlay  :gamePlay="gamePlay" :selectedChoice="selectedChoice" :question="question" :timeLeft="timeLeft" @selectChoice="selectChoice" />
+      <GameboardNavbar @showModal="showInstructionModal = true" :score="scoreNavbar" :timeLeft="timeLeft" :level="currentLevel"/>
+      <GamePlay  :gamePlay="gamePlay" :selectedChoice="selectedChoice" :question="question" :checkAnswer="checkAnswer"  @selectChoice="selectChoice"/>
       <div v-if="showInstructionModal">
          <InstructionModal @closeModal="showInstructionModal = false"/>
       </div>
@@ -30,6 +30,8 @@ export default {
         choices: ['Eraser', 'Banana', 'Shoe'],
       },
       timeLeft: 0,
+      scoreNavbar: 0,
+      checkAnswer: {},
     };
   },
   components: { GamePlay },
@@ -48,8 +50,9 @@ export default {
       [],
       []
     );
-    this.gamePlay.showData();
+   //  this.gamePlay.showData();
     this.updateQuestion();
+    console.log('checkAnswer', this.checkAnswer)
   },
   methods: {
     updateQuestion() {
@@ -68,7 +71,9 @@ export default {
     },
     selectChoice(index) {
       this.selectedChoice = index;
-      this.gamePlay.checkAnswer(index);
+      this.checkAnswer = this.gamePlay.checkAnswer(index);
+      const { isCorrect, score, } = this.checkAnswer;
+      
     },
   },
 };

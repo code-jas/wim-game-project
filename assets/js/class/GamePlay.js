@@ -1,19 +1,19 @@
 // import Player from './Player.js';
 
 export default class GamePlay {
-   constructor(playerData, currentScore, currentAccuracy, currentDifficulty, currentLevel, timer, timeLeft, hintCount, attempts, correctAnswers, incorrectAnswers, timePerQuestion) {
+   constructor(playerData, currentScore, currentAccuracy, currentDifficulty, currentLevel, timer, timeLeft, hintCount, attempts, correctAnswers, scorePerDifficulty, timePerQuestion) {
       const { id, playerName, highScore, totalScore, totalGameTime, totalGamesPlayed, accuracy, selected, started, questionnaire, levelDonePerDifficulty } = playerData;
       this.player = playerData;
       this.currentScore = currentScore;
       this.currentAccuracy = currentAccuracy;
       this.currentDifficulty = currentDifficulty;
-      this.currentLevel = currentLevel;
+      this.currentLevel = currentLevel - 1;
       this.timer = timer;
       this.timeLeft = timeLeft;
       this.hintCount = hintCount;
       this.attempts = attempts; // array
       this.correctAnswers = correctAnswers; // array
-      this.incorrectAnswers = incorrectAnswers; //array
+      this.scorePerDifficulty = scorePerDifficulty; //array
       this.timePerQuestion = timePerQuestion; // array
    }
 
@@ -61,39 +61,58 @@ export default class GamePlay {
       const currentQuestions = this.player.questionnaire[this.currentDifficulty];
       const answerIndex = currentQuestions[this.currentLevel].answer;
 
-      let numIncorrectAttempts = 0;
-      if (selectedChoice !== answerIndex) {
-         this.incorrectAnswers.push(this.currentLevel);
-         numIncorrectAttempts = this.incorrectAnswers.filter((val) => val === this.currentLevel).length;
 
+      let numIncorrectAttempts = 0;
+      let isCorrect = false;
+      // Correct
+      if (currentQuestions[this.currentLevel].choices[selectedChoice] === answerIndex) {
          const pointsPerIncorrectAttempt = 50;
          const baseBonusPoints = 200;
-         const POINTS_PER_INCORRECT_ATTEMPT = 50
-
          // difficulty bonus points
-         const difficultyMultiplier = this.getDifficultyMultiplier();
-         const difficultyBonusPoints = baseBonusPoints + difficultyMultiplier;
-         console.log('difficultyBonusPoints: ', difficultyBonusPoints)
-
-
          // time bonus points
-         const maxTimeBonusPoints = 200;
          const maxTime = 15;
          const timeTaken = maxTime - this.timeLeft;
          const timeRatio = timeTaken / maxTime;
-         const timeBonusPoints = maxTimeBonusPoints * (1 - timeRatio);
+         const timeBonusPoints = baseBonusPoints * (1 - timeRatio);
 
-         const attemptDeductionPoints = baseBonusPoints - (numIncorrectAttempts * pointsPerIncorrectAttempt)
-         const finalScore = attemptDeductionPoints + difficultyBonusPoints + timeBonusPoints;
+         isCorrect = true; // correct level
+         this.player.levelDonePerDifficulty[this.currentDifficulty][selectedChoice] = true;
+         console.log('levelDonePerDifficulty: ', this.player.levelDonePerDifficulty[this.currentDifficulty])
+         this.timePerQuestion.push(timeTaken);
+         console.log('timePerQuestion: ', this.timePerQuestion)
 
-         console.log('finalScore: ', finalScore)
+         const difficultyBonusPoints = this.getDifficultyMultiplier();
+         // console.log('difficultyBonusPoints: ', difficulty
+         const attemptDeductionPoints = numIncorrectAttempts * pointsPerIncorrectAttempt
+         // console.log('attemptDeductionPoints: ', attemptDeductionPoints)
+         const finalScore = baseBonusPoints + difficultyBonusPoints + timeBonusPoints - attemptDeductionPoints;
 
-         // this.setCurrentScore(finalScore);
-      } else {
-         // this.correctAnswers.push(this.currentLevel);
+         this.setCurrentScore(finalScore);
+         this.scorePerDifficulty.push(finalScore);
+         // console.log('finalScore: ', this.getCurrentScore())
+         // console.log('array score: ', this.getScorePerDifficulty())
+
+
+         this.correctAnswers.push(true); // correct level
+
+         // display ui correct
+
+         //
+      } else { //Incorrect
+         this.correctAnswers.push(false); // incorrect level   
+         numIncorrectAttempts++; // Increment the number of incorrect attempts
+         // console.log('numIncorrectAttempts: ', numIncorrectAttempts)
+         // display ui incorrect
       }
 
-      // return selectedChoice === answerIndex;
+      return {
+         player: this.player,
+         correctAnswers: this.correctAnswers,
+         scorePerDifficulty: this.scorePerDifficulty,
+         timePerQuestion: this.timePerQuestion,
+         currentScore: this.currentScore,
+         isCorrect: isCorrect
+      };
    }
 
    getDifficultyMultiplier() {
@@ -177,5 +196,11 @@ export default class GamePlay {
 
    setHintCount(value) {
       this.hintCount = value;
+   }
+   getScorePerDifficulty() {
+      return this.scorePerDifficulty;
+   }
+   setScorePerDifficulty(value) {
+      this.scorePerDifficulty = value;
    }
 }
