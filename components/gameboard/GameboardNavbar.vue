@@ -8,7 +8,6 @@
         </div>
         <div class="">
             <div class="w-[390px] h-[72px] flex justify-between items-center">
-<<<<<<< Updated upstream
                 <div class="text-center">
                     <div class="font-bold text-4xl text-lt-t-prim">
                         {{ score }}
@@ -34,11 +33,6 @@
                     </div>
                 </div>
             </div>
-=======
-    <div class="text-center">
-        <div class="font-bold text-4xl text-lt-t-prim">
-            {{ Math.floor(score)  }}
->>>>>>> Stashed changes
         </div>
         <div class="w-[390px] flex items-center justify-end gap-x-2">
             <button  @click="$emit('showModal')" type="button" class="w-[45px] h-[45px] flex items-center justify-center bg-violet-l-alt rounded-full   hover:scale-110 transition duration-300 dark:bg-dk-inp-alt sm:w-[30px] sm:h-[30px] md:w-[35px] md:h-[35px] lg:w-[40px] lg:h-[40px]">
