@@ -2,7 +2,7 @@
   <div class="relative">
     <button
       id="dropdownInformationButton"
-      class="w-[476px] h-20 text-lt-t-prim text-2xl bg-white hover:bg-blue-800 font-medium rounded-lg shadow px-12 py-2.5 mb-10 text-center inline-flex justify-between items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 dark:bg-dk-inp-b-alt dark:text-violet-l"
+      class="w-full h-20 text-lt-t-prim text-2xl bg-white hover:bg-blue-800 font-medium rounded-lg shadow px-12 py-2.5 mb-10 text-center inline-flex justify-between items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 dark:bg-dk-inp-b-alt dark:text-violet-l"
       @click="toggleDropdown"
       type="button"
     >
@@ -11,7 +11,7 @@
     </button>
     <div v-if="isOpen"
       id="dropdownInformation"
-      class="w-[476px] max-h-96 bottom-full overflow-y-auto  text-lt-t-prim text-2xl z-10  mb-5 absolute bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-dk-inp-b-alt dark:text-violet-l"
+      class="w-full max-h-96 bottom-full overflow-y-auto  text-lt-t-prim text-2xl z-10  mb-5 absolute bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-dk-inp-b-alt dark:text-violet-l"
     >
       <ul class="py-2 dark:text-gray-100" aria-labelledby="dropdownInformationButton">
         <li v-for="(player, index) in players" :key="index">
@@ -21,7 +21,7 @@
         </li>
       </ul>
     </div>
-    <button type="button"  @click="startGame()" class="w-[476px] h-[70px]  bg-blue-v font-medium font-franklin text-dk-t-prim-alt text-5xl rounded-[15px]  px-5 py-2.5 mr-2 mb-2   hover:bg-blue-v-alt focus:ring-4 focus:ring-blue-300  hover:scale-105 active:transform active:translate-y-2 transition duration-300">Start</button>
+    <button type="button"  @click="startGame()" class="w-full h-[70px]  bg-blue-v font-medium font-franklin text-dk-t-prim-alt text-5xl rounded-[15px]  px-5 py-2.5 mr-2 mb-2   hover:bg-blue-v-alt focus:ring-4 focus:ring-blue-300  hover:scale-105 active:transform active:translate-y-2 transition duration-300">Start</button>
 </div>
 </template>
 
