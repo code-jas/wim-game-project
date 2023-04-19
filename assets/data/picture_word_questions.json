@@ -80,7 +80,7 @@
          },
          {
             "id": 8,
-            "picture": "basic/8) A person holding an umbrella.jpg",
+            "picture": "basic/8) A Person holding an umbrella.jpg",
             "hint": "A Person holding an umbrella",
             "choices": [
                "Raincoat",
@@ -206,7 +206,7 @@
          },
          {
             "id": 4,
-            "picture": "medium/4) A person holding a comapass.jpg",
+            "picture": "medium/4) A person holding a compass.jpg",
             "hint": "A person holding a compass",
             "choices": [
                "Map",
@@ -218,7 +218,7 @@
          },
          {
             "id": 5,
-            "picture": "medium/5) A person rock climbing",
+            "picture": "medium/5) A person rock climbing.jpg",
             "hint": "A person rock climbing",
             "choices": [
                "Mountain Climbing",
@@ -314,7 +314,7 @@
          },
          {
             "id": 13,
-            "picture": "medium/13) A person cleaning.jpg",
+            "picture": "medium/13) A person cleaning.jpeg",
             "hint": "A person cleaning",
             "choices": [
                "Vacuum",
