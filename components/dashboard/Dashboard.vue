@@ -3,9 +3,9 @@
      <div class="py-20 max-w-[1535px] mx-auto flex flex-col  items-center bg-lt-dash dark:bg-dk-inp-b sm:max-w-[635px] md:max-w-[767px] lg:max-w-[1023px] xl:max-w-[1279px]" >
         <dashboard-navbar @add-player="showModal = true" @showModal="showInstructionModal = true"/>
         
-        <div class="flex justify-between p-3 gap-x-20 w-full px-40 sm:px-20 md:px-32 md:flex-col md:gap-y-3 lg:px-24 lg:gap-x-10 xl:gap-x-12 2xl:gap-x-16">
+        <div class="flex justify-between p-3 gap-x-20 w-full px-40 sm:px-20 md:px-32 md:flex-col md:gap-y-3 lg:px-24 lg:gap-x-3 xl:gap-x-12 2xl:gap-x-16">
            <highscore-list :players="players" />
-           <div class="w-[476px] lg:w-[200px] md:w-[476px] xl:w-[400px]">
+           <div class="w-[476px] lg:w-[200px] md:w-full xl:w-[400px]">
               <player-details class="mb-32" :players="players" />
               <player-dropdown  :players="players" :start-game="startGame"/>
            </div>
