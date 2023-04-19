@@ -1,4 +1,4 @@
-
+<!-- 
 
  <template>
    <div>
@@ -87,4 +87,145 @@ export default {
     }
   }
 };
-</script>
+</script> -->
+
+
+<!-- <template>
+  <div>
+    <div class="progress">
+      <div class="progress--bar" :style="{ width: progress + '%' }"></div>
+    </div>
+
+    <div v-if="showGamePlay" class="py-20">
+      <GameboardNavbar @showModal="showInstructionModal = true" :level="curLevel" :score="scoreNavbar" :timeLeft="timeLeft" />
+      <GamePlay :gamePlay="gamePlay" :selectedChoice="selectedChoice" :question="question" :checkAnswer="checkAnswer" @selectChoice="selectChoice" />
+      <div v-if="showInstructionModal">
+        <InstructionModal @closeModal="showInstructionModal = false" />
+      </div>
+    </div>
+    <div v-if="showGameResult" class="py-20">
+      <GameResult
+        :player="checkAnswer.player"
+        :difficulty="currentDifficulty"
+        :score="checkAnswer.scorePerDifficulty"
+        :correctAnswers="checkAnswer.correctAnswers"
+        :aveTime="checkAnswer.timePerQuestion"
+      />
+    </div>
+  </div>
+</template>
+
+<script>
+  import GamePlay from './GamePlay.vue';
+  import InstructionModal from '../InstructionModal.vue';
+  import GamePlayClass from '~/assets/js/class/Gameplay.js';
+  import GameResult from './GameResult.vue';
+
+  export default {
+    props: {
+      player: Object,
+      currentDifficulty: String,
+      currentLevel: Number,
+    },
+    components: { GamePlay, GameResult },
+    data() {
+      return {
+        showInstructionModal: false,
+        gamePlay: null,
+        selectedChoice: null,
+        question: {
+          picture: 'img link',
+          hint: 'Person holding a pencil',
+          choices: ['Eraser', 'Banana', 'Shoe'],
+        },
+        timeLeft: 0,
+        scoreNavbar: [],
+        checkAnswer: {},
+        timerInterval: null,
+        curLevel: 0,
+        showGamePlay: true,
+        showGameResult: false,
+      };
+    },
+    created() {
+      this.curLevel = this.currentLevel;
+      this.gamePlay = new GamePlayClass(
+        this.player,
+        0,
+        0,
+        this.currentDifficulty,
+        this.currentLevel,
+        null,
+        null,
+        3,
+        [],
+        [],
+        [],
+        []
+      );
+      this.updateQuestion();
+    },
+    mounted() {
+      // Add event listener to adjust progress bar width when window is resized
+      window.addEventListener('resize', this.updateProgress);
+    },
+    beforeDestroy() {
+      // Remove event listener to prevent memory leaks
+      window.removeEventListener('resize', this.updateProgress);
+    },
+    computed: {
+      progress() {
+        return Math.floor(((this.curLevel - 1) / this.gamePlay.totalQuestions) * 100);
+      },
+    },
+    methods: {
+      updateQuestion() {
+        const { picture, hint, choices, answer } = this.gamePlay.showTheCurrentQuestion();
+        this.question.picture = picture;
+        this.question.hint = hint;
+        this.question.choices = choices;
+        this.selectedChoice = null;
+        this.gamePlay.startTheCurrentQuestion();
+        this.timerInterval = setInterval(() => {
+          this.setTimeLeft(this.gamePlay.timeLeft);
+          this.showQuestion(); // update the progress bar
+        }, 1000);
+      },
+      setTimeLeft(timeLeft) {
+        this.timeLeft = timeLeft;
+      },
+      showQuestion() {
+        const progressBar = document.querySelector(".progress--bar");
+        let progress = Math.floor((this.curLevel / this.gamePlay.maxLevel) * 100);
+        progressBar.style.width = `${progress}%`;
+      },
+      finished() {
+        const progressBar = document.querySelector(".progress--bar");
+        progressBar.style.width = `100%`;
+      },
+      selectChoice(index) {
+        this.selectedChoice = index;
+        this.checkAnswer = this.gamePlay.checkAnswer(index);
+        const { player, correctAnswers,scorePerDifficulty, timePerQuestion, currentScore, isCorrect, currentLevel } = this.checkAnswer;
+        if(isCorrect) { 
+          this.scoreNavbar = scorePerDifficulty;
+          if (this.gamePlay.hasNextQuestion()) {
+            clearInterval(this.timerInterval);
+            setTimeout(() => {
+              this.curLevel++;
+              this.updateQuestion();
+            }, 2000); // 2 seconds delay
+          } else {
+            //game over || result
+            console.log('end')
+            this.gamePlay.endGame();
+            this.showGamePlay = false;
+            this.showGameResult = true;
+            this.finished(); // update the progress bar to 100% when the game is over
+          }
+        }
+      }
+    }
+  }
+
+</script> -->
