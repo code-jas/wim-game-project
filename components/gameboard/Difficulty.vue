@@ -32,11 +32,11 @@
       <div class="text-center font-black text-6xl text-lt-t-prim-alt dark:text-violet-l lg:text-4xl xl:text-5xl">
         <h1>CHOOSE YOUR DIFFICULTY</h1>
       </div>
-      <div class="flex justify-center my-16">
+      <div class="flex flex-wrap justify-center my-16">
         <button
           v-for="(difficulty, index) in difficulties"
           :key="index"
-          :class="['relative w-[275px] h-[370px] sm:w-[175px] sm:h-[280px] md:w-[195px] md:h-[300px] lg:w-[225px] lg:h-[330px] xl:w-[255px] xl:h-[360px] 2xl:w-[255px] 2xl:h-[350px] bg-[#e6dcff] font-semibold  text-lt-t-prim text-3xl  uppercase transition duration-500 ease-in-out rounded-[15px] m-8 md:m-2 overflow-hidden flex items-center justify-center shadow-lg dark:bg-dk-inp-b-alt dark:text-[#7282FB] active:transform active:translate-y-1 ', { 'hover:bg-white hover:text-blue-v hover:border hover:border-blue-v hover:shadow-xl hover:scale-105 dark:hover:bg-blue-v dark:hover:text-violet-l dark:hover:border-violet-l': selectedDifficulty !== index, 'bg-white text-blue-v border border-blue-v shadow-xl scale-105 dark:bg-blue-v dark:text-violet-l dark:border dark:border-violet-l dark:shadow-xl dark:scale-105': selectedDifficulty === index }]"
+          :class="['relative w-[275px] h-[370px] xl:w-[255px] xl:h-[360px] bg-[#e6dcff] font-semibold  text-lt-t-prim text-3xl  uppercase transition duration-500 ease-in-out rounded-[15px] m-8 md:m-2 overflow-hidden flex items-center justify-center shadow-lg dark:bg-dk-inp-b-alt dark:text-[#7282FB] active:transform active:translate-y-1 ', { 'hover:bg-white hover:text-blue-v hover:border hover:border-blue-v hover:shadow-xl hover:scale-105 dark:hover:bg-blue-v dark:hover:text-violet-l dark:hover:border-violet-l': selectedDifficulty !== index, 'bg-white text-blue-v border border-blue-v shadow-xl scale-105 dark:bg-blue-v dark:text-violet-l dark:border dark:border-violet-l dark:shadow-xl dark:scale-105': selectedDifficulty === index }]"
           @click="selectDifficulty(index)"
         >
           <div :class="['absolute w-full h-full bg-blob-diff bg-no-repeat bg-center transition duration-300 ease-in-out',{'scale-225 hover:scale-110': selectedDifficulty!==index, 'scale-110': selectedDifficulty === index  }]"></div>
