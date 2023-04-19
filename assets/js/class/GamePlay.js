@@ -15,6 +15,7 @@ export default class GamePlay {
       this.correctAnswers = correctAnswers; // array
       this.scorePerDifficulty = scorePerDifficulty; //array
       this.timePerQuestion = timePerQuestion; // array
+      this.numIncorrectAttempts = 0;
    }
 
    showData() {
@@ -62,40 +63,23 @@ export default class GamePlay {
       const answerIndex = currentQuestions[this.currentLevel].answer;
 
 
-      let numIncorrectAttempts = 0;
       let isCorrect = false;
       // Correct
       if (currentQuestions[this.currentLevel].choices[selectedChoice] === answerIndex) {
-         const pointsPerIncorrectAttempt = 50;
-         const baseBonusPoints = 200;
-         // difficulty bonus points
-         // time bonus points
-         const maxTime = 15;
-         const timeTaken = maxTime - this.timeLeft;
-         const timeRatio = timeTaken / maxTime;
-         const timeBonusPoints = baseBonusPoints * (1 - timeRatio);
+         this.player.levelDonePerDifficulty[this.currentDifficulty][this.currentLevel] = true;
+         // console.log('levelDonePerDifficulty: ', this.player.levelDonePerDifficulty[this.currentDifficulty])
+
+         this.scoring();
 
          isCorrect = true; // correct level
-         this.player.levelDonePerDifficulty[this.currentDifficulty][this.currentLevel] = true;
-
-         console.log('levelDonePerDifficulty: ', this.player.levelDonePerDifficulty[this.currentDifficulty])
-         this.timePerQuestion.push(timeTaken);
-         console.log('timePerQuestion: ', this.timePerQuestion)
-
-         const difficultyBonusPoints = this.getDifficultyMultiplier();
-         // console.log('difficultyBonusPoints: ', difficulty
-         const attemptDeductionPoints = numIncorrectAttempts * pointsPerIncorrectAttempt
-         // console.log('attemptDeductionPoints: ', attemptDeductionPoints)
-         const finalScore = baseBonusPoints + difficultyBonusPoints + timeBonusPoints - attemptDeductionPoints;
-
-         this.setCurrentScore(finalScore);
-         this.scorePerDifficulty.push(finalScore);
-
-         // console.log('finalScore: ', this.getCurrentScore())
-         // console.log('array score: ', this.getScorePerDifficulty())
-
-
          this.correctAnswers.push(true); // correct level
+         // if the totalGamesPlayed is  15, don't add the totalGamesPlayed
+         if (this.player.totalGamesPlayed < 15) {
+            this.player.totalGamesPlayed += 1; // Increment the number of games played
+         } else {
+            this.player.totalGamesPlayed = 15;
+         }
+
          this.currentLevel += 1; // Increment the current level
 
          // display ui correct
@@ -103,7 +87,7 @@ export default class GamePlay {
          //
       } else { //Incorrect
          this.correctAnswers.push(false); // incorrect level   
-         numIncorrectAttempts++; // Increment the number of incorrect attempts
+         this.numIncorrectAttempts++; // Increment the number of incorrect attempts
          // console.log('numIncorrectAttempts: ', numIncorrectAttempts)
          // display ui incorrect
       }
@@ -118,6 +102,101 @@ export default class GamePlay {
          currentLevel: this.currentLevel
       };
    }
+
+   endGame() {
+      // Save the player data
+      this.player.totalScore[this.currentDifficulty] = this.scorePerDifficulty.reduce((acc, result) => acc + result, 0);
+      console.log('Total Score: ', this.player.totalScore)
+      console.log('add score: ', this.scorePerDifficulty.reduce((acc, result) => acc + result, 0))
+      this.player.highScore = this.getTotalScore() > this.player.highScore ? this.getTotalScore() : this.player.highScore;
+      this.player.accuracy[this.currentDifficulty] = this.getAccuracy();
+
+      console.log('Total Score: ', this.player.totalScore)
+      console.log('High Score: ', this.player.highScore)
+      console.log('Accuracy: ', this.player.accuracy)
+
+      this.savePlayerData(this.player, this.player.id);
+   }
+
+   // Get Total Score
+   getTotalScore() {
+      let total = 0;
+
+      for (const difficulty in this.player.totalScore) {
+         if (Object.hasOwnProperty.call(this.player.totalScore, difficulty)) {
+            total += this.player.totalScore[difficulty];
+         }
+      }
+
+      return total;
+   }
+
+   // get the accuracy
+   getAccuracy() {
+      const total = this.correctAnswers.length;
+      const correct = this.correctAnswers.filter(result => result).length;
+      const accuracy = (correct / total) * 100;
+      return Math.floor(accuracy)
+   }
+
+
+   formattedTime() {
+      const minutes = 0; // Always 0 for 15 seconds
+      const seconds = this.timeLeft;
+      return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+   }
+   // formattedAccuracy() {
+   //    const total = this.correctAnswers.length;
+   //    const correct = this.correctAnswers.filter(result => result).length;
+   //    const accuracy = (correct / total) * 100;
+   //    return Math.floor(accuracy)
+   // }
+   // Save the player data
+   savePlayerData(player, id) { // player - object
+      // Retrieve the current players data from the localStorage
+      const playersData = JSON.parse(localStorage.getItem('players'));
+
+      // Find the player with the matching id
+      const playerIndex = playersData.findIndex(p => p.id === id);
+
+      // Update the player data
+      playersData[playerIndex] = player;
+
+      // Save the updated players data back to the localStorage
+      localStorage.setItem('players', JSON.stringify(playersData));
+   }
+   scoring() {
+      const pointsPerIncorrectAttempt = 50;
+      const baseBonusPoints = 200;
+      // difficulty bonus points
+      // time bonus points
+      const maxTime = 15;
+      const timeTaken = maxTime - this.timeLeft;
+      const timeRatio = timeTaken / maxTime;
+      const timeBonusPoints = baseBonusPoints * (1 - timeRatio);
+
+      const difficultyBonusPoints = this.getDifficultyMultiplier();
+      const attemptDeductionPoints = this.numIncorrectAttempts * pointsPerIncorrectAttempt
+      const finalScore = baseBonusPoints + difficultyBonusPoints + timeBonusPoints - attemptDeductionPoints;
+
+      //! Testing
+      // console.log('Base Points: ', baseBonusPoints)
+      // console.log('Difficulty Points: ', difficultyBonusPoints)
+      // console.log('Time Points: ', timeBonusPoints)
+      // console.log('Attempt Deduction: ', attemptDeductionPoints)
+      // console.log('Final: ', finalScore)
+
+
+      this.timePerQuestion.push(timeTaken); // time taken per question
+      this.setCurrentScore(Math.floor(finalScore)); // current score
+      this.scorePerDifficulty.push(finalScore); // score per difficulty
+
+      // reset 
+      this.numIncorrectAttempts = 0;
+      // console.log('finalScore: ', this.getCurrentScore())
+      // console.log('array score: ', this.getScorePerDifficulty())
+   }
+
    hasNextQuestion() {
       const currentQuestions = this.player.questionnaire[this.currentDifficulty];
       return currentQuestions.length > this.currentLevel;

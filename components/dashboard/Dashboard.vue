@@ -52,12 +52,13 @@ export default {
            id: nanoid(),
            playerName: playerName,
            highScore: 0,
-           totalScore: 0,
+           totalScore: {easy: 0,medium: 0, hard: 0},
            totalGameTime: 0,
            totalGamesPlayed: 0,
-           accuracy: 0,
+           accuracy: {easy: 0,medium: 0, hard: 0},
            selected: false,
            started: false,
+           levelDonePerDifficulty: {easy: [],medium: [], hard: []},
        };
        this.players.push(player);
        this.savePlayersToStorage();
@@ -80,7 +81,7 @@ export default {
    toggleDarkMode() {
             this.isDark = !this.isDark
             document.body.classList.toggle('dark', this.isDark)
-        },
+    },
  }
 }
 </script>

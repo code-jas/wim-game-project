@@ -4,7 +4,8 @@
          <Difficulty @onDifficultySelected="onDifficultySelected" :wimQuest="wim_quest" />
       </div>
       <div v-if="showLevelNumber">
-         <LevelNumber @onLevelSelected="onLevelSelected" @onBackToDifficultyLevel="onBackToDifficultyLevel"/>
+         <LevelNumber @onLevelSelected="onLevelSelected" @onBackToDifficultyLevel="onBackToDifficultyLevel" :player="player" :difficulty="this.selectedDifficulty
+         "/>
       </div>
       <div v-if="showGameplay">
          <Gameboard
@@ -84,7 +85,7 @@ export default {
 
          this.questions = this.player.questionnaire;
       }
-      console.log('Questions for player:', this.questions);
+      // console.log('Questions for player:', this.questions);
 
    },
    mounted() {
@@ -137,7 +138,7 @@ export default {
             shuffledQuestions[difficulty] = questions.slice(0, 5);
          }
          this.questions = shuffledQuestions;
-         console.log("question:" , shuffledQuestions)
+         // console.log("question:" , shuffledQuestions)
       },
       // Save player to local storage
       savePlayerToLocalStorage() {

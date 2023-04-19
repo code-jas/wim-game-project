@@ -29,10 +29,10 @@
                      {{ player.playerName }}
                   </td>
                   <td class="px-6 py-3">
-                     {{ player.highScore }}
+                     {{ Math.floor(player.highScore) }}
                   </td>
                   <td class="px-6 py-3">
-                     {{ player.accuracy }}
+                     {{ getAccuracy(player) }}%
                   </td>
                </tr>                
             </tbody>
@@ -56,6 +56,9 @@ export default {
   created() { 
    // console.log("Players: ",this.players)
   },
+  methods: { 
+ 
+  },
   watch: {
     '$localStorage.highscores': function () {
       this.$forceUpdate()
@@ -65,6 +68,24 @@ export default {
    toggleDarkMode() {
       this.isDark = !this.isDark
       document.body.classList.toggle('dark', this.isDark)
+   },
+     // get the accuracy
+   getTotalAccuracy(player) {
+      let total = 0;
+
+      for (const difficulty in player.accuracy) {
+         if (Object.hasOwnProperty.call(player.accuracy, difficulty)) {
+            total += player.accuracy[difficulty];
+         }
+      }
+      return total;
+    },
+    getAccuracy(player) {
+      const total = player.totalGamesPlayed * 20
+      const correct = this.getTotalAccuracy(player)
+      console.log('correct', correct)
+      const accuracy = (correct / total) * 100;
+      return Math.floor(accuracy);
    },
   }
 }

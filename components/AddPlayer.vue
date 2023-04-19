@@ -35,7 +35,7 @@
       
      
       <h1 class="absolute top-20 left-1/2 transform -translate-x-1/2  text-6xl font-franklin text-blue-v " 
-      :class="{'dark:text-dk-t-prim': isDark }">Image/Word <br> Match Game</h1>
+      :class="{'dark:text-dk-t-prim': isDark }">Image/Word <br> Match Game</h1>~
       <div class="flex items-center  justify-center min-h-screen flex-col">
          <input type="text" 
          class="w-[740px] h-[88px] border-none text-3xl rounded-[15px]  drop-shadow-md focus:outline-none focus:ring-2 
@@ -100,12 +100,13 @@ export default {
                     id: nanoid(),
                     playerName: playerName,
                     highScore: 0,
-                    totalScore: 0,
+                    totalScore: {easy: 0,medium: 0, hard: 0},
                     totalGameTime: 0,
                     totalGamesPlayed: 0,
-                    accuracy: 0,
+                    accuracy: {easy: 0,medium: 0, hard: 0},
                     selected: true,
                     started: false,
+                    levelDonePerDifficulty: {easy: [],medium: [], hard: []},
                 };
                 this.players.push(player);
                 this.savePlayersToStorage();

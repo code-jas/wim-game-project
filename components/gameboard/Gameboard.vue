@@ -1,5 +1,9 @@
 <template>
   <div>
+    <div   v-if="showGamePlay" class="progress">
+      <div class="progress--bar"></div>
+    </div>
+
     <div v-if="showGamePlay" class="py-20">
        <GameboardNavbar @showModal="showInstructionModal = true" :level="curLevel" :score="scoreNavbar" :timeLeft="timeLeft" />
        <GamePlay  :gamePlay="gamePlay" :selectedChoice="selectedChoice" :question="question" :checkAnswer="checkAnswer"  @selectChoice="selectChoice"/>
@@ -44,7 +48,7 @@ export default {
         choices: ['Eraser', 'Banana', 'Shoe'],
       },
       timeLeft: 0,
-      scoreNavbar: 0,
+      scoreNavbar: [],
       checkAnswer: {},
       timerInterval: null,
       curLevel: 0, // add reactive data property for currentLevel
@@ -72,14 +76,8 @@ export default {
     );
    //  this.gamePlay.showData();
     this.updateQuestion();
-      console.log('checkAnswer', this.checkAnswer)
   },
   watcher: { 
-      currentLevel() {
-        //  console.log('s')
-         // this.gamePlay.currentLevel = this.currentLevel;
-         // this.updateQuestion();
-      }
   },
   methods: {
     updateQuestion() {
@@ -101,9 +99,8 @@ export default {
       this.selectedChoice = index;
       this.checkAnswer = this.gamePlay.checkAnswer(index);
       const { player, correctAnswers,scorePerDifficulty, timePerQuestion, currentScore, isCorrect, currentLevel } = this.checkAnswer;
-      console.log('this.currentlevel: ', this.curLevel)
       if(isCorrect) { 
-         this.scoreNavbar = currentScore;
+         this.scoreNavbar = scorePerDifficulty;
          if (this.gamePlay.hasNextQuestion()) {
 
             clearInterval(this.timerInterval);
@@ -115,6 +112,7 @@ export default {
          } else {
             //game over || result
             console.log('end')
+            this.gamePlay.endGame();
             this.showGamePlay = false;
             this.showGameResult = true;
          }

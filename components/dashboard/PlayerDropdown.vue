@@ -11,7 +11,7 @@
     </button>
     <div v-if="isOpen"
       id="dropdownInformation"
-      class="w-full max-h-96 bottom-full overflow-y-auto  text-lt-t-prim text-2xl z-10  mb-5 absolute bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-dk-inp-b-alt dark:text-violet-l"
+      class="w-full max-h-96 bottom-full overflow-y-auto  text-lt-t-prim text-2xl z-10  mb-5 absolute bg-white divide-y divide-gray-100 rounded-lg shadow-lg dark:bg-dk-inp-b-alt dark:text-violet-l"
     >
       <ul class="py-2 dark:text-gray-100" aria-labelledby="dropdownInformationButton">
         <li v-for="(player, index) in players" :key="index">

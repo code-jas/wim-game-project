@@ -1,4 +1,4 @@
-<template>
+    <template>
 <div class="flex justify-center">
     <div class="flex items-center justify-between gap-x-52 w-8/12 h-[98px] bg-white px-9  mb-16 rounded-[15px] drop-shadow-lg dark:bg-dk-inp-b-alt sm:h-[70px] sm:px-5 md:h-[80px] md:px-7 lg:h-[90px] lg:px-8">
         <div class="w-[390px] flex justify-start">
@@ -10,7 +10,7 @@
             <div class="w-[390px] h-[72px] flex justify-between items-center">
                 <div class="text-center">
                     <div class="font-bold text-4xl text-lt-t-prim">
-                        {{ score }}
+                        {{ Math.floor(formattedScore)  }}
                     </div>
                     <div class="text-base text-lt-t-prim">
                         Score
@@ -90,7 +90,10 @@ export default {
       const minutes = 0; // Always 0 for 15 seconds
       const seconds = this.timeLeft;
       return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-    }
+    },
+    formattedScore() {
+      return this.score.reduce((acc, result) => acc + result, 0);
+    },
   }
 }
 </script>
