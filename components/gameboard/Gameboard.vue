@@ -1,116 +1,33 @@
-<!-- 
-
- <template>
-   <div>
-     <h2>Player List</h2>
-     <ul>
-       <li v-for="player in players" :key="player.id">
-         {{ player.playerName }} -
-         High Score: {{ player.highScore }} -
-         Total Score: {{ player.totalScore }} -
-         Total Game Time: {{ player.totalGameTime }} -
-         Total Games Played: {{ player.totalGamesPlayed }} -
-         Accuracy: {{ player.accuracy }} -
-         <button @click="deletePlayer(player.id)">Delete</button>
-         <button @click="editPlayerName(player.id)">Edit Name</button>
-       </li>
-     </ul>
-     <h2>Add Player</h2>
-     <form @submit.prevent="addPlayer">
-       <label>
-         Player Name:
-         <input type="text" v-model="newPlayerName">
-       </label>
-
-       <button type="submit">Add Player</button>
-     </form>
-   </div>
- </template>
-
-<script>
-// import axios from 'axios';
-import { nanoid } from 'nanoid'
-
-export default {
-  data() {
-    return {
-      players: JSON.parse(localStorage.getItem('players') || '[]')
-    };
-  },
-  created() {
-    window.addEventListener('storage', this.updatePlayersFromStorage);
-  },
-  destroyed() {
-    window.removeEventListener('storage', this.updatePlayersFromStorage);
-  },
-  methods: {
-    addPlayer() {
-      const playerName = prompt('Enter player name');
-      if (playerName !== null) {
-        const player = {
-          id: nanoid(),
-          playerName,
-          highScore: 0,
-          totalScore: 0,
-          totalGameTime: 0,
-          totalGamesPlayed: 0,
-          accuracy: 0
-        };
-        this.players.push(player);
-        this.savePlayersToStorage();
-      }
-    },
-    deletePlayer(id) {
-      const index = this.players.findIndex(player => player.id === id);
-      if (index !== -1) {
-        this.players.splice(index, 1);
-        this.savePlayersToStorage();
-      }
-    },
-    editPlayerName(id) {
-      const index = this.players.findIndex(player => player.id === id);
-      if (index !== -1) {
-        const newName = prompt('Enter new name', this.players[index].playerName);
-        if (newName !== null) {
-          this.players[index].playerName = newName;
-          this.savePlayersToStorage();
-        }
-      }
-    },
-    savePlayersToStorage() {
-      localStorage.setItem('players', JSON.stringify(this.players));
-    },
-    updatePlayersFromStorage(event) {
-      if (event.key === 'players') {
-        this.players = JSON.parse(event.newValue || '[]');
-      }
-    }
-  }
-};
-</script> -->
-
 
 <template>
   <div>
-    <div class="progress">
-      <div class="progress--bar" :style="{ width: progress + '%' }"></div>
+    <div v-if="showCountdown"  class="font-franklin bg-pageloader countdown">
+      <span class="countdown-text" v-if="countdown === 3">{{ countdownText }}</span>
+      <span class="countdown-text" v-if="countdown === 2">{{ countdownText }}</span>
+      <span class="countdown-text" v-if="countdown === 1">{{ countdownText }}</span>
+      <span class="countdown-text" v-if="countdown === 0">{{countdownText}}</span>
     </div>
-
-    <div v-if="showGamePlay" class="py-20">
-      <GameboardNavbar @showModal="showInstructionModal = true" :level="curLevel" :score="scoreNavbar" :timeLeft="timeLeft" />
-      <GamePlay :gamePlay="gamePlay" :selectedChoice="selectedChoice" :question="question" :checkAnswer="checkAnswer" @selectChoice="selectChoice" />
-      <div v-if="showInstructionModal">
-        <InstructionModal @closeModal="showInstructionModal = false" />
+    <div v-else>
+      <div class="progress">
+        <div class="progress--bar" :style="{ width: progress + '%' }"></div>
       </div>
-    </div>
-    <div v-if="showGameResult" class="py-20">
-      <GameResult
-        :player="checkAnswer.player"
-        :difficulty="currentDifficulty"
-        :score="checkAnswer.scorePerDifficulty"
-        :correctAnswers="checkAnswer.correctAnswers"
-        :aveTime="checkAnswer.timePerQuestion"
-      />
+
+      <div v-if="showGamePlay" class="py-20">
+        <GameboardNavbar @showModal="showInstructionModal = true" :level="curLevel" :score="scoreNavbar" :timeLeft="timeLeft" />
+        <GamePlay :gamePlay="gamePlay" :selectedChoice="selectedChoice" :question="question" :checkAnswer="checkAnswer" @selectChoice="selectChoice" />
+        <div v-if="showInstructionModal">
+          <InstructionModal @closeModal="showInstructionModal = false" />
+        </div>
+      </div>
+      <div v-if="showGameResult" class="py-20">
+        <GameResult
+          :player="checkAnswer.player"
+          :difficulty="currentDifficulty"
+          :score="checkAnswer.scorePerDifficulty"
+          :correctAnswers="checkAnswer.correctAnswers"
+          :aveTime="checkAnswer.timePerQuestion"
+        />
+        </div>
     </div>
   </div>
 </template>
@@ -145,25 +62,42 @@ export default {
         curLevel: 0,
         showGamePlay: true,
         showGameResult: false,
+        countdown : 0,
+        showCountdown: true,
       };
     },
     created() {
       this.curLevel = this.currentLevel;
-      this.gamePlay = new GamePlayClass(
-        this.player,
-        0,
-        0,
-        this.currentDifficulty,
-        this.currentLevel,
-        null,
-        null,
-        3,
-        [],
-        [],
-        [],
-        []
-      );
-      this.updateQuestion();
+      this.showGamePlay = false; // Hide the game board initially
+      this.showGameResult = false;
+      this.showCountdown = true; // Show the countdown initially
+      this.countdown = 3; // Set the initial countdown value
+      
+      // Start the countdown timer
+      let timer = setInterval(() => {
+        if (this.countdown === 0) {
+          clearInterval(timer);
+          this.showCountdown = false; // Hide the countdown
+          this.showGamePlay = true; // Show the game board
+          this.gamePlay = new GamePlayClass(
+            this.player,
+            0,
+            0,
+            this.currentDifficulty,
+            this.currentLevel,
+            null,
+            null,
+            3,
+            [],
+            [],
+            [],
+            []
+          );
+          this.updateQuestion();
+        } else {
+          this.countdown--;
+        }
+      }, 1000);
     },
     mounted() {
       // Add event listener to adjust progress bar width when window is resized 
@@ -174,6 +108,9 @@ export default {
       window.removeEventListener('resize', this.updateProgress);
     },
     computed: {
+      countdownText() {
+        return this.countdown > 0 ? `${this.countdown}` : 'Go!';
+      },
       progress() {
         const level =this.curLevel
         const totalLevel = this.gamePlay.player.questionnaire[this.currentDifficulty].length
@@ -214,10 +151,10 @@ export default {
         this.checkAnswer = this.gamePlay.checkAnswer(index);
         const { player, correctAnswers,scorePerDifficulty, timePerQuestion, currentScore, isCorrect, currentLevel } = this.checkAnswer;
         if(isCorrect) { 
-          this.scoreNavbar = scorePerDifficulty;
           if (this.gamePlay.hasNextQuestion()) {
             clearInterval(this.timerInterval);
             setTimeout(() => {
+            this.scoreNavbar = scorePerDifficulty;
               this.curLevel++;
               this.updateQuestion();
             }, 2000); // 2 seconds delay
@@ -237,6 +174,52 @@ export default {
 </script>
 
 <style>
+.bg-pageloader {     
+      background-image: url('@/assets/img/countdown/countdown_bg.png');
+      background-size: cover;
+   }
+.countdown {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFF;
+}
+
+.countdown-text{ 
+  font-size: 200px;
+  opacity: 0;
+  animation-name: countdown;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes countdown {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
 .progress {
   height: 8px;
   position: fixed;
