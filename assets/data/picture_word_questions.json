@@ -214,7 +214,7 @@
                "Protractor",
                "Calculator"
             ],
-            "answer": "Compass"
+            "answer": "Map"
          },
          {
             "id": 5,
@@ -278,7 +278,7 @@
          },
          {
             "id": 10,
-            "picture": "medium/10) A person using a drill.webp",
+            "picture": "medium/10) A person using a drill.jpg",
             "hint": "A person using a dril",
             "choices": [
                "Drill",
