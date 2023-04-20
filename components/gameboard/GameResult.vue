@@ -1,8 +1,8 @@
 <template>
   <div class="py-20">
     <div class="flex flex-col justify-center items-center gap-y-16">
-      <h1 class="font-black text-lt-t-prim-alt text-6xl">Summary</h1>
-      <h2 class="font-black text-lt-t-prim-alt text-5xl">{{ difficulty }}</h2>
+      <h1 class="font-black text-lt-t-prim text-6xl">SUMMARY</h1>
+      <h2 class="font-black text-lt-t-prim text-5xl capitalize">{{ difficulty }}</h2>
     </div>
     <div class="flex justify-center mt-4">
       <div class="flex justify-between items-center border border-blue-v rounded-[15px] bg-[#E6DCFF] text-[#1B254B] w-[600px] h-[150px] px-10">

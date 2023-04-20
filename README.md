@@ -1,5 +1,11 @@
 # wim-game-project - 70% complete
 
+## To improve - Still Progress
+*UI design of the game result
+*Local Storage Light/Dark mode
+*Fix small Details in dashboard
+
+
 ## Build Setup
 
 ```bash

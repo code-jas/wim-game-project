@@ -1,5 +1,6 @@
 <template>
   <div class="bg-violet-l-alt h-screen py-20 flex flex-col items-center dark:bg-dk-inp-b">
+    <!-- <Toast v-if="showToast" :type='warning' :message="message" /> -->
     <div class="flex justify-between items-center w-full max-w-[1535px] sm:max-w-[635px] md:max-w-[767px] lg:max-w-[1023px] xl:max-w-[1279px] px-10">
         <router-link to="/main">
           <svg class="fill-blue stroke-1 stroke-blue dark:fill-dk-t-prim dark:stroke-dk-t-prim" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="back-arrow"><g data-name="Layer 2"><g data-name="arrow-back"><rect width="24" height="24" opacity="0" transform="rotate(90 12 12)"></rect><path d="M19 11H7.14l3.63-4.36a1 1 0 1 0-1.54-1.28l-5 6a1.19 1.19 0 0 0-.09.15c0 .05 0 .08-.07.13A1 1 0 0 0 4 12a1 1 0 0 0 .07.36c0 .05 0 .08.07.13a1.19 1.19 0 0 0 .09.15l5 6A1 1 0 0 0 10 19a1 1 0 0 0 .64-.23 1 1 0 0 0 .13-1.41L7.14 13H19a1 1 0 0 0 0-2z"></path></g></g></svg> <p class="font-bold text-blue dark:text-dk-t-prim">Back</p>
@@ -44,7 +45,7 @@
         </button>
       </div>
       <div class="flex justify-center">
-        <button class="bg-blue-v w-[476px] h-[70px] sm:w-[200px] md:w-[300px] xl:w-[400px] 2xl:w-[456px] text-lt-inp font-franklin text-4xl rounded-[15px] active:transform active:translate-y-1 transition duration-300" @click="nextClicked">Next</button>
+        <button class="bg-blue-v w-[476px] h-[70px] sm:w-[200px] md:w-[300px] xl:w-[400px] 2xl:w-[456px] text-lt-inp font-franklin text-4xl rounded-[15px] active:transform active:translate-y-1 transition duration-300" @click="nextClicked" >Next</button>
       </div>
     </div>
     <div v-if="showInstructionModal">
@@ -55,8 +56,13 @@
 
 <script>
 import InstructionModal from '../InstructionModal.vue';
+import Toast from './Toast.vue'
 
 export default {
+    components: {
+      Toast,
+      InstructionModal
+    },
     props: {
         wimQuest: Object
     },
@@ -66,23 +72,29 @@ export default {
             showInstructionModal: false,
             difficulties: ["easy", "medium", "hard"],
             selectedDifficulty: null,
+            showToast: false,
+            message: `Please select a difficulty level to proceed.`,
         };
     },
-    created() {
-    },
+    created() {},
     methods: {
         selectDifficulty(index) {
             this.selectedDifficulty = index;
             console.log("index", this.selectedDifficulty);
         },
         nextClicked() {
+          if(this.selectedDifficulty === null) { 
+           // toast
+          //  this.showToast = true
+          //  console.log("toast", this.showToast)
+          }else { 
             this.$emit("onDifficultySelected", this.difficulties[this.selectedDifficulty]);
+          }
         },
         toggleDarkMode() {
             this.isDark = !this.isDark
             document.body.classList.toggle('dark', this.isDark)
         },
     },
-    components: { InstructionModal }
 };
 </script>

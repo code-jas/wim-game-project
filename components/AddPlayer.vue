@@ -1,5 +1,4 @@
 <template>
-<!-- :class="{'': isDark } -->
     
    <div class="relative p-20 bg-white " :class="{'dark:bg-dk-inp-b': isDark }">
       <div class="flex items-center justify-center gap-x-4 absolute right-20 top-20 bg-white "
@@ -54,18 +53,13 @@
 
 <script>
 import { nanoid } from 'nanoid';
-// import { UilMoon } from '@iconscout/vue-unicons'
 import '@iconscout/unicons/css/line.css';
 import InstructionModal from './InstructionModal.vue';
+
 export default {
-    // components: { UilMoon },
     components: { InstructionModal },
     props: {
         isDark: false
-        // isDarkModeEnabled: {
-        //     type: Boolean,
-        //     required: true
-        // }
     },
     data() {
         return {    
