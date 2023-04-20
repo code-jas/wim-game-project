@@ -1,5 +1,5 @@
 <template>
-   <div class="w-[695px] h-[684px] bg-white  rounded-[15px] drop-shadow-lg p-8 dark:bg-dk-inp-b-alt md:p-5 md:w-full lg:w-[600px] xl:w-[540px]">
+   <div class="w-[695px] h-[684px] bg-white  rounded-[15px] drop-shadow-lg p-8 dark:bg-dk-inp-b-alt md:p-5 md:w-full lg:w-full xl:w-[540px]">
       <h1 class="text-2xl text-lt-t-prim font-semibold mb-12 dark:text-violet-l">Highscores</h1>
       <div class="relative h-5/6 overflow-x-auto  rounded-[15px]">
          <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
