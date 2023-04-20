@@ -1,6 +1,6 @@
 
 <template>
-  <div>
+  <div class="bg-violet-l-alt mx-auto dark:bg-dk-inp-b">
     <div v-if="showCountdown"  class="font-franklin bg-pageloader countdown">
       <span class="countdown-text" v-if="countdown === 3">{{ countdownText }}</span>
       <span class="countdown-text" v-if="countdown === 2">{{ countdownText }}</span>
@@ -47,6 +47,7 @@
     components: { GamePlay, GameResult },
     data() {
       return {
+        isDark: false,
         showInstructionModal: false,
         gamePlay: null,
         selectedChoice: null,
@@ -167,7 +168,12 @@
             this.finished(); // update the progress bar to 100% when the game is over
           }
         }
-      }
+      },
+      toggleDarkMode() {
+      this.isDark = !this.isDark;
+      document.body.classList.toggle("dark", this.isDark);
+      localStorage.setItem("isDarkMode", JSON.stringify(this.isDark));
+      },
     }
   }
 

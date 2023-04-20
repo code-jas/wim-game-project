@@ -24,7 +24,7 @@
                 ]"
               ></i>
           </div>
-          <button  @click="showInstructionModal = true" type="button" class="w-[45px] h-[45px] flex items-center justify-center bg-violet-l-alt rounded-full hover:scale-110 transition duration-300 dark:bg-dk-inp-b-alt">
+          <button  @click="showInstructionModal = true" type="button" class="w-[45px] h-[45px] flex items-center justify-center bg-violet-l-alt rounded-full hover:scale-110 transition duration-300 dark:bg-dk-inp-alt">
             <i class="uil uil-question-circle text-blue text-4xl rounded-full dark:text-dk-t-prim"></i>
          </button>
         </div>

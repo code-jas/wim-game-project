@@ -1,12 +1,12 @@
 <template>
-  <div class="bg-lt-dash mx-auto lg:w-5">
+  <div class="bg-violet-l-alt mx-auto dark:bg-dk-inp-b">
     <!-- <CorrectPopup :message="popupMessage" :show="showPopup" /> -->
-    <div class="text-center font-bold text-4xl text-[#605F81] mb-16">
+    <div class="text-center font-bold text-4xl text-[#605F81] mb-16 md:text-2xl lg:text-3xl dark:text-violet-l">
       <h1>Select the word that matches the image</h1>
     </div>
     <div class="flex justify-center mb-9">
-      <div
-        class="flex justify-center items-center h-[310px] w-[530px] border-4 border-blue-v-alt rounded-[15px]"
+      <div 
+        class="flex justify-center items-center h-[310px] w-[530px] sm:w-[440px] md:h-[250px] md:w-[470px] lg:h-[280px] lg:w-[500px] border-4 border-blue-v-alt rounded-[15px]"
       >
         <img
           :src="require(`~/assets/img/quiz-picture/${question.picture}`)"
@@ -15,17 +15,17 @@
         />
       </div>
     </div>
-    <div class="text-center font-bold text-4xl text-[#605F81] mb-16">
+    <div class="text-center font-bold text-4xl text-[#605F81] mb-16 md:text-2xl lg:text-3xl dark:text-violet-l">
       <h1>{{ question.hint }}</h1>
     </div>
-    <div class="flex justify-center font-bold text-4xl">
+    <div class="flex justify-center items-center font-bold text-4xl md:flex-col lg:text-3xl">
       <button
         v-for="(choice, index) in question.choices"
         :key="index"
         :class="[
-          'w-[280px] h-[80px] rounded-[15px] m-[12px] hover:border-none hover:bg-blue-v-alt hover:text-violet-l-alt active:transform active:translate-y-1 transition duration-300 ',
+          'w-[280px] h-[80px] lg:w-[250px] lg:h-[70px] rounded-[15px] m-[12px] hover:border-none hover:bg-blue-v-alt hover:text-violet-l-alt active:transform active:translate-y-1 transition duration-300',
           {
-            'border border-blue-v text-blue-v-alt': selectedChoice !== index,
+            'border border-blue-v text-blue-v-alt dark:border-violet-l dark:text-violet-l': selectedChoice !== index,
             'border-none bg-blue-v-alt text-violet-l-alt':
               selectedChoice === index && checkAnswer.isCorrect === null,
             'bg-green text-white hover:bg-green-alt button ':
