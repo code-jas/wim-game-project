@@ -38,13 +38,22 @@ export default {
          isDark: false
       }
     },
+    created() {
+      window.addEventListener('storage', this.updatePlayersFromStorage);
+      // Check if dark mode is saved in local storage
+      const savedIsDarkMode = localStorage.getItem("isDarkMode");
+      if (savedIsDarkMode !== null) {
+            this.isDark = JSON.parse(savedIsDarkMode);
+            document.body.classList.toggle('dark', this.isDark)
+      }
+    },
     methods: {
       toggleDarkMode() {
             this.isDark = !this.isDark
-            this.$emit('toggle-dark-mode', this.isDark)
             document.body.classList.toggle('dark', this.isDark)
+            localStorage.setItem("isDarkMode", JSON.stringify(this.isDark));
         },
-   }
+    }
 }
 </script>
 

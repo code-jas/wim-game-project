@@ -73,8 +73,15 @@
       }
     },
     created(){ 
-        this.doneLevels = this.player.levelDonePerDifficulty[this.difficulty].map((isDone, index) => isDone ? index + 1 : 1);
-        console.log('doneLevels', this.doneLevels)
+      // Check if dark mode is saved in local storage
+      const savedIsDarkMode = localStorage.getItem("isDarkMode");
+      if (savedIsDarkMode !== null) {
+        this.isDark = JSON.parse(savedIsDarkMode);
+        document.body.classList.toggle('dark', this.isDark)
+      }
+      this.doneLevels = this.player.levelDonePerDifficulty[this.difficulty].map((isDone, index) => isDone ? index + 1 : 1);
+      console.log('doneLevels', this.doneLevels)
+        
     },
     methods: {
       isLevelDone(level) {
@@ -91,16 +98,16 @@
      backToDifficultyLevel() {
        this.$emit('onBackToDifficultyLevel');
      },
-      toggleDarkMode() {
-        this.isDark = !this.isDark
-        document.body.classList.toggle('dark', this.isDark)
-      },
+     toggleDarkMode() {
+      this.isDark = !this.isDark
+      document.body.classList.toggle('dark', this.isDark)
+      localStorage.setItem("isDarkMode", JSON.stringify(this.isDark));
+     },
     },
   }
 </script>
 
 <style >
-
   .my-super-cool-btn{
     position:relative;
     text-decoration:none;

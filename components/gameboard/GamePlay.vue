@@ -5,8 +5,14 @@
       <h1>Select the word that matches the image</h1>
     </div>
     <div class="flex justify-center mb-9">
-      <div class="flex justify-center items-center h-[310px] w-[530px] border-4 border-blue-v-alt rounded-[15px] ">
-        <img :src="require(`~/assets/img/quiz-picture/${question.picture}`)" alt="Question image" class="object-cover w-full h-full rounded-[12px] overflow-hidden" />
+      <div
+        class="flex justify-center items-center h-[310px] w-[530px] border-4 border-blue-v-alt rounded-[15px]"
+      >
+        <img
+          :src="require(`~/assets/img/quiz-picture/${question.picture}`)"
+          alt="Question image"
+          class="object-cover w-full h-full rounded-[12px] overflow-hidden"
+        />
       </div>
     </div>
     <div class="text-center font-bold text-4xl text-[#605F81] mb-16">
@@ -20,12 +26,15 @@
           'w-[280px] h-[80px] rounded-[15px] m-[12px] hover:border-none hover:bg-blue-v-alt hover:text-violet-l-alt active:transform active:translate-y-1 transition duration-300 ',
           {
             'border border-blue-v text-blue-v-alt': selectedChoice !== index,
-            'border-none bg-blue-v-alt text-violet-l-alt': selectedChoice === index && checkAnswer.isCorrect === null,
-            'bg-green text-white hover:bg-green-alt button ' : checkAnswer.isCorrect === true && selectedChoice === index,
-            'bg-red text-white hover:bg-red-alt shaky ' : checkAnswer.isCorrect === false && selectedChoice === index,
+            'border-none bg-blue-v-alt text-violet-l-alt':
+              selectedChoice === index && checkAnswer.isCorrect === null,
+            'bg-green text-white hover:bg-green-alt button ':
+              checkAnswer.isCorrect === true && selectedChoice === index,
+            'bg-red text-white hover:bg-red-alt shaky ':
+              checkAnswer.isCorrect === false && selectedChoice === index,
           },
         ]"
-        @click="$emit('selectChoice', index)" 
+        @click="$emit('selectChoice', index)"
       >
         <h1>{{ choice }}</h1>
       </button>
@@ -34,33 +43,47 @@
 </template>
 
 <script>
-import CorrectPopup from './CorrectPopup.vue';
+import CorrectPopup from "./CorrectPopup.vue";
 
 export default {
   components: {
-    CorrectPopup
+    CorrectPopup,
   },
   props: {
     gamePlay: Object,
     selectedChoice: Number,
     question: Object,
-    checkAnswer: Object
+    checkAnswer: Object,
   },
-  data() { 
-    return { 
+  data() {
+    return {
+      isDark: false,
       showPopup: false,
-      popupMessage: ''
+      popupMessage: "",
+    };
+  },
+  created() {
+    console.log("checkAnswer: ", this.checkAnswer);
+    // Check if dark mode is saved in local storage
+    const savedIsDarkMode = localStorage.getItem("isDarkMode");
+    if (savedIsDarkMode !== null) {
+      this.isDark = JSON.parse(savedIsDarkMode);
+      document.body.classList.toggle("dark", this.isDark);
     }
   },
-  created() { 
-    console.log('checkAnswer: ', this.checkAnswer)
+  methods: {
+    toggleDarkMode() {
+      this.isDark = !this.isDark;
+      document.body.classList.toggle("dark", this.isDark);
+      localStorage.setItem("isDarkMode", JSON.stringify(this.isDark));
+    },
   },
   //! show popup message if the answer is correct
   // watch: {
   //   checkAnswer(newValue) {
   //     if (newValue.isCorrect === true) {
   //       this.showPopup = true;
-  //       this.popupMessage = newValue.isCorrect && 'Correct!' 
+  //       this.popupMessage = newValue.isCorrect && 'Correct!'
   //       setTimeout(() => {
   //         this.showPopup = false;
   //         this.popupMessage = '';
@@ -68,7 +91,6 @@ export default {
   //     }
   //   }
   // }
-
 };
 </script>
   
@@ -86,23 +108,23 @@ export default {
 }
 
 .button::before {
-  content: '';
+  content: "";
   border-radius: 15px;
   min-width: calc(280px + 20px);
   min-height: calc(80px + 20px);
-  border: 4px solid #72D896;
+  border: 4px solid #72d896;
   box-shadow: 0 0 60px #72d896ab;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   opacity: 0;
-  transition: all .3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
 }
 
 .button {
-  transition: all .2s ease-in-out 0s;
-  transform: scale(.95) translateY( 0px);
+  transition: all 0.2s ease-in-out 0s;
+  transform: scale(0.95) translateY(0px);
 }
 /* .button:active{ 
 
@@ -113,11 +135,11 @@ export default {
 }
 
 .button::after {
-  content: '';
+  content: "";
   width: 30px;
   height: 30px;
   border-radius: 100%;
-  border: 6px solid #00FFCB;
+  border: 6px solid #00ffcb;
   position: absolute;
   z-index: -1;
   top: 50%;
@@ -144,9 +166,8 @@ export default {
   }
 }
 
-
 .shaky {
-  animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) ;
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97);
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   perspective: 1000px;
@@ -171,6 +192,5 @@ export default {
     transform: translate3d(4px, 0, 0);
   }
 }
-
 </style>
   

@@ -76,7 +76,14 @@ export default {
             message: `Please select a difficulty level to proceed.`,
         };
     },
-    created() {},
+    created() {
+      // Check if dark mode is saved in local storage
+      const savedIsDarkMode = localStorage.getItem("isDarkMode");
+      if (savedIsDarkMode !== null) {
+        this.isDark = JSON.parse(savedIsDarkMode);
+        document.body.classList.toggle('dark', this.isDark)
+      }
+    },
     methods: {
         selectDifficulty(index) {
             this.selectedDifficulty = index;
@@ -94,6 +101,7 @@ export default {
         toggleDarkMode() {
             this.isDark = !this.isDark
             document.body.classList.toggle('dark', this.isDark)
+            localStorage.setItem("isDarkMode", JSON.stringify(this.isDark));
         },
     },
 };
