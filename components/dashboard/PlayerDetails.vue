@@ -1,8 +1,8 @@
 <template>
-<div class="w-full h-[274px] bg-white rounded-[15px] drop-shadow-lg py-8 px-7 poppins text-lt-t-prim dark:bg-dk-inp-b-alt dark:text-violet-l md:h-[274px] lg:h-[500px]">
+<div class="w-full h-[274px] bg-white rounded-[15px] drop-shadow-lg py-8 px-7 poppins text-lt-t-prim dark:bg-dk-inp-b-alt dark:text-violet-l md:h-[274px]">
       <h3>Player Name</h3>
       <h1 class="text-3xl font-extrabold mt-1">{{ selectedPlayer.playerName }}</h1>
-      <div class="flex items-center justify-evenly mt-10 gap-10 text-center md:flex-row lg:flex-col">
+      <div class="flex items-center justify-evenly mt-10 gap-10 text-center md:flex-row">
          <div class="flex flex-col">
             <h1 class="text-4xl font-extrabold mb-3">{{ Math.floor(selectedPlayer.highScore) }}</h1>
             <h3 >Score</h3>

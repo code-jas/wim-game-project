@@ -22,7 +22,7 @@
       </ul>
     </div>
     <div class="md:flex md:justify-center">
-      <button type="button"  @click="startGame()" class="w-full h-[70px]  bg-blue-v font-medium font-franklin text-dk-t-prim-alt text-5xl rounded-[15px]  px-5 py-2.5 mr-2 mb-2   hover:bg-blue-v-alt focus:ring-4 focus:ring-blue-300  hover:scale-105 active:transform active:translate-y-2 transition duration-300 md:w-2/6 md:text-3xl sm:text-2xl">Start</button>
+      <button type="button"  @click="startGame()" class="w-full h-[70px]  bg-blue-v font-medium font-franklin text-dk-t-prim-alt text-5xl rounded-[15px]  px-5 py-2.5 mr-2 mb-2   hover:bg-blue-v-alt focus:ring-4 focus:ring-blue-300  hover:scale-105 active:transform active:translate-y-2 transition duration-300 md:text-3xl">Start</button>
     </div>
 </div>
 </template>
