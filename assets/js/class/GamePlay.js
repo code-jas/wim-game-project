@@ -31,7 +31,7 @@ export default class GamePlay {
 
    showTheCurrentQuestion() {
       const currentQuestions = this.player.questionnaire[this.currentDifficulty];
-      console.log(currentQuestions)
+      // console.log(currentQuestions)
       const picture = currentQuestions[this.currentLevel].picture;
       const choices = currentQuestions[this.currentLevel].choices;
       const answer = currentQuestions[this.currentLevel].answer;

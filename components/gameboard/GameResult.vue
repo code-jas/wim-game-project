@@ -1,63 +1,63 @@
 <template>
-  <div>
-    <div class="flex flex-col items-center gap-y-16">
-      <h1 class="font-black text-lt-t-prim text-5xl">SUMMARY</h1>
-      <h2 class="font-black text-lt-t-prim text-2xl capitalize">
-        {{ difficulty }}
-      </h2>
-    </div>
-    <div class="flex justify-center mt-4">
+  <div
+    class="bg-summary w-full min-h-screen flex flex-col items-center gap-y-16 py-20"
+  >
+    <h1 class="font-black text-lt-t-prim text-5xl">SUMMARY</h1>
+    <div
+      class="w-[450px] h-[640px] flex flex-col items-center bg-blue rounded-[15px] border-8 border-blue relative"
+    >
       <div
-        class="flex justify-between items-center border border-blue-v rounded-[15px] bg-[#E6DCFF] text-[#1B254B] w-[600px] h-[150px] px-10"
+        class="font-bold h-16 w-full bg-blue flex items-center justify-center text-4xl text-white capitalize"
       >
-        <div class="font-black text-5xl">
-          <h1>{{ player.playerName }}</h1>
+        <h1>{{ difficulty }}</h1>
+      </div>
+      <div
+        class="flex flex-col items-center justify-between py-12 px-6 text-lt-t-prim w-full h-full text-center rounded-[15px] bg-lt-cont"
+      >
+        <div>
+          <div class="text-lg">Player Name</div>
+
+          <div class="font-black text-3xl capitalize px-6">
+            {{ player.playerName }}
+          </div>
         </div>
-        <div class="flex justify-between gap-10">
-          <div class="flex flex-col justify-center items-center">
-            <div class="font-black text-4xl">
-              {{ Math.floor(formattedScore) }}
+        <div class="">
+          <div class="font-black text-7xl capitalize text-blue">
+            {{ Math.floor(formattedScore) }}
+          </div>
+          <div class="text-lg">Total Score</div>
+        </div>
+        <div class="flex flex-col align-center">
+          <h1 class="text-sm mb-4">Performance Stats</h1>
+          <div class="flex items-center justify-center gap-6">
+            <div
+              class="w-44 h-20 bg-white rounded-[10px] flex flex-col items-center justify-center relative overflow-hidden"
+            >
+              <div class="bg-accuracy"></div>
+              <h1 class="font-black text-4xl capitalize z-10 mb-1">
+                {{ formattedAccuracy }}
+              </h1>
+              <h4 class="text-sm z-10">Accuracy</h4>
             </div>
-            <div class="text-xl">Total Score</div>
+            <div
+              class="w-44 h-20 bg-white rounded-[10px] flex flex-col items-center justify-center relative overflow-hidden"
+            >
+              <div class="bg-time"></div>
+              <h1 class="font-black text-4xl z-10 mb-1">
+                {{ formattedTimePerQuestion }}
+              </h1>
+              <h4 class="text-sm z-10">Time/Question</h4>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="text-center mt-10">
-      <h1 class="font-black text-2xl">Performance Stats</h1>
-      <div class="flex justify-center">
-        <div
-          class="flex justify-evenly items-center border border-blue-v rounded-[15px] w-[540px] h-[90px] p-"
-        >
-          <div
-            class="flex flex-col justify-center items-center w-[170px] h-[75px]"
-          >
-            <div class="font-black text-4xl">{{ formattedAccuracy }}</div>
-            <div class="text-xl">Accuracy</div>
-          </div>
-          <!-- <div class="flex flex-col justify-center items-center w-[170px] h-[75px]">
-            <div class="font-black text-4xl">{{ incorrectAnswers }}</div>
-            <div class="text-xl">Incorrect Answers</div>
-          </div> -->
-          <div
-            class="flex flex-col justify-center items-center w-[170px] h-[75px]"
-          >
-            <div class="font-black text-4xl">
-              {{ formattedTimePerQuestion }}
-            </div>
-            <div class="text-xl">Time/Question</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="mt-10 text-center">
-      <button
-        class="bg-blue-v text-white font-black py-2 px-6 rounded-[15px] hover:bg-blue-700 transition duration-300"
-        @click="restartGame()"
-      >
-        Go to Dashboard
-      </button>
-    </div>
+    <button
+      class="bg-blue w-64 h-14 sm:w-[200px] md:w-[300px] xl:w-[400px] 2xl:w-64 text-lt-inp font-franklin text-4xl rounded-[15px] active:transform active:translate-y-1 transition duration-300"
+      @click="restartGame()"
+    >
+      Continue
+    </button>
   </div>
 </template>
 
@@ -81,7 +81,7 @@ export default {
       const total = this.aveTime.length;
       const totalTime = this.aveTime.reduce((acc, result) => acc + result, 0);
       const timePerQuestion = totalTime / total;
-      return `${timePerQuestion.toFixed(2)} sec`;
+      return `${timePerQuestion.toFixed(1)}s`;
     },
     formattedScore() {
       return this.score.reduce((acc, result) => acc + result, 0);
@@ -96,5 +96,36 @@ export default {
 </script>
 
 <style scoped>
-/* Add any necessary styling here */
+.bg-summary {
+  background-image: url("@/assets/img/summary-bg.svg");
+  background-size: cover;
+}
+.bg-accuracy {
+  width: 100%;
+  height: 100%;
+  background-image: url("@/assets/img/target.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  scale: 1.5;
+  opacity: 0.3;
+  z-index: 1;
+}
+.bg-time {
+  width: 100%;
+  height: 100%;
+  background-image: url("@/assets/img/timer.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right;
+  position: absolute;
+  bottom: 0;
+  right: -10%;
+  scale: 1;
+  opacity: 0.3;
+  z-index: 1;
+}
 </style>

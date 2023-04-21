@@ -1,15 +1,17 @@
 
 <template>
-<<<<<<< Updated upstream
-  <div class="bg-violet-l-alt mx-auto dark:bg-dk-inp-b">
-    <div v-if="showCountdown"  class="font-franklin bg-pageloader countdown">
-      <span class="countdown-text" v-if="countdown === 3">{{ countdownText }}</span>
-      <span class="countdown-text" v-if="countdown === 2">{{ countdownText }}</span>
-      <span class="countdown-text" v-if="countdown === 1">{{ countdownText }}</span>
-      <span class="countdown-text" v-if="countdown === 0">{{countdownText}}</span>
-=======
-  <div>
-    <div v-if="showCountdown" class="font-franklin bg-pageloader countdown">
+  <div
+    class="relative bg-violet-l-alt flex flex-col justify-center items-center min-h-screen overflow-hidden"
+  >
+    <!-- Curtain to change the  question  -->
+    <!-- <div
+      class="bg-pageloader flex items-center justify-center w-full min-h-screen bg-blue-v font-franklin text-violet-l-alt text-9xl scroll-container z-30"
+      ref="container"
+    >
+      <p class="text-9xl">Image/Word <br />Match Game</p>
+    </div> -->
+
+    <div v-if="showCountdown" class="font-franklin bg-countdown countdown z-20">
       <span class="countdown-text" v-if="countdown === 3">{{
         countdownText
       }}</span>
@@ -22,14 +24,13 @@
       <span class="countdown-text" v-if="countdown === 0">{{
         countdownText
       }}</span>
->>>>>>> Stashed changes
     </div>
-    <div v-else>
+    <div v-else class="w-full">
       <div class="progress">
         <div class="progress--bar" :style="{ width: progress + '%' }"></div>
       </div>
 
-      <div v-if="showGamePlay" class="py-20">
+      <div v-if="showGamePlay">
         <GameboardNavbar
           @showModal="showInstructionModal = true"
           :level="curLevel"
@@ -41,19 +42,21 @@
           :selectedChoice="selectedChoice"
           :question="question"
           :checkAnswer="checkAnswer"
+          ref="gamePlay"
           @selectChoice="selectChoice"
         />
         <div v-if="showInstructionModal">
           <InstructionModal @closeModal="showInstructionModal = false" />
         </div>
       </div>
-      <div v-if="showGameResult" class="py-20">
+      <div v-if="showGameResult" class="w-full">
         <GameResult
           :player="checkAnswer.player"
           :difficulty="currentDifficulty"
           :score="checkAnswer.scorePerDifficulty"
           :correctAnswers="checkAnswer.correctAnswers"
           :aveTime="checkAnswer.timePerQuestion"
+          ref="gameResult"
         />
       </div>
     </div>
@@ -63,7 +66,7 @@
 <script>
 import GamePlay from "./GamePlay.vue";
 import InstructionModal from "../InstructionModal.vue";
-import GamePlayClass from "~/assets/js/class/Gameplay.js";
+import GamePlayClass from "~/assets/js/class/GamePlay.js";
 import GameResult from "./GameResult.vue";
 
 export default {
@@ -130,6 +133,7 @@ export default {
   mounted() {
     // Add event listener to adjust progress bar width when window is resized
     window.addEventListener("resize", this.updateProgress);
+    window.addEventListener("scroll", this.handleScroll);
   },
   beforeDestroy() {
     // Remove event listener to prevent memory leaks
@@ -139,39 +143,22 @@ export default {
     countdownText() {
       return this.countdown > 0 ? `${this.countdown}` : "Go!";
     },
-<<<<<<< Updated upstream
-    components: { GamePlay, GameResult },
-    data() {
-      return {
-        isDark: false,
-        showInstructionModal: false,
-        gamePlay: null,
-        selectedChoice: null,
-        question: {
-          picture: 'img link',
-          hint: 'Person holding a pencil',
-          choices: ['Eraser', 'Banana', 'Shoe'],
-        },
-        timeLeft: 0,
-        scoreNavbar: [],
-        checkAnswer: {},
-        timerInterval: null,
-        curLevel: 0,
-        showGamePlay: true,
-        showGameResult: false,
-        countdown : 0,
-        showCountdown: true,
-      };
-=======
     progress() {
       const level = this.curLevel;
       const totalLevel =
         this.gamePlay.player.questionnaire[this.currentDifficulty].length;
-      console.log("level: ", level);
-      console.log("totalLevel: ", totalLevel);
-      console.log("Progress bar: ", Math.floor((level / totalLevel) * 100));
+      // console.log("level: ", level);
+      // console.log("totalLevel: ", totalLevel);
+      // console.log("Progress bar: ", Math.floor((level / totalLevel) * 100));
       return Math.floor((level / totalLevel) * 100);
->>>>>>> Stashed changes
+    },
+  },
+  watch: {
+    isCorrect(newValue) {
+      // console.log("watch: isCorrect: ", newValue);
+      if (newValue) {
+        this.scrollPage();
+      }
     },
   },
   methods: {
@@ -220,35 +207,116 @@ export default {
             this.scoreNavbar = scorePerDifficulty;
             this.curLevel++;
             this.updateQuestion();
-          }, 2000); // 2 seconds delay
+
+            isCorrect = false;
+          }, 1400); // 2 seconds delay
         } else {
           //game over || result
           console.log("end");
-          this.gamePlay.endGame();
+          `
+          this.gamePlay.endGame();`;
           this.showGamePlay = false;
           this.showGameResult = true;
           this.finished(); // update the progress bar to 100% when the game is over
         }
-<<<<<<< Updated upstream
-      },
-      toggleDarkMode() {
+      }
+    },
+    toggleDarkMode() {
       this.isDark = !this.isDark;
       document.body.classList.toggle("dark", this.isDark);
       localStorage.setItem("isDarkMode", JSON.stringify(this.isDark));
-      },
-    }
-  }
+    },
+    handleScroll() {
+      const gamePlayEl = this.$refs.gamePlay;
+      const gameResultEl = this.$refs.gameResult;
 
-=======
+      // check if the game play element is in the viewport
+      if (this.isElementInViewport(gamePlayEl)) {
+        gamePlayEl.classList.add("animate__slideInLeft");
+      } else {
+        gamePlayEl.classList.remove("animate__slideInLeft");
       }
+
+      // check if the game result element is in the viewport
+      if (this.isElementInViewport(gameResultEl)) {
+        gameResultEl.classList.add("animate__slideInRight");
+      } else {
+        gameResultEl.classList.remove("animate__slideInRight");
+      }
+    },
+
+    // helper method to check if an element is in the viewport
+    isElementInViewport(el) {
+      const rect = el.getBoundingClientRect();
+      return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <=
+          (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <=
+          (window.innerWidth || document.documentElement.clientWidth)
+      );
     },
   },
 };
->>>>>>> Stashed changes
 </script>
 
 <style>
+.animate__slideInLeft {
+  animation-name: slideInLeft;
+  animation-duration: 1s;
+}
+
+.animate__slideInRight {
+  animation-name: slideInRight;
+  animation-duration: 1s;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+.scroll-container {
+  height: 100vh; /* set the height of the container to the viewport height */
+  overflow: hidden; /* hide any overflow content */
+  position: absolute; /* position the container relative to the page */
+  top: -100vh; /* offset the container by the viewport height */
+}
+
+.scroll-container.animate {
+  animation: scroll 2s forwards; /* use a CSS animation to scroll the container */
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateY(0); /* start with no vertical offset */
+  }
+  50% {
+    transform: translateY(100vh); /* scroll down by half the container height */
+  }
+  100% {
+    transform: translateY(0); /* scroll down by the container height */
+  }
+}
+
 .bg-pageloader {
+  background-image: url("@/assets/img/pageloader/pl-desktop.png");
+  background-size: cover;
+}
+.bg-countdown {
   background-image: url("@/assets/img/countdown/countdown_bg.png");
   background-size: cover;
 }
