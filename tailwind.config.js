@@ -39,7 +39,7 @@ module.exports = {
             'blue-v-alt': '#5D39FF', // blue violet alt 
             'violet': '#8353FC', // violet
             'violet-alt': '#9065FD', // violet alt 
-            'violet-l ': '#EDE9FF', // violet light
+            'violet-l': '#EDE9FF', // violet light
             'violet-l-alt': '#F2F0FC', // violet light alt
             // Light Color 
             'lt-t-prim': '#4D4C73', // text light primary

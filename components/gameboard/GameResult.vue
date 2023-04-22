@@ -2,17 +2,17 @@
   <div
     class="bg-summary w-full min-h-screen flex flex-col items-center gap-y-16 py-20"
   >
-    <h1 class="font-black text-lt-t-prim text-5xl">SUMMARY</h1>
+    <h1 class="font-black text-lt-t-prim text-5xl dark:text-violet-l">SUMMARY</h1>
     <div
-      class="w-[450px] h-[640px] flex flex-col items-center bg-blue rounded-[15px] border-8 border-blue relative"
+      class="w-[450px] h-[640px] flex flex-col items-center bg-blue rounded-[15px] border-8 border-blue relative dark:bg-blue-v dark:border-blue-v"
     >
       <div
-        class="font-bold h-16 w-full bg-blue flex items-center justify-center text-4xl text-white capitalize"
+        class="font-bold h-16 w-full bg-blue flex items-center justify-center text-4xl text-white capitalize dark:bg-blue-v"
       >
         <h1>{{ difficulty }}</h1>
       </div>
       <div
-        class="flex flex-col items-center justify-between py-12 px-6 text-lt-t-prim w-full h-full text-center rounded-[15px] bg-lt-cont"
+        class="flex flex-col items-center justify-between py-12 px-6 text-lt-t-prim w-full h-full text-center rounded-[15px] bg-lt-cont dark:bg-dk-inp-b-alt dark:text-violet-l"
       >
         <div>
           <div class="text-lg">Player Name</div>
@@ -22,7 +22,7 @@
           </div>
         </div>
         <div class="">
-          <div class="font-black text-7xl capitalize text-blue">
+          <div class="font-black text-7xl capitalize text-blue dark:text-blue-v">
             {{ Math.floor(formattedScore) }}
           </div>
           <div class="text-lg">Total Score</div>
@@ -31,7 +31,7 @@
           <h1 class="text-sm mb-4">Performance Stats</h1>
           <div class="flex items-center justify-center gap-6">
             <div
-              class="w-44 h-20 bg-white rounded-[10px] flex flex-col items-center justify-center relative overflow-hidden"
+              class="w-44 h-20 bg-white rounded-[10px] flex flex-col items-center justify-center relative overflow-hidden dark:bg-blue-v"
             >
               <div class="bg-accuracy"></div>
               <h1 class="font-black text-4xl capitalize z-10 mb-1">
@@ -40,7 +40,7 @@
               <h4 class="text-sm z-10">Accuracy</h4>
             </div>
             <div
-              class="w-44 h-20 bg-white rounded-[10px] flex flex-col items-center justify-center relative overflow-hidden"
+              class="w-44 h-20 bg-white rounded-[10px] flex flex-col items-center justify-center relative overflow-hidden dark:bg-blue-v"
             >
               <div class="bg-time"></div>
               <h1 class="font-black text-4xl z-10 mb-1">
@@ -53,7 +53,7 @@
       </div>
     </div>
     <button
-      class="bg-blue w-64 h-14 sm:w-[200px] md:w-[300px] xl:w-[400px] 2xl:w-64 text-lt-inp font-franklin text-4xl rounded-[15px] active:transform active:translate-y-1 transition duration-300"
+      class="bg-blue w-64 h-14 sm:w-[200px] md:w-[300px] xl:w-[400px] 2xl:w-64 text-lt-inp font-franklin text-4xl rounded-[15px] active:transform active:translate-y-1 transition duration-300 dark:bg-blue-v"
       @click="restartGame()"
     >
       Continue
@@ -63,6 +63,11 @@
 
 <script>
 export default {
+  data(){
+    return{
+      isDark: false,
+    }
+  },
   props: {
     player: Object,
     difficulty: String,
@@ -90,6 +95,11 @@ export default {
   methods: {
     restartGame() {
       this.$router.push("/main");
+    },
+    toggleDarkMode() {
+      this.isDark = !this.isDark;
+      document.body.classList.toggle("dark", this.isDark);
+      localStorage.setItem("isDarkMode", JSON.stringify(this.isDark));
     },
   },
 };
