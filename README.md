@@ -1,8 +1,6 @@
-# wim-game-project - 70% complete
+# wim-game-project - 90% complete
 
 ## To improve - Still Progress
-*UI design of the game result
-*Local Storage Light/Dark mode
 *Fix small Details in dashboard
 
 
