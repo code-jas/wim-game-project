@@ -41,7 +41,7 @@
       Image/Word <br />
       Match Game
     </h1>
-    ~
+
     <div class="flex items-center justify-center min-h-screen flex-col">
       <input
         type="text"

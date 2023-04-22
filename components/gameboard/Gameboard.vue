@@ -49,13 +49,13 @@
           <InstructionModal @closeModal="showInstructionModal = false" />
         </div>
       </div>
-      <div v-if="showGameResult" class="w-full">
+      <div v-if="showGameResult" class="w-full fade-in enter-active">
         <GameResult
-          :player="checkAnswer.player"
-          :difficulty="currentDifficulty"
-          :score="checkAnswer.scorePerDifficulty"
-          :correctAnswers="checkAnswer.correctAnswers"
-          :aveTime="checkAnswer.timePerQuestion"
+          :player="checkAnswer.player || ''"
+          :difficulty="currentDifficulty || ''"
+          :score="checkAnswer.scorePerDifficulty || 0"
+          :correctAnswers="checkAnswer.correctAnswers || []"
+          :aveTime="checkAnswer.timePerQuestion || ''"
           ref="gameResult"
         />
       </div>
@@ -86,7 +86,7 @@ export default {
         hint: "Person holding a pencil",
         choices: ["Eraser", "Banana", "Shoe"],
       },
-      timeLeft: 0,
+      timeLeft: 15,
       scoreNavbar: [],
       checkAnswer: {},
       timerInterval: null,
@@ -133,7 +133,6 @@ export default {
   mounted() {
     // Add event listener to adjust progress bar width when window is resized
     window.addEventListener("resize", this.updateProgress);
-    window.addEventListener("scroll", this.handleScroll);
   },
   beforeDestroy() {
     // Remove event listener to prevent memory leaks
@@ -153,14 +152,7 @@ export default {
       return Math.floor((level / totalLevel) * 100);
     },
   },
-  watch: {
-    isCorrect(newValue) {
-      // console.log("watch: isCorrect: ", newValue);
-      if (newValue) {
-        this.scrollPage();
-      }
-    },
-  },
+  watch: {},
   methods: {
     updateQuestion() {
       const { picture, hint, choices, answer } =
@@ -207,14 +199,12 @@ export default {
             this.scoreNavbar = scorePerDifficulty;
             this.curLevel++;
             this.updateQuestion();
-
-            isCorrect = false;
           }, 1400); // 2 seconds delay
         } else {
           //game over || result
           console.log("end");
-          `
-          this.gamePlay.endGame();`;
+
+          this.gamePlay.endGame();
           this.showGamePlay = false;
           this.showGameResult = true;
           this.finished(); // update the progress bar to 100% when the game is over
@@ -225,24 +215,6 @@ export default {
       this.isDark = !this.isDark;
       document.body.classList.toggle("dark", this.isDark);
       localStorage.setItem("isDarkMode", JSON.stringify(this.isDark));
-    },
-    handleScroll() {
-      const gamePlayEl = this.$refs.gamePlay;
-      const gameResultEl = this.$refs.gameResult;
-
-      // check if the game play element is in the viewport
-      if (this.isElementInViewport(gamePlayEl)) {
-        gamePlayEl.classList.add("animate__slideInLeft");
-      } else {
-        gamePlayEl.classList.remove("animate__slideInLeft");
-      }
-
-      // check if the game result element is in the viewport
-      if (this.isElementInViewport(gameResultEl)) {
-        gameResultEl.classList.add("animate__slideInRight");
-      } else {
-        gameResultEl.classList.remove("animate__slideInRight");
-      }
     },
 
     // helper method to check if an element is in the viewport
@@ -262,32 +234,13 @@ export default {
 </script>
 
 <style>
-.animate__slideInLeft {
-  animation-name: slideInLeft;
-  animation-duration: 1s;
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 }
-
-.animate__slideInRight {
-  animation-name: slideInRight;
-  animation-duration: 1s;
-}
-
-@keyframes slideInLeft {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0);
-  }
+.fade-in.enter-active {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
 }
 .scroll-container {
   height: 100vh; /* set the height of the container to the viewport height */

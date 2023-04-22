@@ -7,55 +7,72 @@
       type="button"
     >
       {{ selectedPlayer }}
-      <i class="uil uil-angle-up text-5xl transition-transform duration-500" :class="{'rotate-90': isOpen}" />
+      <i
+        class="uil uil-angle-up text-5xl transition-transform duration-500"
+        :class="{ 'rotate-90': isOpen }"
+      />
     </button>
-    <div v-if="isOpen"
+    <div
+      v-if="isOpen"
       id="dropdownInformation"
-      class="w-full max-h-96 bottom-full overflow-y-auto  text-lt-t-prim text-2xl z-10  mb-5 absolute bg-white divide-y divide-gray-100 rounded-lg shadow-lg dark:bg-dk-inp-b-alt dark:text-violet-l"
+      class="w-full max-h-96 bottom-full overflow-y-auto text-lt-t-prim text-2xl z-10 mb-5 absolute bg-white divide-y divide-gray-100 rounded-lg shadow-lg dark:bg-dk-inp-b-alt dark:text-violet-l"
     >
-      <ul class="py-2 dark:text-gray-100" aria-labelledby="dropdownInformationButton">
+      <ul
+        class="py-2 dark:text-gray-100"
+        aria-labelledby="dropdownInformationButton"
+      >
         <li v-for="(player, index) in players" :key="index">
-          <a href="#" class="block px-8 py-3 rounded-lg mx-5 my-2 bg-white  dark:hover:bg-dk-inp-b dark:bg-dk-inp-b-alt" @click="selectPlayer(player)">
+          <a
+            href="#"
+            class="block px-8 py-3 rounded-lg mx-5 my-2 bg-white dark:hover:bg-dk-inp-b dark:bg-dk-inp-b-alt"
+            @click="selectPlayer(player)"
+          >
             {{ player.playerName }}
           </a>
         </li>
       </ul>
     </div>
     <div class="md:flex md:justify-center">
-      <button type="button"  @click="startGame()" class="w-full h-[70px]  bg-blue-v font-medium font-franklin text-dk-t-prim-alt text-5xl rounded-[15px]  px-5 py-2.5 mr-2 mb-2   hover:bg-blue-v-alt focus:ring-4 focus:ring-blue-300  hover:scale-105 active:transform active:translate-y-2 transition duration-300 md:text-3xl">Start</button>
+      <button
+        type="button"
+        @click="startGame()"
+        class="w-full h-[70px] bg-blue-v font-medium font-franklin text-dk-t-prim-alt text-5xl rounded-[15px] px-5 py-2.5 mr-2 mb-2 hover:bg-blue-v-alt focus:ring-4 focus:ring-blue-300 hover:scale-105 active:transform active:translate-y-2 transition duration-300 md:text-3xl"
+      >
+        Start
+      </button>
     </div>
-</div>
+  </div>
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref } from "vue";
 
 export default {
-  data(){
-    return{
-      isDark: false
-    }
+  data() {
+    return {
+      isDark: false,
+    };
   },
   props: {
     players: {
       type: Array,
-      required: true
+      required: true,
     },
-    startGame : {
+    startGame: {
       type: Function,
-      required: true
-    }
+      required: true,
+    },
   },
-  created() { 
+  created() {
     for (const player of this.players) {
       // console.log("Dd: ", player.playerName);
     }
   },
-  setup({players}) {
+  setup({ players }) {
     const isOpen = ref(false);
-    const selectedPlayer = ref('');
+    const selectedPlayer = ref("");
 
-    const selected = players.find(p => p.selected);
+    const selected = players.find((p) => p.selected);
     if (selected) {
       selectedPlayer.value = selected.playerName;
     }
@@ -68,33 +85,52 @@ export default {
       selectedPlayer.value = player.playerName;
       isOpen.value = false;
 
-    // Add a 'selected' property to the selected player
-     player.selected = true;
+      // Add a 'selected' property to the selected player
+      player.selected = true;
 
-    // Update the 'selected' property for all other players
-      this.players.forEach(p => {
-      if (p.playerName !== player.playerName) {
-        p.selected = false;
-      }
-    });
-    // console.log(this.players)
+      // Update the 'selected' property for all other players
+      this.players.forEach((p) => {
+        if (p.playerName !== player.playerName) {
+          p.selected = false;
+        }
+      });
+      // console.log(this.players)
 
-    // Save the updated players array to local storage
-    localStorage.setItem('players', JSON.stringify(this.players));
+      // Save the updated players array to local storage
+      localStorage.setItem("players", JSON.stringify(this.players));
     }
 
     return {
       isOpen,
       selectedPlayer,
       toggleDropdown,
-      selectPlayer
-    }
+      selectPlayer,
+    };
+  },
+  computed: {
+    selectedPlayer() {
+      const selected = this.players.find((p) => p.selected);
+      return selected ? selected.playerName : "";
+    },
   },
   methods: {
     toggleDarkMode() {
-      this.isDark = !this.isDark
-      document.body.classList.toggle('dark', this.isDark)
+      this.isDark = !this.isDark;
+      document.body.classList.toggle("dark", this.isDark);
     },
-  }
-}
+  },
+  watch: {
+    players: {
+      handler(players) {
+        const selected = players.find((p) => p.selected);
+        if (!selected && players.length > 0) {
+          const lastPlayer = players[players.length - 1];
+          lastPlayer.selected = true;
+        }
+        localStorage.setItem("players", JSON.stringify(players));
+      },
+      deep: true,
+    },
+  },
+};
 </script>

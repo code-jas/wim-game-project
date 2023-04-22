@@ -24,7 +24,7 @@
     <div
       class="text-center font-bold text-4xl text-[#605F81] mb-16 md:text-2xl lg:text-3xl dark:text-violet-l"
     >
-      <h1>{{ question.hint }}</h1>
+      <!-- <h1>{{ question.hint }}</h1> -->
     </div>
     <div
       class="flex justify-center items-center font-bold text-4xl md:flex-col lg:text-3xl"
@@ -76,7 +76,7 @@ export default {
     };
   },
   created() {
-    console.log("checkAnswer: ", this.checkAnswer);
+    // console.log("checkAnswer: ", this.checkAnswer);
     // Check if dark mode is saved in local storage
     const savedIsDarkMode = localStorage.getItem("isDarkMode");
     if (savedIsDarkMode !== null) {
@@ -90,16 +90,15 @@ export default {
     },
     containerClasses() {
       const classes = ["container"];
-      console.log("isEntering: ", this.isEntering);
+      // console.log("isEntering: ", this.isEntering);
       if (this.isEntering) {
         classes.push("entering");
-        console.log("entering");
+        // console.log("entering");
       } else if (this.isLeaving) {
         classes.push("leaving");
-        console.log("leaving");
+        // console.log("leaving");
       }
-      console.log("classes: ", classes);
-
+      // console.log("classes: ", classes);
       return classes;
     },
   },

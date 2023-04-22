@@ -126,7 +126,7 @@ export default {
     this.doneLevels = this.player.levelDonePerDifficulty[this.difficulty].map(
       (isDone, index) => (isDone ? index + 1 : 1)
     );
-    console.log("doneLevels", this.doneLevels);
+    // console.log("doneLevels", this.doneLevels);
   },
   methods: {
     isLevelDone(level) {

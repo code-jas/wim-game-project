@@ -142,7 +142,7 @@ export default {
   methods: {
     selectDifficulty(index) {
       this.selectedDifficulty = index;
-      console.log("index", this.selectedDifficulty);
+      // console.log("index", this.selectedDifficulty);
     },
     nextClicked() {
       if (this.selectedDifficulty === null) {

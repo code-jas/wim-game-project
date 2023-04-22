@@ -1,4 +1,4 @@
-    <template>
+<template>
   <div class="flex justify-center">
     <div
       class="flex items-center justify-between w-9/12 bg-white py-4 px-9 mb-20 rounded-[15px] drop-shadow-lg dark:bg-dk-inp-b-alt sm:px-5 md:px-7 lg:px-8 lg:items-start"
@@ -23,7 +23,13 @@
             <div class="text-base text-lt-t-prim dark:text-violet-l">Level</div>
           </div>
           <div class="text-center">
-            <div class="font-bold text-4xl text-lt-t-prim dark:text-violet-l">
+            <div
+              class="font-bold text-4xl dark:text-violet-l"
+              :class="{
+                'text-red': timeLeft <= 5,
+                'text-lt-t-prim': timeLeft > 5,
+              }"
+            >
               {{ formattedTime || "00:15" }}
             </div>
             <div class="text-base text-lt-t-prim dark:text-violet-l">Timer</div>
@@ -75,7 +81,7 @@ export default {
   props: {
     timeLeft: Number,
     level: Number,
-    score: Number,
+    score: Array,
   },
   data() {
     return {
