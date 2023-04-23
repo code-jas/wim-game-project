@@ -22,7 +22,7 @@
           <div class="flex items-center justify-center flex-col mt-10">
             <input
               type="text"
-              class="w-9/12 bg-lt-inp border-none text-lt-t-prim text-3xl rounded-[15px] drop-shadow-lg placeholder:text-lt-t-sec-alt focus:outline-none focus:ring-2 focus:ring-blue-v focus:border-blue-v focus:bg-white block p-7 mb-5 dark:bg-dk-inp-b dark:placeholder:text-lt-t-prim-alt dark:focus:bg-dk-inp dark:text-violet-l sm:text-lg md: lg:text-xl xl: 2xl:text-2xl"
+              class="w-9/12 bg-lt-inp border-none text-lt-t-prim text-3xl rounded-[15px] drop-shadow-lg placeholder:text-lt-t-sec-alt focus:outline-none focus:ring-2 focus:ring-blue-v focus:border-blue-v focus:bg-white block p-7 mb-5 dark:bg-dk-inp-b-alt dark:placeholder:text-lt-t-prim-alt dark:focus:bg-dk-inp-alt dark:text-violet-l sm:text-lg md: lg:text-xl xl: 2xl:text-2xl"
               placeholder="Player Name..."
             />
             <!-- error messasge -->
