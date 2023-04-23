@@ -1,7 +1,7 @@
 <template>
   <div class="flex justify-center">
     <div
-      class="flex items-center justify-between w-9/12 bg-white py-4 px-9 mb-20 rounded-[15px] drop-shadow-lg dark:bg-dk-inp-b-alt sm:px-5 md:px-7 lg:px-8 lg:items-start"
+      class="flex items-center justify-between w-9/12 bg-white py-4 px-9 mb-20 rounded-[15px] drop-shadow-lg dark:bg-dk-inp sm:px-5 md:px-7 lg:px-8 lg:items-start"
     >
       <div class="w-1/3 flex justify-start">
         <!-- <button>

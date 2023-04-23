@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex items-center justify-between w-10/12 h-[98px] bg-white px-9 mb-16 rounded-[15px] drop-shadow-lg dark:bg-dk-inp-b-alt sm:h-[70px] sm:px-5 md:h-[80px] md:px-7 lg:h-[90px] lg:px-8"
+    class="flex items-center justify-between w-10/12 h-[98px] bg-white px-9 mb-16 rounded-[15px] drop-shadow-lg dark:bg-dk-inp sm:h-[70px] sm:px-5 md:h-[80px] md:px-7 lg:h-[90px] lg:px-8"
   >
     <h1
       class="font-franklin text-5xl text-lt-t-prim dark:text-violet-l sm:text-2xl md:text-3xl lg:text-4xl"

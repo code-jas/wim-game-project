@@ -72,7 +72,7 @@
           v-for="(difficulty, index) in difficulties"
           :key="index"
           :class="[
-            'relative w-[275px] h-[370px] xl:w-[255px] xl:h-[360px] bg-[#e6dcff] font-semibold  text-lt-t-prim text-3xl  uppercase transition duration-500 ease-in-out rounded-[15px] m-8 md:m-2 overflow-hidden flex items-center justify-center shadow-lg dark:bg-dk-inp-b-alt dark:text-[#7282FB] active:transform active:translate-y-1 ',
+            'relative w-[275px] h-[370px] xl:w-[255px] xl:h-[360px] bg-[#e6dcff] font-semibold  text-lt-t-prim text-3xl  uppercase transition duration-500 ease-in-out rounded-[15px] m-8 md:m-2 overflow-hidden flex items-center justify-center shadow-lg dark:bg-dk-inp dark:text-blue-alt active:transform active:translate-y-1 ',
             {
               'hover:bg-white hover:text-blue-v hover:border hover:border-blue-v hover:shadow-xl hover:scale-105 dark:hover:bg-blue-v dark:hover:text-violet-l dark:hover:border-violet-l':
                 selectedDifficulty !== index,

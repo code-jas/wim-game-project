@@ -2,7 +2,7 @@
   <div class="relative dropdown">
     <button
       id="dropdownInformationButton"
-      class="w-full h-20 text-lt-t-prim text-2xl bg-white hover:bg-blue-800 font-medium rounded-lg shadow px-12 py-2.5 mb-10 text-center inline-flex justify-between items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 dark:bg-dk-inp-b-alt dark:text-violet-l"
+      class="w-full h-20 text-lt-t-prim text-2xl bg-white hover:bg-blue-800 font-medium rounded-lg shadow px-12 py-2.5 mb-10 text-center inline-flex justify-between items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 dark:bg-dk-inp dark:text-violet-l"
       @click="toggleDropdown"
       type="button"
     >
@@ -15,7 +15,7 @@
     <div
       v-if="isOpen"
       id="dropdownInformation"
-      class="w-full max-h-96 bottom-full overflow-y-auto text-lt-t-prim text-2xl z-10 mb-5 absolute bg-white divide-y divide-gray-100 rounded-lg shadow-lg dark:bg-dk-inp-b-alt dark:text-violet-l"
+      class="w-full max-h-96 bottom-full overflow-y-auto text-lt-t-prim text-2xl z-10 mb-5 absolute bg-white divide-y divide-gray-100 rounded-lg shadow-lg dark:bg-dk-inp dark:text-violet-l"
     >
       <ul
         class="py-2 dark:text-gray-100"
@@ -24,7 +24,7 @@
         <li v-for="(player, index) in players" :key="index">
           <a
             href="#"
-            class="block px-8 py-3 rounded-lg mx-5 my-2 bg-white dark:hover:bg-dk-inp-b dark:bg-dk-inp-b-alt"
+            class="block px-8 py-3 rounded-lg mx-5 my-2 bg-white dark:hover:bg-dk-inp-alt dark:bg-dk-inp"
             @click="selectPlayer(player)"
           >
             {{ player.playerName }}

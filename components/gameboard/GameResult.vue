@@ -15,7 +15,7 @@
         <h1>{{ difficulty }}</h1>
       </div>
       <div
-        class="flex flex-col items-center justify-between py-12 px-6 text-lt-t-prim w-full h-full text-center rounded-[15px] bg-lt-cont dark:bg-dk-inp-b-alt dark:text-violet-l"
+        class="flex flex-col items-center justify-between py-12 px-6 text-lt-t-prim w-full h-full text-center rounded-[15px] bg-lt-cont dark:bg-dk-inp dark:text-violet-l"
       >
         <div>
           <div class="text-lg">Player Name</div>

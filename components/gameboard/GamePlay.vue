@@ -8,7 +8,7 @@
     </div>
     <div class="flex justify-center mb-9">
       <div
-        class="flex justify-center items-center h-[310px] w-[530px] sm:w-[440px] md:h-[250px] md:w-[470px] lg:h-[280px] lg:w-[500px] border-4 border-blue-v-alt rounded-[15px] transition duration-500"
+        class="flex justify-center items-center h-[310px] w-[530px] sm:w-[440px] md:h-[250px] md:w-[470px] lg:h-[280px] lg:w-[500px] border-4 border-blue-v-alt rounded-[15px] transition duration-500 dark:border-[#e6dcff]"
       >
         <img
           :src="require(`~/assets/img/quiz-picture/${question.picture}`)"
