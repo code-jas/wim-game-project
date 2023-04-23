@@ -42,3 +42,41 @@ To play Image/Word Match, simply select a game mode and begin playing. The game 
 Points are awarded for each correct match. the score is based on the difficulty level and the time taken to complete the game. Scores are displayed together with the user name on the Dashboard.
 
 ### Game Pictures
+
+
+
+Scoring mechanism
+data => baseScore    -    represents the base score for the level
+        bonusPoints  -   represents any additional points earned during the level
+        timePenalty  -   represents a penalty for taking too much time to complete the level.
+      timeRatio = timeTaken / maxTime;
+
+      base score = 200 
+
+      Bonus points: 
+      Time bonus points = baseBonusPoints * (1 - timeRatio);
+      Difficulty bonus points easy=100 , medium=200 , hard=300
+
+      Deduction poinst =  Number of wrong answer * 50
+
+      Final Score per questions  = base score + difficulty bonus points + time bonus points - deduction points;
+      
+
+
+
+
+
+
+Time-Based Bonus Points
+- award points based on the amount of time remaining on the timer when the level is completed. 
+
+timeBonusPoints = maxTimeBonusPoints * (1 - timeRatio)
+
+In this formula, maxTimeBonusPoints represents the maximum bonus points that can be earned for completing the level quickly, and timeRatio represents the ratio of time taken to complete the level to the maximum allowed time. The timeRatio value will be between 0 and 1, with 0 representing completing the level within the maximum allowed time and 1 representing taking the full maximum allowed time to complete the level.
+
+You can adjust the maxTimeBonusPoints value and the specific time limit for your game to suit your needs.
+
+Difficulty-Based Bonus Points
+- award bonus points for completing the level on a higher difficulty level. 
+
+difficultyBonusPoints = baseBonusPoints * difficultyMultiplier

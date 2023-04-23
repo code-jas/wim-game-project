@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-[695px] h-[684px] bg-white rounded-[15px] drop-shadow-lg p-8 dark:bg-dk-inp md:p-5 md:w-full lg:w-full xl:w-[540px]"
+    class="w-[695px] h-[100%] bg-white rounded-[15px] drop-shadow-lg p-8 dark:bg-dk-inp md:p-5 md:w-full lg:w-full xl:w-[540px]"
   >
     <h1 class="text-2xl text-lt-t-prim font-semibold mb-12 dark:text-violet-l">
       Scoreboard

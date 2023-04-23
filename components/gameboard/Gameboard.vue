@@ -143,8 +143,8 @@ export default {
     window.addEventListener("resize", this.updateProgress);
     const gameBoard = document.querySelector(".game-board");
     if (gameBoard) {
-      gameBoard.classList.add("bg-gameboard-dk", this.isDark);
-      gameBoard.classList.add("bg-gameboard", !this.isDark);
+      gameBoard.classList.toggle("bg-gameboard-dk", this.isDark);
+      gameBoard.classList.toggle("bg-gameboard", !this.isDark);
     }
   },
   beforeDestroy() {

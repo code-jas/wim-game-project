@@ -36,7 +36,7 @@
           </div>
         </div>
       </div>
-      <div class="w-1/3 flex items-center justify-end gap-x-2 lg:items-start">
+      <div class="w-1/3 flex items-center justify-end gap-x-4 lg:items-start">
         <!-- <button  @click="$emit('showModal')" type="button" class="w-[45px] h-[45px] flex items-center justify-center bg-violet-l-alt rounded-full   hover:scale-110 transition duration-300 dark:bg-dk-inp-alt sm:w-[30px] sm:h-[30px] md:w-[35px] md:h-[35px] lg:w-[40px] lg:h-[40px]">
                 <i class="uil uil-lightbulb-alt text-blue text-4xl rounded-full dark:text-dk-t-prim sm:text-xl md:text-2xl lg:text-3xl"></i>
             </button> -->

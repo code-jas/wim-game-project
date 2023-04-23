@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-lt-dash w-screen h-screen min-h-full dark:bg-dk-inp-b">
+  <div class="w-screen h-screen bg-lt-dash dark:bg-dk-inp-b">
     <!-- <Toast
       v-if="showToast"
       :showToast="showToast"
@@ -8,7 +8,7 @@
     /> -->
 
     <div
-      class="py-20 max-w-[1535px] mx-auto flex flex-col items-center bg-lt-dash dark:bg-dk-inp-b sm:max-w-[635px] md:max-w-[767px] lg:max-w-[1023px] xl:max-w-[1279px]"
+      class="py-16 max-w-[1535px] h-full mx-auto flex flex-col items-center bg-lt-dash dark:bg-dk-inp-b sm:max-w-[635px] md:max-w-[767px] lg:max-w-[1023px] xl:max-w-[1279px]"
     >
       <dashboard-navbar
         @add-player="showModal = true"
@@ -16,13 +16,13 @@
       />
 
       <div
-        class="flex justify-between p-3 gap-x-20 w-full px-40 sm:px-20 md:px-32 md:gap-y-3 lg:flex-col-reverse lg:gap-y-10 lg:px-24 lg:gap-x-3 xl:gap-x-12 2xl:gap-x-16"
+        class="flex justify-between p-3 gap-x-20 w-full px-40 sm:px-20 md:px-32 md:gap-y-3 lg:flex-col-reverse lg:gap-y-10 lg:px-24 lg:gap-x-3 xl:px-28"
       >
         <highscore-list :players="players" />
         <div
-          class="w-[476px] lg:w-full md:w-full xl:w-[400px] lg:flex lg:flex-col lg:items-center lg:justify-center"
+          class="flex justify-between flex-col w-[476px] lg:w-full md:w-full xl:w-[400px] lg:flex lg: lg:items-center lg:justify-center"
         >
-          <player-details class="mb-32" :players="players" />
+          <player-details class="mb-28" :players="players" />
           <player-dropdown
             class="lg:w-1/2"
             :players="players"

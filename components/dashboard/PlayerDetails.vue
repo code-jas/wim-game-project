@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full h-[274px] bg-white rounded-[15px] drop-shadow-lg py-8 px-7 poppins text-lt-t-prim dark:bg-dk-inp dark:text-violet-l md:h-[274px]"
+    class="w-full h-2/4 bg-white rounded-[15px] drop-shadow-lg py-8 px-7 poppins text-lt-t-prim dark:bg-dk-inp dark:text-violet-l md:h-[274px]"
   >
     <h3>Player Name</h3>
     <h1 class="text-3xl font-extrabold mt-1">

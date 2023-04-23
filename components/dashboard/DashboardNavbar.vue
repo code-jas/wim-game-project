@@ -1,13 +1,13 @@
 <template>
   <div
-    class="flex items-center justify-between w-10/12 h-[98px] bg-white px-9 mb-16 rounded-[15px] drop-shadow-lg dark:bg-dk-inp sm:h-[70px] sm:px-5 md:h-[80px] md:px-7 lg:h-[90px] lg:px-8"
+    class="flex items-center justify-between w-10/12 bg-white px-9 xl:px-6 py-3 mb-16 rounded-[15px] drop-shadow-lg dark:bg-dk-inp"
   >
     <h1
       class="font-franklin text-5xl text-lt-t-prim dark:text-violet-l sm:text-2xl md:text-3xl lg:text-4xl"
     >
       Dashboard
     </h1>
-    <div class="flex items-center justify-between gap-x-2">
+    <div class="flex items-center justify-between gap-x-4">
       <div
         class="w-[45px] h-[45px] flex items-center justify-center overflow-hidden rounded-full hover:scale-105 transition duration-200 bg-violet-l-alt hover:bg-violet-l-alt sm:w-[30px] sm:h-[30px] md:w-[35px] md:h-[35px] lg:w-[40px] lg:h-[40px]"
         :class="{ 'dark:bg-dk-inp-alt dark:hover:bg-dk-inp-alt': isDark }"
