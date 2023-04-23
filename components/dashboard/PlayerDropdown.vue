@@ -1,12 +1,12 @@
 <template>
-  <div class="relative">
+  <div class="relative dropdown">
     <button
       id="dropdownInformationButton"
       class="w-full h-20 text-lt-t-prim text-2xl bg-white hover:bg-blue-800 font-medium rounded-lg shadow px-12 py-2.5 mb-10 text-center inline-flex justify-between items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 dark:bg-dk-inp-b-alt dark:text-violet-l"
       @click="toggleDropdown"
       type="button"
     >
-      {{ selectedPlayer }}
+      {{ selectedPlayerName }}
       <i
         class="uil uil-angle-up text-5xl transition-transform duration-500"
         :class="{ 'rotate-90': isOpen }"
@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, onMounted, onBeforeUnmount } from "vue";
 
 export default {
   data() {
@@ -65,7 +65,6 @@ export default {
   },
   created() {
     for (const player of this.players) {
-      // console.log("Dd: ", player.playerName);
     }
   },
   setup({ players }) {
@@ -100,6 +99,20 @@ export default {
       localStorage.setItem("players", JSON.stringify(this.players));
     }
 
+    function handleClickOutside(event) {
+      if (isOpen.value && !event.target.closest(".dropdown")) {
+        isOpen.value = false;
+      }
+    }
+
+    onMounted(() => {
+      document.addEventListener("click", handleClickOutside);
+    });
+
+    onBeforeUnmount(() => {
+      document.removeEventListener("click", handleClickOutside);
+    });
+
     return {
       isOpen,
       selectedPlayer,
@@ -108,28 +121,17 @@ export default {
     };
   },
   computed: {
-    selectedPlayer() {
+    selectedPlayerName() {
       const selected = this.players.find((p) => p.selected);
+      // console.log("selected: ", selected);
       return selected ? selected.playerName : "";
     },
   },
+
   methods: {
     toggleDarkMode() {
       this.isDark = !this.isDark;
       document.body.classList.toggle("dark", this.isDark);
-    },
-  },
-  watch: {
-    players: {
-      handler(players) {
-        const selected = players.find((p) => p.selected);
-        if (!selected && players.length > 0) {
-          const lastPlayer = players[players.length - 1];
-          lastPlayer.selected = true;
-        }
-        localStorage.setItem("players", JSON.stringify(players));
-      },
-      deep: true,
     },
   },
 };

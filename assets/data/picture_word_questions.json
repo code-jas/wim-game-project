@@ -182,7 +182,7 @@
          },
          {
             "id": 2,
-            "person": "medium/2) A person playing chess.jpg",
+            "picture": "medium/2) A person playing chess.jpg",
             "hint": "A person playing chess",
             "choices": [
                "Chess",

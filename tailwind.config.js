@@ -41,6 +41,8 @@ module.exports = {
             'violet-alt': '#9065FD', // violet alt 
             'violet-l': '#EDE9FF', // violet light
             'violet-l-alt': '#F2F0FC', // violet light alt
+            'light-gray': '#E4E7EF', // light gray
+            'light-gray-alt': '#F0F2F7', // light gray alt
             // Light Color 
             'lt-t-prim': '#4D4C73', // text light primary
             'lt-t-prim-alt': '#605F81', // text light alt

@@ -1,9 +1,9 @@
 <template>
   <div
-    class="w-[695px] h-[684px] bg-white rounded-[15px] drop-shadow-lg p-8 dark:bg-dk-inp-b-alt md:p-5 md:w-full lg:w-full xl:w-[540px]"
+    class="w-[695px] h-[684px] bg-white rounded-[15px] drop-shadow-lg p-8 dark:bg-dk-inp md:p-5 md:w-full lg:w-full xl:w-[540px]"
   >
     <h1 class="text-2xl text-lt-t-prim font-semibold mb-12 dark:text-violet-l">
-      Highscores
+      Scoreboard
     </h1>
     <div class="relative h-5/6 overflow-x-auto rounded-[15px]">
       <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -19,9 +19,13 @@
         </thead>
         <tbody>
           <tr
-            v-for="(player, index) in players"
+            v-for="(player, index) in sortedPlayersHighScore"
             :key="player.id"
-            class="font-semibold text-lt-t-prim dark:text-violet-l"
+            :class="{
+              'bg-gray-100 dark:bg-dk-inp-alt': player.selected,
+              'bg-white dark:bg-dk-inp': !player.selected,
+            }"
+            class="font-semibold text-lt-t-prim dark:text-violet-l hover:bg-gray-100 dark:hover:bg-dk-inp-alt rounded-[15px]"
           >
             <td scope="row" class="px-6 py-3">
               {{ index + 1 }}
@@ -30,9 +34,19 @@
               {{ player.playerName }}
             </td>
             <td class="px-6 py-3">
-              {{ Math.floor(player.highScore) }}
+              {{
+                Math.floor(player.highScore) === 0
+                  ? "-"
+                  : Math.floor(player.highScore)
+              }}
             </td>
-            <td class="px-6 py-3">{{ getAccuracy(player) }}%</td>
+            <td class="px-6 py-3">
+              {{
+                getTotalAccuracy(player) == 0
+                  ? "-"
+                  : `${getTotalAccuracy(player)}%`
+              }}
+            </td>
           </tr>
         </tbody>
       </table>
@@ -53,12 +67,26 @@ export default {
     },
   },
   created() {
-    // console.log("Players: ",this.players)
+    this.selectedPlayer;
   },
   methods: {},
   watch: {
     "$localStorage.highscores": function () {
       this.$forceUpdate();
+    },
+  },
+  computed: {
+    selectedPlayer() {
+      console.log(
+        "Console log",
+        this.players.find((p) => p.selected)
+      );
+      return this.players.find((p) => p.selected);
+    },
+    sortedPlayersHighScore() {
+      return this.players.sort((a, b) => {
+        return b.highScore - a.highScore;
+      });
     },
   },
   methods: {
@@ -75,6 +103,7 @@ export default {
           total += player.accuracy[difficulty];
         }
       }
+      console.log("total", total);
       return total;
     },
     getAccuracy(player) {

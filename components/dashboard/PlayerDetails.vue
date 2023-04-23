@@ -11,18 +11,28 @@
     >
       <div class="flex flex-col">
         <h1 class="text-4xl font-extrabold mb-3">
-          {{ Math.floor(selectedPlayer.highScore) }}
+          {{
+            Math.floor(selectedPlayer.highScore) === 0
+              ? "-"
+              : Math.floor(selectedPlayer.highScore)
+          }}
         </h1>
         <h3>Score</h3>
       </div>
       <div class="flex flex-col">
         <h1 class="text-4xl font-extrabold mb-3">
-          {{ selectedPlayer.totalGamesPlayed }}
+          {{
+            selectedPlayer.totalGamesPlayed === 0
+              ? "-"
+              : selectedPlayer.totalGamesPlayed
+          }}
         </h1>
         <h3>Level</h3>
       </div>
       <div class="flex flex-col">
-        <h1 class="text-4xl font-extrabold mb-3">{{ getAccuracy }}%</h1>
+        <h1 class="text-4xl font-extrabold mb-3">
+          {{ isNaN(getAccuracy) ? "-" : `${getAccuracy}%` }}
+        </h1>
         <h3>Accuracy</h3>
       </div>
     </div>
@@ -52,6 +62,7 @@ export default {
       const correct = this.getTotalAccuracy();
       // console.log('correct', correct)
       const accuracy = (correct / total) * 100;
+      console.log("accuracy", accuracy);
       return Math.floor(accuracy);
     },
   },

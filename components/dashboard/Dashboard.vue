@@ -1,5 +1,12 @@
 <template>
   <div class="bg-lt-dash w-screen h-screen min-h-full dark:bg-dk-inp-b">
+    <!-- <Toast
+      v-if="showToast"
+      :showToast="showToast"
+      :type="type"
+      :message="message"
+    /> -->
+
     <div
       class="py-20 max-w-[1535px] mx-auto flex flex-col items-center bg-lt-dash dark:bg-dk-inp-b sm:max-w-[635px] md:max-w-[767px] lg:max-w-[1023px] xl:max-w-[1279px]"
     >
@@ -28,6 +35,8 @@
       v-if="showModal"
       @close-modal="showModal = false"
       :add-player="addPlayer"
+      :showError="showToast"
+      :message="message"
     />
     <instruction-modal
       v-if="showInstructionModal"
@@ -41,8 +50,10 @@ import PlayerDropdown from "./PlayerDropdown.vue";
 import HighscoreList from "./HighscoreList.vue";
 import AddPlayerModal from "./AddPlayerModal.vue";
 import PlayerDetails from "./PlayerDetails.vue";
-import { nanoid } from "nanoid";
 import InstructionModal from "../InstructionModal.vue";
+import Toast from "../gameboard/Toast.vue";
+import { nanoid } from "nanoid";
+
 export default {
   components: {
     DashboardNavbar,
@@ -51,12 +62,17 @@ export default {
     AddPlayerModal,
     PlayerDetails,
     InstructionModal,
+    Toast,
   },
   data() {
     return {
       isDark: false,
       showModal: false,
       showInstructionModal: false,
+      showToast: false,
+      type: "warning",
+      message: "",
+      selectedPlayer: null,
       players: JSON.parse(localStorage.getItem("players") || "[]"),
     };
   },
@@ -77,34 +93,54 @@ export default {
   },
   methods: {
     addPlayer() {
-      const playerName = document.querySelector('input[type="text"]').value;
-      if (playerName.trim() !== "") {
-        const player = {
-          id: nanoid(),
-          playerName: playerName,
-          highScore: 0,
-          totalScore: { easy: 0, medium: 0, hard: 0 },
-          totalGameTime: 0,
-          totalGamesPlayed: 0,
-          accuracy: { easy: 0, medium: 0, hard: 0 },
-          selected: false,
-          started: false,
-          levelDonePerDifficulty: { easy: [], medium: [], hard: [] },
-        };
-        this.players.push(player);
-        this.savePlayersToStorage();
-        this.showModal = false;
+      const playerNameInput = document.querySelector('input[type="text"]');
+      const playerName = playerNameInput.value.trim();
+
+      // Reset validation flag
+
+      if (!playerName) {
+        this.showToast = true;
+        this.message = "Please enter a name";
+        return;
       }
+
+      if (this.players.some((p) => p.playerName === playerName)) {
+        this.showToast = true;
+        this.message = "Player name already exists";
+        playerNameInput.value = "";
+        return;
+      }
+
+      // Update the 'selected' property for all other players
+      this.players.forEach((p) => {
+        p.selected = false;
+      });
+
+      const player = {
+        id: nanoid(),
+        playerName,
+        highScore: 0,
+        totalScore: { easy: 0, medium: 0, hard: 0 },
+        totalGameTime: 0,
+        totalGamesPlayed: 0,
+        accuracy: { easy: 0, medium: 0, hard: 0 },
+        selected: true,
+        started: false,
+        levelDonePerDifficulty: { easy: [], medium: [], hard: [] },
+      };
+      this.players.push(player);
+      this.savePlayersToStorage();
+      this.showModal = false;
+      this.showToast = false;
     },
     startGame() {
-      const selectedPlayer = this.players.filter(
+      this.selectedPlayer = this.players.filter(
         (player) => player.selected === true
       );
-      // console.log("Dashboard: SelectedPlayerId: ", selectedPlayer[0].id);
       this.$router.push({
         name: "gameboard",
         params: {
-          playerId: selectedPlayer[0].id,
+          playerId: this.selectedPlayer[0].id,
         },
       });
     },

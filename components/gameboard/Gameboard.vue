@@ -1,7 +1,7 @@
 
 <template>
   <div
-    class="relative bg-violet-l-alt flex flex-col justify-center items-center min-h-screen overflow-hidden"
+    class="game-board relative bg-violet-l-alt dark:bg-dk-inp-b flex flex-col justify-center items-center min-h-screen overflow-hidden"
   >
     <!-- Curtain to change the  question  -->
     <!-- <div
@@ -25,7 +25,7 @@
         countdownText
       }}</span>
     </div>
-    <div v-else class="w-full">
+    <div v-else class="w-full z-10">
       <div class="progress">
         <div class="progress--bar" :style="{ width: progress + '%' }"></div>
       </div>
@@ -78,6 +78,7 @@ export default {
   components: { GamePlay, GameResult },
   data() {
     return {
+      isDark: false,
       showInstructionModal: false,
       gamePlay: null,
       selectedChoice: null,
@@ -102,7 +103,14 @@ export default {
     this.showGamePlay = false; // Hide the game board initially
     this.showGameResult = false;
     this.showCountdown = true; // Show the countdown initially
-    this.countdown = 3; // Set the initial countdown value
+    this.countdown = 4; // Set the initial countdown value
+
+    // Check if dark mode is saved in local storage
+    const savedIsDarkMode = localStorage.getItem("isDarkMode");
+    if (savedIsDarkMode !== null) {
+      this.isDark = JSON.parse(savedIsDarkMode);
+      document.body.classList.toggle("dark", this.isDark);
+    }
 
     // Start the countdown timer
     let timer = setInterval(() => {
@@ -133,12 +141,20 @@ export default {
   mounted() {
     // Add event listener to adjust progress bar width when window is resized
     window.addEventListener("resize", this.updateProgress);
+    const gameBoard = document.querySelector(".game-board");
+    if (gameBoard) {
+      gameBoard.classList.add("bg-gameboard-dk", this.isDark);
+      gameBoard.classList.add("bg-gameboard", !this.isDark);
+    }
   },
   beforeDestroy() {
     // Remove event listener to prevent memory leaks
     window.removeEventListener("resize", this.updateProgress);
   },
   computed: {
+    isDarkMode() {
+      return this.isDark;
+    },
     countdownText() {
       return this.countdown > 0 ? `${this.countdown}` : "Go!";
     },
@@ -211,11 +227,6 @@ export default {
         }
       }
     },
-    toggleDarkMode() {
-      this.isDark = !this.isDark;
-      document.body.classList.toggle("dark", this.isDark);
-      localStorage.setItem("isDarkMode", JSON.stringify(this.isDark));
-    },
 
     // helper method to check if an element is in the viewport
     isElementInViewport(el) {
@@ -234,6 +245,29 @@ export default {
 </script>
 
 <style>
+.bg-gameboard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("@/assets/img/gameplay-bg.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg-gameboard-dk::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("@/assets/img/gameplay-dk-bg.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .fade-in {
   opacity: 0;
   transition: opacity 0.3s ease-in-out;

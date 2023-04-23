@@ -1,9 +1,5 @@
 <template>
-  <div
-    class="bg-violet-l-alt mx-auto dark:bg-dk-inp-b"
-    ref="container"
-    :class="containerClasses"
-  >
+  <div class="mx-auto" ref="container" :class="containerClasses">
     <!-- <CorrectPopup :message="popupMessage" :show="showPopup" /> -->
     <div
       class="text-center font-bold text-4xl text-[#605F81] mb-16 md:text-2xl lg:text-3xl dark:text-violet-l"
@@ -76,7 +72,6 @@ export default {
     };
   },
   created() {
-    // console.log("checkAnswer: ", this.checkAnswer);
     // Check if dark mode is saved in local storage
     const savedIsDarkMode = localStorage.getItem("isDarkMode");
     if (savedIsDarkMode !== null) {

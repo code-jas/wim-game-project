@@ -113,6 +113,11 @@ export default {
       this.isDark = !this.isDark;
       document.body.classList.toggle("dark", this.isDark);
       localStorage.setItem("isDarkMode", JSON.stringify(this.isDark));
+      const gameBoard = document.querySelector(".game-board");
+      if (gameBoard) {
+        gameBoard.classList.toggle("bg-gameboard-dk", this.isDark);
+        gameBoard.classList.toggle("bg-gameboard", !this.isDark);
+      }
     },
   },
 };

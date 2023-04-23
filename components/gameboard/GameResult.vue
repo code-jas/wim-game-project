@@ -1,8 +1,11 @@
 <template>
   <div
-    class="bg-summary w-full min-h-screen flex flex-col items-center gap-y-16 py-20"
+    :class="{ 'bg-summary-dk': isDark, 'bg-summary': !isDark }"
+    class="w-full min-h-screen flex flex-col items-center gap-y-16 py-20"
   >
-    <h1 class="font-black text-lt-t-prim text-5xl dark:text-violet-l">SUMMARY</h1>
+    <h1 class="font-black text-lt-t-prim text-5xl dark:text-violet-l">
+      SUMMARY
+    </h1>
     <div
       class="w-[450px] h-[640px] flex flex-col items-center bg-blue rounded-[15px] border-8 border-blue relative dark:bg-blue-v dark:border-blue-v"
     >
@@ -22,7 +25,9 @@
           </div>
         </div>
         <div class="">
-          <div class="font-black text-7xl capitalize text-blue dark:text-blue-v">
+          <div
+            class="font-black text-7xl capitalize text-blue dark:text-blue-v"
+          >
             {{ Math.floor(formattedScore) }}
           </div>
           <div class="text-lg">Total Score</div>
@@ -63,10 +68,10 @@
 
 <script>
 export default {
-  data(){
-    return{
+  data() {
+    return {
       isDark: false,
-    }
+    };
   },
   props: {
     player: Object,
@@ -74,6 +79,14 @@ export default {
     score: Array,
     correctAnswers: Array,
     aveTime: Array,
+  },
+  created() {
+    // Check if dark mode is saved in local storage
+    const savedIsDarkMode = localStorage.getItem("isDarkMode");
+    if (savedIsDarkMode !== null) {
+      this.isDark = JSON.parse(savedIsDarkMode);
+      document.body.classList.toggle("dark", this.isDark);
+    }
   },
   computed: {
     formattedAccuracy() {
@@ -96,11 +109,6 @@ export default {
     restartGame() {
       this.$router.push("/main");
     },
-    toggleDarkMode() {
-      this.isDark = !this.isDark;
-      document.body.classList.toggle("dark", this.isDark);
-      localStorage.setItem("isDarkMode", JSON.stringify(this.isDark));
-    },
   },
 };
 </script>
@@ -108,6 +116,10 @@ export default {
 <style scoped>
 .bg-summary {
   background-image: url("@/assets/img/summary-bg.svg");
+  background-size: cover;
+}
+.bg-summary-dk {
+  background-image: url("@/assets/img/summary-dk-bg.svg");
   background-size: cover;
 }
 .bg-accuracy {
