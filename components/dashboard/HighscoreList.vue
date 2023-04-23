@@ -1,11 +1,11 @@
 <template>
   <div
-    class="w-[695px] h-[100%] bg-white rounded-[15px] drop-shadow-lg p-8 dark:bg-dk-inp md:p-5 md:w-full lg:w-full xl:w-[540px]"
+    class="w-[695px] min-h-[100%] bg-white rounded-[15px] drop-shadow-lg p-8 dark:bg-dk-inp md:p-5 md:w-full lg:w-full xl:w-[540px]"
   >
     <h1 class="text-2xl text-lt-t-prim font-semibold mb-12 dark:text-violet-l">
       Scoreboard
     </h1>
-    <div class="relative h-5/6 overflow-x-auto rounded-[15px]">
+    <div class="relative h-[415px] overflow-x-auto rounded-[15px]">
       <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead
           class="text-xs text-lt-t-prim-alt uppercase text-opacity-75 dark:text-violet-l dark:text-opacity-50"
@@ -41,11 +41,7 @@
               }}
             </td>
             <td class="px-6 py-3">
-              {{
-                getTotalAccuracy(player) == 0
-                  ? "-"
-                  : `${getTotalAccuracy(player)}%`
-              }}
+              {{ isNaN(getAccuracy(player)) ? "-" : `${getAccuracy(player)}%` }}
             </td>
           </tr>
         </tbody>

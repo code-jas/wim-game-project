@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-violet-l-alt h-screen py-20 flex flex-col items-center dark:bg-dk-inp-b"
+    class="bg-violet-l-alt min-h-screen py-20 flex flex-col items-center dark:bg-dk-inp-b"
   >
     <div
       class="flex justify-between items-center w-full max-w-[1080px] sm:max-w-[635px] md:max-w-[767px] lg:max-w-[1023px] px-10 pb-6"
@@ -67,12 +67,12 @@
         <h1>CHOOSE LEVEL</h1>
       </div>
       <div
-        class="flex flex-wrap justify-center w-[750px] md:w-[300px] xl:w-[700px]"
+        class="flex flex-wrap justify-center w-[750px] md:w-full md:px-5 md:gap-0"
       >
         <button
           v-for="i in 5"
           :key="i"
-          class="font-franklin"
+          class="font-franklin dark:bg-dk-inp-alt dark:text-lt-cont-alt md:scale-75 md:m-0"
           :class="[
             { 'my-super-cool-btn-selected': selectedLevel === i },
             'my-super-cool-btn',
@@ -165,6 +165,7 @@ export default {
   margin: 20px;
   transition: all 0.85s cubic-bezier(0.25, 1, 0.33, 1);
 }
+
 .my-super-cool-btn:hover {
   transform: scale(0.8);
 }

@@ -1,7 +1,7 @@
 
 <template>
   <div
-    class="game-board relative bg-violet-l-alt dark:bg-dk-inp-b flex flex-col justify-center items-center min-h-screen overflow-hidden"
+    class="game-board relative bg-violet-l-alt dark:bg-dk-inp-b flex flex-col justify-center items-center w-full h-screen overflow-hidden"
   >
     <!-- Curtain to change the  question  -->
     <!-- <div
@@ -255,6 +255,7 @@ export default {
   background-image: url("@/assets/img/gameplay-bg.svg");
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 }
 
 .bg-gameboard-dk::before {
@@ -267,6 +268,7 @@ export default {
   background-image: url("@/assets/img/gameplay-dk-bg.svg");
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 }
 .fade-in {
   opacity: 0;

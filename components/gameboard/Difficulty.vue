@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-violet-l-alt h-screen py-20 flex flex-col items-center dark:bg-dk-inp-b"
+    class="bg-violet-l-alt min-h-screen py-20 flex flex-col items-center dark:bg-dk-inp-b"
   >
     <!-- <Toast v-if="showToast" :type='warning' :message="message" /> -->
     <div
@@ -72,9 +72,9 @@
           v-for="(difficulty, index) in difficulties"
           :key="index"
           :class="[
-            'relative w-[275px] h-[370px] xl:w-[255px] xl:h-[360px] bg-[#e6dcff] font-semibold  text-lt-t-prim text-3xl  uppercase transition duration-500 ease-in-out rounded-[15px] m-8 md:m-2 overflow-hidden flex items-center justify-center shadow-lg dark:bg-dk-inp dark:text-blue-alt active:transform active:translate-y-1 ',
+            'relative w-[275px] h-[370px] xl:w-[255px] xl:h-[360px] bg-[#e6dcff] font-semibold  text-lt-t-prim text-3xl  uppercase transition duration-500 ease-in-out rounded-[15px] m-8  md:w-[210px] md:h-[300px] overflow-hidden flex items-center justify-center shadow-lg dark:bg-dk-inp dark:text-lt-cont active:transform active:translate-y-1 ',
             {
-              'hover:bg-white hover:text-blue-v hover:border hover:border-blue-v hover:shadow-xl hover:scale-105 dark:hover:bg-blue-v dark:hover:text-violet-l dark:hover:border-violet-l':
+              'hover:bg-white hover:text-blue-v hover:border hover:border-blue-v hover:shadow-xl hover:scale-105 dark:hover:bg-lt-t-prim dark:hover:text-dk-t-prim dark:hover:border-violet-l':
                 selectedDifficulty !== index,
               'bg-white text-blue-v border border-blue-v shadow-xl scale-105 dark:bg-blue-v dark:text-violet-l dark:border dark:border-violet-l dark:shadow-xl dark:scale-105':
                 selectedDifficulty === index,
