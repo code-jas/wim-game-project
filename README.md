@@ -1,7 +1,6 @@
-# wim-game-project - 90% complete
+# wim-game-project 
 
-## To improve - Still Progress
-*Fix small Details in dashboard
+
 
 
 ## Build Setup
@@ -45,7 +44,7 @@ Points are awarded for each correct match. the score is based on the difficulty 
 
 
 
-Scoring mechanism
+<!-- Scoring mechanism
 data => baseScore    -    represents the base score for the level
         bonusPoints  -   represents any additional points earned during the level
         timePenalty  -   represents a penalty for taking too much time to complete the level.
@@ -79,4 +78,4 @@ You can adjust the maxTimeBonusPoints value and the specific time limit for your
 Difficulty-Based Bonus Points
 - award bonus points for completing the level on a higher difficulty level. 
 
-difficultyBonusPoints = baseBonusPoints * difficultyMultiplier
+difficultyBonusPoints = baseBonusPoints * difficultyMultiplier -->
