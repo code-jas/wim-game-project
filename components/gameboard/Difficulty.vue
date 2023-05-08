@@ -2,7 +2,6 @@
   <div
     class="bg-violet-l-alt min-h-screen py-20 flex flex-col items-center dark:bg-dk-inp-b"
   >
-    <!-- <Toast v-if="showToast" :type='warning' :message="message" /> -->
     <div
       class="flex justify-between items-center w-full max-w-[1080px] sm:max-w-[635px] md:max-w-[767px] lg:max-w-[1023px] px-10 pb-6"
     >
@@ -148,7 +147,6 @@ export default {
       if (this.selectedDifficulty === null) {
         // toast
         //  this.showToast = true
-        //  console.log("toast", this.showToast)
       } else {
         this.$emit(
           "onDifficultySelected",

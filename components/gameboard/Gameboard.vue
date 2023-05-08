@@ -3,14 +3,6 @@
   <div
     class="game-board relative bg-violet-l-alt dark:bg-dk-inp-b flex flex-col justify-center items-center w-full h-screen overflow-hidden"
   >
-    <!-- Curtain to change the  question  -->
-    <!-- <div
-      class="bg-pageloader flex items-center justify-center w-full min-h-screen bg-blue-v font-franklin text-violet-l-alt text-9xl scroll-container z-30"
-      ref="container"
-    >
-      <p class="text-9xl">Image/Word <br />Match Game</p>
-    </div> -->
-
     <div v-if="showCountdown" class="font-franklin bg-countdown countdown z-20">
       <span class="countdown-text" v-if="countdown === 3">{{
         countdownText

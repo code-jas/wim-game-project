@@ -428,22 +428,3 @@ export default {
 }
 </style>
 
-
-
-<!-- 
-<button
-    v-for="i in 5"
-    :key="i"
-    :disabled="!isLevelDone(i)"
-    :class="[
-      'w-[200px] h-[200px] border-[2px] border-blue-v rounded-[15px] text-[#6174FB] font-franklin text-8xl m-5 dark:border-dk-inp-b-alt dark:text-[#7282FB]',
-      isLevelDone(i) ? 'hover:bg-[#6174FB] hover:text-white hover:border-[3px] hover:border-lt-t-prim-alt dark:hover:bg-blue-v dark:hover:text-white dark:hover:border-[3px] dark:hover:border-lt-t-prim-alt' : 'cursor-not-allowed hover:border-[3px] hover:border-lt-t-prim-alt dark:hover:border-lt-t-prim-alt',
-      i === selectedLevel ? 'bg-[#6174FB] text-white border-[3px] border-lt-t-prim-alt dark:bg-blue-v dark:text-white dark:border-[3px] dark:border-lt-t-prim-alt' : 'bg-[#E6DCFF] dark:bg-dk-inp-b-alt',
-    ]"
-    @click="selectLevel(i)"
-  >
-    <p v-if="isLevelDone(i)">{{ i }}</p>
-    <i v-else class="uil uil-padlock"></i>
-  </button>
--->
-        
