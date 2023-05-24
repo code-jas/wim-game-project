@@ -31,10 +31,10 @@ To play Image/Word Match, simply select a game mode and begin playing. The game 
 
 ### Features
 
--Multiple game modes
--Different of levels of difficulty
--Beautiful graphics and animations
--Easy to use interface
+* Multiple game modes
+* Different of levels of difficulty
+* Beautiful graphics and animations
+* Easy to use interface
 
 ### Scoring System
 
