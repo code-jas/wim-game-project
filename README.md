@@ -20,26 +20,37 @@ $ npm run start
 $ npm run generate
 ```
 # Image/Word Match
-
-## About the Game
-
-"Image/Word Match" is a game that challenges players to match images with their corresponding words. The game presents a grid of images and a list of words, and players must select the correct word for each image. The game can be played in various modes, including timed mode or with different levels of difficulty.
+It is a type of visual puzzle that presents an image and provides a set of options for a corresponding word that best matches or describes the image.
 
 ### How to Play
 
 To play Image/Word Match, simply select a game mode and begin playing. The game will present a grid of image and a list of words. Use your mouse to select the correct word for each image. If you're correct the word will be highlighted and the image will be removed from the grid. If you're incorrect the word will remain and you'll have to try again.
 
+1. Analyze the image presented by the game.
+2. Carefully read the different word options provided.
+3. Use the visual hint to narrow down the options.
+4. Select the word option that best describes the image.
+
 ### Features
 
--Multiple game modes
+-Multiple Players
 -Different of levels of difficulty
 -Beautiful graphics and animations
 -Easy to use interface
 
 ### Scoring System
 
-Points are awarded for each correct match. the score is based on the difficulty level and the time taken to complete the game. Scores are displayed together with the user name on the Dashboard.
+Scoring System
 
+Completing a level gives 200 points.
+
+Completing a level in Easy, Medium and Hard gives a bonus points of 100, 200, and 300 respectively.
+
+Time Bonus Points is calculated as Base Points * [1 - (time taken / 15 Seconds)]
+
+Every wrong answer on each level deducts 50 points to the total score
+
+The total score is calculated as Base Points + Difficulty Points + Time Bonus Points - Number of wrong answer/s * 50
 ### Game Pictures
 
 

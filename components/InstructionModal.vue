@@ -1,9 +1,9 @@
 <template>
-    <div class="py-20 max-w-screen-2xl mx-auto flex flex-col  items-center">
+    <div class="py-20 max-w-screen-2xl mx-auto flex flex-col  items-center  overflow-hidden ">
         <!-- Toggle for testing -->
         <!-- <button class="bg-blue-v rounded-xl p-2 text-violet-l font-bold text-2xl hover:bg-blue-v-alt" @click="modalToggle">Help Icon</button>  -->
         <!-- Modal -->
-        <div class="h-screen w-full fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center dark:bg-gray-950 dark:bg-opacity-50" @click="closeModal">
+        <div class="h-screen w-full fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center dark:bg-gray-950 dark:bg-opacity-50 overflow-hidden" @click="closeModal">
             <div class="max-w-xl h-4/5 px-6 py-4 rounded-lg shadow-xl bg-lt-inp dark:bg-dk-inp-b md:w-[450px] xl:w-[560px] overflow-y-scroll" @click.stop>
                 <!-- Modal Header -->
                 <div class="flex mb-6"> 
@@ -44,8 +44,8 @@
                         </p>
                     </div>
                     <div class="max-w-2xl px-8 py-3 rounded-lg my-3.5 bg-[#e6dcff] border border-blue-v text-lt-t-prim dark:bg-dk-inp dark:text-violet-l dark:border-none sm: md: lg: xl:px-10">
-                        <h1 class="text-center text-3xl font-bold mb-1 md:text-xl xl:text-2xl">Mechanics</h1>
-                        <p class="text-left text-base md:text-sm">Completing a level gives <b>200</b> base points.</p>
+                        <h1 class="text-center text-3xl font-bold mb-1 md:text-xl xl:text-2xl">Scoring System</h1>
+                        <p class="text-left text-base md:text-sm">Completing a level gives <b>200</b>  points.</p>
                         <p class="text-left text-base md:text-sm">Completing a level in Easy, Medium and Hard gives a bonus points of <b>100</b>, <b>200</b>, and <b>300</b> respectively.</p>
                         <p class="text-left text-base md:text-sm">Time Bonus Points is calculated as <b>Base Points</b> * [1 - (<b>time taken</b> / <b>15 Seconds</b>)]</p>
                         <p class="text-left text-base md:text-sm">Every wrong answer on each level deducts <b>50</b> points to the total score</p>
@@ -62,25 +62,62 @@
 </template>
 
 <script>
-export default{
-    data(){
-        return{
-            isDark: false
-        }
+export default {
+  data() {
+    return {
+      isDark: false,
+    };
+  },
+  methods: {
+    closeModal() {
+      this.$emit("closeModal");
     },
-    methods:{
-        closeModal(){
-            this.$emit('closeModal')
-        },
-        toggleDarkMode() {
-            this.isDark = !this.isDark
-            document.body.classList.toggle('dark', this.isDark)
-        },
+    toggleDarkMode() {
+      this.isDark = !this.isDark;
+      document.body.classList.toggle("dark", this.isDark);
     },
-}
-
+  },
+};
 </script>
 
 <style>
+/* WebKit */
+::-webkit-scrollbar {
+  width: 0px;
+}
 
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Firefox */
+.overflow-y-scroll {
+  scrollbar-width: thin;
+}
+
+.overflow-y-scroll::-webkit-scrollbar {
+  width: 0px;
+}
+
+.overflow-y-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.overflow-y-scroll::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.overflow-y-scroll::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
 </style>

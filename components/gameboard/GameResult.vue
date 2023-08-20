@@ -7,10 +7,10 @@
       SUMMARY
     </h1>
     <div
-      class="w-[450px] h-[640px] flex flex-col items-center bg-blue rounded-[15px] border-8 border-blue relative dark:bg-blue-v dark:border-blue-v"
+      class="w-[450px] h-[640px] flex flex-col items-center bg-blue rounded-[15px] border-8 border-blue relative dark:bg-blue-alt dark:border-blue-alt"
     >
       <div
-        class="font-bold h-16 w-full bg-blue flex items-center justify-center text-4xl text-white capitalize dark:bg-blue-v"
+        class="font-bold h-16 w-full bg-blue flex items-center justify-center text-4xl text-white capitalize dark:bg-blue-alt"
       >
         <h1>{{ difficulty }}</h1>
       </div>
@@ -26,7 +26,7 @@
         </div>
         <div class="">
           <div
-            class="font-black text-7xl capitalize text-blue dark:text-blue-v"
+            class="font-black text-7xl capitalize text-blue dark:text-blue-alt"
           >
             {{ Math.floor(formattedScore) }}
           </div>
@@ -36,7 +36,7 @@
           <h1 class="text-sm mb-4">Performance Stats</h1>
           <div class="flex items-center justify-center gap-6">
             <div
-              class="w-44 h-20 bg-white rounded-[10px] flex flex-col items-center justify-center relative overflow-hidden dark:bg-blue-v"
+              class="w-44 h-20 bg-white rounded-[10px] flex flex-col items-center justify-center relative overflow-hidden dark:bg-dk-inp-alt"
             >
               <div class="bg-accuracy"></div>
               <h1 class="font-black text-4xl capitalize z-10 mb-1">
@@ -45,7 +45,7 @@
               <h4 class="text-sm z-10">Accuracy</h4>
             </div>
             <div
-              class="w-44 h-20 bg-white rounded-[10px] flex flex-col items-center justify-center relative overflow-hidden dark:bg-blue-v"
+              class="w-44 h-20 bg-white rounded-[10px] flex flex-col items-center justify-center relative overflow-hidden dark:bg-dk-inp-alt"
             >
               <div class="bg-time"></div>
               <h1 class="font-black text-4xl z-10 mb-1">

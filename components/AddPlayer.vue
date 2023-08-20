@@ -1,7 +1,7 @@
 <template>
-  <div class="relative p-20 bg-white" :class="{ 'dark:bg-dk-inp-b': isDark }">
+  <div class="relative p-20 bg-lt-dash" :class="{ 'dark:bg-dk-inp-b': isDark }">
     <div
-      class="flex items-center justify-center gap-x-4 absolute right-20 top-20 bg-white"
+      class="flex items-center justify-center gap-x-4 absolute right-20 top-20 bg-lt-dash"
       :class="{ 'dark:bg-dk-inp-b': isDark }"
     >
       <div

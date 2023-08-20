@@ -127,7 +127,6 @@ export default {
       return selected ? selected.playerName : "";
     },
   },
-
   methods: {
     toggleDarkMode() {
       this.isDark = !this.isDark;
