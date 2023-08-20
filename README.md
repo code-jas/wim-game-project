@@ -37,6 +37,7 @@ To play Image/Word Match, simply select a game mode and begin playing. The game 
 * Different of levels of difficulty
 * Beautiful graphics and animations
 * Easy to use interface
+* Use Local Storage to save the game progress
 
 ### Scoring System
 
