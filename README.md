@@ -1,9 +1,39 @@
-# wim-game-project 
+README.md<br/> 
+<div align="center"> 
+  <!-- <a href="https://github.com/your_username/wim-game-project"> 
+    <img src="https://picsum.photos/400" alt="Logo" width="80" height="80"> 
+  </a>  -->
+  <h3 align="center">WIM Game Project</h3> 
+  <p align="center"> An engaging and fun game to challenge your matching skills! <br/><br/> 
+    <!-- <a href="https://github.com/your_username/wim-game-project"><strong>Explore the docs »</strong></a> 
+    <br/><br/> 
+    <a href="https://github.com/your_username/wim-game-project">View Demo</a> · 
+    <a href="https://github.com/your_username/wim-game-project/issues/new?labels=bug&template=bug-report---.md">Report Bug</a> · 
+    <a href="https://github.com/your_username/wim-game-project/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>  -->
+  </p> 
+</div>
 
 
+## About The Project
 
+
+<div style="display: flex; justify-content: center; align-items: center; max-width: 1920px; margin: 0 auto;">
+    <img src="https://github.com/code-jas/wim-game-project/blob/main/assets/screenshots/wim_game_result_gameboard.png?raw=true" alt="Product Screenshot" style="max-width: 100%; height: auto;">
+</div>
+<br/> <br/>
+
+
+**Word/Image Match** is a visual puzzle game where players match images to corresponding words. It’s designed to test and improve your visual and vocabulary skills through various game modes and difficulty levels. This project was developed as part of our **internship**, where we focused on creating an engaging and educational web application.
+
+### Built With
+
+-   [Vue.js](https://vuejs.org)
+-   [Nuxt.js](https://nuxtjs.org)
+-   [Tailwind CSS](https://tailwindcss.com)
 
 ## Build Setup
+
+
 
 ```bash
 # install dependencies
@@ -18,76 +48,49 @@ $ npm run start
 
 # generate static project
 $ npm run generate
-```
-# Image/Word Match
-It is a type of visual puzzle that presents an image and provides a set of options for a corresponding word that best matches or describes the image.
+``` 
 
-### How to Play
-
-To play Image/Word Match, simply select a game mode and begin playing. The game will present a grid of image and a list of words. Use your mouse to select the correct word for each image. If you're correct the word will be highlighted and the image will be removed from the grid. If you're incorrect the word will remain and you'll have to try again.
-
-1. Analyze the image presented by the game.
-2. Carefully read the different word options provided.
-3. Use the visual hint to narrow down the options.
-4. Select the word option that best describes the image.
 
 ### Features
 
-* Multiple game modes
-* Different of levels of difficulty
-* Beautiful graphics and animations
-* Easy to use interface
-* Use Local Storage to save the game progress
+-   Ranking dashboard to view user ranks and compare scores.
+-   Various levels of difficulty to cater to both beginners and advanced players.
+-   Elaborate user interface designed for a seamless and engaging user experience.
+-   Dark mode and light mode to suit different lighting preferences and reduce eye strain.
+-   Uses Local Storage to keep your score and da
 
-### Scoring System
+## How to Play
 
-Scoring System
-
-Completing a level gives 200 points.
-
-Completing a level in Easy, Medium and Hard gives a bonus points of 100, 200, and 300 respectively.
-
-Time Bonus Points is calculated as Base Points * [1 - (time taken / 15 Seconds)]
-
-Every wrong answer on each level deducts 50 points to the total score
-
-The total score is calculated as Base Points + Difficulty Points + Time Bonus Points - Number of wrong answer/s * 50
-### Game Pictures
+1.  Select a game mode.
+2.  A grid of images and a list of words will be presented.
+3.  Analyze the images and carefully read the word options.
+4.  Use visual hints to narrow down your options.
+5.  Select the word that best describes each image.
 
 
+## Scoring System
 
-<!-- Scoring mechanism
-data => baseScore    -    represents the base score for the level
-        bonusPoints  -   represents any additional points earned during the level
-        timePenalty  -   represents a penalty for taking too much time to complete the level.
-      timeRatio = timeTaken / maxTime;
+-   Completing a level gives 200 points.
+-   Difficulty bonus: Easy (100), Medium (200), Hard (300).
+-   Time Bonus Points = Base Points * [1 - (time taken / 15 Seconds)].
+-   Every wrong answer deducts 50 points.
 
-      base score = 200 
+## Game Pictures
 
-      Bonus points: 
-      Time bonus points = baseBonusPoints * (1 - timeRatio);
-      Difficulty bonus points easy=100 , medium=200 , hard=300
+<p align="center">
+  <img src="https://github.com/code-jas/wim-game-project/blob/main/assets/screenshots/wim_game_loader_output.png?raw=true" alt="Loader Screen" width="300"/>
+  <img src="https://github.com/code-jas/wim-game-project/blob/main/assets/screenshots/wim_game_add_player_output.png?raw=true" alt="Add Player Screen" width="300"/>
+  <img src="https://github.com/code-jas/wim-game-project/blob/main/assets/screenshots/wim_game_dashboard_output.png?raw=true" alt="Dashboard Screen" width="300"/>
+  <img src="https://github.com/code-jas/wim-game-project/blob/main/assets/screenshots/wim_game_difficulty_output.png?raw=true" alt="Difficulty Selection Screen" width="300"/>
+  <img src="https://github.com/code-jas/wim-game-project/blob/main/assets/screenshots/wim_game_level_output.png?raw=true" alt="Level Screen" width="300"/>
+  <img src="https://github.com/code-jas/wim-game-project/blob/main/assets/screenshots/wim_game_timer_output.png?raw=true" alt="Timer Screen" width="300"/>
+  <img src="https://github.com/code-jas/wim-game-project/blob/main/assets/screenshots/wim_game_result_gameboard.png?raw=true" alt="Result Gameboard" width="300"/>
+  <img src="https://github.com/code-jas/wim-game-project/blob/main/assets/screenshots/wim_game_result_output.png?raw=true" alt="Result Screen" width="300"/>
+  
+</p>
 
-      Deduction poinst =  Number of wrong answer * 50
+## Contact
 
-      Final Score per questions  = base score + difficulty bonus points + time bonus points - deduction points;
-      
+Your Name - johnangelo.silvestre04@gmail.com
 
-
-
-
-
-
-Time-Based Bonus Points
-- award points based on the amount of time remaining on the timer when the level is completed. 
-
-timeBonusPoints = maxTimeBonusPoints * (1 - timeRatio)
-
-In this formula, maxTimeBonusPoints represents the maximum bonus points that can be earned for completing the level quickly, and timeRatio represents the ratio of time taken to complete the level to the maximum allowed time. The timeRatio value will be between 0 and 1, with 0 representing completing the level within the maximum allowed time and 1 representing taking the full maximum allowed time to complete the level.
-
-You can adjust the maxTimeBonusPoints value and the specific time limit for your game to suit your needs.
-
-Difficulty-Based Bonus Points
-- award bonus points for completing the level on a higher difficulty level. 
-
-difficultyBonusPoints = baseBonusPoints * difficultyMultiplier -->
+Project Link: [https://github.com/code-jas/wim-game-project](https://github.com/code-jas/wim-game-project)
